@@ -1,0 +1,116 @@
+/* Shared scaffolding for design-system preview cards.
+   Loads the brand-supplied variable fonts (from project /fonts/) so cards
+   render in the real Core typefaces, not a Google Fonts proxy. */
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-display: swap;
+  src: url("../fonts/Roboto-VariableFont_wdth_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-display: swap;
+  src: url("../fonts/Roboto-Italic-VariableFont_wdth_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 300 800;
+  font-stretch: 75% 125%;
+  font-display: swap;
+  src: url("../fonts/OpenSans-VariableFont_wdth_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: italic;
+  font-weight: 300 800;
+  font-stretch: 75% 125%;
+  font-display: swap;
+  src: url("../fonts/OpenSans-Italic-VariableFont_wdth_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/Inter-VariableFont_opsz_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/Inter-Italic-VariableFont_opsz_wght.ttf") format("truetype");
+}
+
+html, body { margin: 0; padding: 0; background: #fff; }
+body { font-family: "Open Sans", sans-serif; color: #2D2D2D; }
+
+.card {
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row { display: flex; gap: 12px; align-items: stretch; }
+.row--wrap { flex-wrap: wrap; }
+.col { display: flex; flex-direction: column; gap: 8px; }
+
+.meta {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  color: #666;
+  letter-spacing: 0.02em;
+}
+
+.kbd-name {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+.kbd-meta {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  color: #5C5C5C;
+}
+
+.swatch {
+  flex: 1;
+  min-height: 96px;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  line-height: 1;
+  color: #fff;
+  text-shadow: none;
+  overflow: hidden;
+}
+.swatch--light { color: #1A1A1A; }
+.swatch__name  { font-weight: 600; font-size: 13px; }
+.swatch__code  { opacity: .75; margin-top: 4px; }
+.swatch__chip  {
+  position: absolute; top: 8px; right: 8px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #fff;
+}
+.swatch--light .swatch__chip { background: rgba(255,255,255,0.6); color: #000; }

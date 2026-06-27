@@ -1,0 +1,37 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Selection controls</title>
+<link rel="stylesheet" href="_preview.css">
+</head><body><div class="card" style="height:200px">
+  <div class="meta">Selection controls — checkbox, radio, toggle. Brand fill at selected.</div>
+  <div class="row" style="gap:36px;align-items:flex-start">
+    <div class="col" style="gap:10px">
+      <div class="kbd-meta">CHECKBOX</div>
+      <label class="opt"><span class="cb on"><svg width="12" height="12" viewBox="0 0 16 16"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Postal vote</label>
+      <label class="opt"><span class="cb off"></span> In person</label>
+      <label class="opt opt--dis"><span class="cb dis"></span> Phone vote</label>
+    </div>
+    <div class="col" style="gap:10px">
+      <div class="kbd-meta">RADIO</div>
+      <label class="opt"><span class="rb on"></span> NSW</label>
+      <label class="opt"><span class="rb off"></span> VIC</label>
+      <label class="opt"><span class="rb off"></span> QLD</label>
+    </div>
+    <div class="col" style="gap:10px">
+      <div class="kbd-meta">TOGGLE</div>
+      <label class="opt"><span class="tg on"><span class="tg__dot"></span></span> Receive updates</label>
+      <label class="opt"><span class="tg off"><span class="tg__dot"></span></span> Marketing</label>
+    </div>
+  </div>
+  <style>
+    .opt{font-family:'Open Sans';font-size:14px;color:#1A1A1A;display:flex;align-items:center;gap:10px}
+    .opt--dis{color:#868686}
+    .cb,.rb{width:20px;height:20px;border:1.5px solid #ADADAD;background:#fff;display:inline-flex;align-items:center;justify-content:center;border-radius:4px;box-sizing:border-box}
+    .cb.on{background:#3C4673;border-color:#3C4673}
+    .cb.dis{background:#F2F2F2;border-color:#EBEBEB}
+    .rb{border-radius:50%}
+    .rb.on{border:6px solid #3C4673}
+    .tg{width:36px;height:20px;border-radius:200px;background:#CCCCCC;position:relative;display:inline-block}
+    .tg.on{background:#3C4673}
+    .tg__dot{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+    .tg.on .tg__dot{left:18px}
+  </style></div></body></html>
