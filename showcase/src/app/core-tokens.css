@@ -1,0 +1,348 @@
+/* =========================================================================
+   Core Design System — Colour + Type tokens
+   Brand-agnostic foundation distilled from Attica 2.0.
+   To rebrand a fork: replace the --brand-* ramp and the --font-* families.
+   ========================================================================= */
+
+/* ---- Font face: Inter (UI), Roboto (headings), Open Sans (body) ----------
+   All three families ship locally as variable fonts in /fonts.
+   Font Awesome 7 Pro is the icon font in the source system; we substitute
+   Font Awesome 6 Free on a CDN (see ICONOGRAPHY in README.md). */
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-display: swap;
+  src: url("/fonts/Roboto-VariableFont_wdth_wght.ttf") format("truetype-variations"),
+       url("/fonts/Roboto-VariableFont_wdth_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-display: swap;
+  src: url("/fonts/Roboto-Italic-VariableFont_wdth_wght.ttf") format("truetype-variations"),
+       url("/fonts/Roboto-Italic-VariableFont_wdth_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 300 800;
+  font-stretch: 75% 125%;
+  font-display: swap;
+  src: url("/fonts/OpenSans-VariableFont_wdth_wght.ttf") format("truetype-variations"),
+       url("/fonts/OpenSans-VariableFont_wdth_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: italic;
+  font-weight: 300 800;
+  font-stretch: 75% 125%;
+  font-display: swap;
+  src: url("/fonts/OpenSans-Italic-VariableFont_wdth_wght.ttf") format("truetype-variations"),
+       url("/fonts/OpenSans-Italic-VariableFont_wdth_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/Inter-VariableFont_opsz_wght.ttf") format("truetype-variations"),
+       url("/fonts/Inter-VariableFont_opsz_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/Inter-Italic-VariableFont_opsz_wght.ttf") format("truetype-variations"),
+       url("/fonts/Inter-Italic-VariableFont_opsz_wght.ttf") format("truetype");
+}
+
+:root {
+  /* ============================================================
+     COLOUR — Primary "Brand" (PLACEHOLDER — override per fork)
+     The single hue a fork replaces. These values are a neutral
+     indigo-slate placeholder, not a brand decision.
+     ============================================================ */
+  --brand-800: #1E2333;
+  --brand-700: #2B3350;
+  --brand-600: #3C4673;   /* PRIMARY — replace to rebrand */
+  --brand-500: #515C90;
+  --brand-400: #6E79A8;
+  --brand-300: #9AA2C4;
+  --brand-200: #D9DCEA;
+  --brand-100: #E9EBF3;
+  --brand-50:  #F4F5F9;
+  --brand-25:  #FAFAFC;
+
+  /* Mauve — secondary purple */
+  --mauve-800: #421F51;
+  --mauve-700: #542768;
+  --mauve-600: #764F87;
+  --mauve-500: #846293;
+  --mauve-400: #997EA5;
+  --mauve-300: #BCACC3;
+  --mauve-200: #EDE6F0;
+  --mauve-100: #F4EFF6;
+  --mauve-50:  #F9F5F9;
+  --mauve-25:  #FBF9FC;
+
+  /* Smalt — primary navy */
+  --smalt-800: #002D58;
+  --smalt-700: #00386B;
+  --smalt-600: #265C97;
+  --smalt-500: #2370BE;
+  --smalt-400: #5289C6;
+  --smalt-300: #84B1E5;
+  --smalt-200: #E2ECF9;
+  --smalt-100: #EBF3FB;
+  --smalt-50:  #F4F8FC;
+  --smalt-25:  #F8FAFD;
+
+  /* Cerulean — primary teal */
+  --cerulean-800: #002310;
+  --cerulean-700: #1A412A;
+  --cerulean-600: #006D3D;
+  --cerulean-500: #278251;
+  --cerulean-400: #57966F;
+  --cerulean-300: #86BC99;
+  --cerulean-200: #E1EFE5;
+  --cerulean-100: #EBF5EE;
+  --cerulean-50:  #F3FAF7;
+  --cerulean-25:  #F8FBF9;
+
+  /* ============================================================
+     COLOUR — Neutrals (Nobel, Black tints, White)
+     ============================================================ */
+  --nobel-800: #2D2D2D;
+  --nobel-700: #383838;
+  --nobel-600: #4B4B4B;
+  --nobel-500: #5C5C5C;
+  --nobel-400: #868686;
+  --nobel-300: #ADADAD;
+  --nobel-200: #EBEBEB;
+  --nobel-100: #F2F2F2;
+  --nobel-50:  #F8F8F8;
+  --nobel-25:  #FAFAFA;
+
+  --black-900: #000000;
+  --black-800: #1A1A1A;
+  --black-700: #333333;
+  --black-600: #4D4D4D;
+  --black-500: #666666;
+  --black-400: #808080;
+  --black-300: #999999;
+  --black-200: #B3B3B3;
+  --black-100: #CCCCCC;
+  --black-50:  #E6E6E6;
+  --black-25:  #F3F3F3;
+  --white:     #FFFFFF;
+
+  /* ============================================================
+     COLOUR — Semantic
+     ============================================================ */
+  --info-600:    #265C97;
+  --info-500:    #2370BE;
+  --info-100:    #EBF3FB;
+  --info-50:     #F4F8FC;
+
+  --success-600: #006D3D;
+  --success-500: #278251;
+  --success-100: #EBF5EE;
+  --success-50:  #F3FAF7;
+
+  --warning-600: #C95000;
+  --warning-500: #E06C34;
+  --warning-400: #F29F52;
+  --warning-100: #FBF1DB;
+  --warning-50:  #FFFBF3;
+
+  --error-600:   #AC0700;
+  --error-500:   #B01F13;
+  --error-100:   #FBEFEC;
+  --error-50:    #FCF6F5;
+
+  /* Focus ring (used on every interactive surface) */
+  --focus-500:   #B900DA;
+
+  /* ============================================================
+     SEMANTIC ROLES — what designs actually reach for
+     ============================================================ */
+  --bg-base:        var(--white);
+  --bg-subtle:      var(--nobel-25);
+  --bg-muted:       var(--nobel-50);
+  --bg-canvas:      #FAFAFA;
+  --bg-inverse:     var(--brand-600);
+
+  --fg-default:     var(--nobel-800);     /* body text */
+  --fg-strong:      var(--black-800);     /* headings */
+  --fg-muted:       var(--black-500);     /* supporting copy */
+  --fg-subtle:      var(--nobel-400);
+  --fg-on-primary:  var(--white);
+  --fg-on-inverse:  var(--white);
+  --fg-link:        var(--brand-600);
+  --fg-link-hover:  var(--brand-700);
+
+  --border-default: var(--nobel-200);
+  --border-strong:  var(--nobel-300);
+  --border-subtle:  var(--nobel-100);
+  --border-focus:   var(--focus-500);
+
+  --primary:        var(--brand-600);
+  --primary-hover:  var(--brand-700);
+  --primary-active: var(--brand-800);
+  --primary-bg:     var(--brand-50);
+  --primary-tint:   var(--brand-100);
+  --primary-strong: var(--brand-700);
+
+  /* ============================================================
+     TYPOGRAPHY — families & weights
+     ============================================================ */
+  --font-heading:   "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --font-body:      "Open Sans", "Segoe UI", Arial, sans-serif;
+  --font-ui:        "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:      ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --font-icon:      "Font Awesome 6 Free", "Font Awesome 7 Pro";
+
+  --fw-light:    300;
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+
+  /* ============================================================
+     TYPOGRAPHY — scale (desktop)
+     Source: Attica Typography — Headings (Desktop), Body & Paragraphs
+     ============================================================ */
+  --text-display-m:  52px;   --lh-display-m:  56px;
+  --text-display-s:  44px;   --lh-display-s:  48px;
+  --text-h-xl:       52px;   --lh-h-xl:       62px;
+  --text-h-l:        36px;   --lh-h-l:        44px;
+  --text-h-m:        32px;   --lh-h-m:        40px;
+  --text-h-s:        28px;   --lh-h-s:        36px;
+  --text-h-xs:       24px;   --lh-h-xs:       32px;
+  --text-h-xxs:      20px;   --lh-h-xxs:      28px;
+
+  --text-body-l:     18px;   --lh-body-l:     28px;
+  --text-body-m:     16px;   --lh-body-m:     24px;
+  --text-body-s:     14px;   --lh-body-s:     20px;
+  --text-body-xs:    12px;   --lh-body-xs:    20px;
+
+  --tracking-tight:    -0.02em;
+  --tracking-h-xl:     -0.01em;
+  --tracking-button:    0.5px;
+  --tracking-eyebrow:   0.15em;
+
+  /* ============================================================
+     SPACING SCALE — $spacing-* tokens (4px base, incremental)
+     ============================================================ */
+  --space-xx-sm:  4px;
+  --space-x-sm:   8px;
+  --space-sm:    12px;
+  --space-md:    16px;
+  --space-big:   20px;
+  --space-x-big: 24px;
+  --space-xx-big:28px;
+  --space-xxx-big:32px;
+  --space-lg:    40px;
+  --space-x-lg:  48px;
+  --space-xx-lg: 64px;
+  --space-xxx-lg:80px;
+  --space-huge:  96px;
+  --space-x-huge:128px;
+  --space-xx-huge:160px;
+  --space-xxx-huge:192px;
+
+  /* ============================================================
+     RADII — Attica leans on 8px (cards) + 200px (pill buttons)
+     ============================================================ */
+  --radius-xs:  4px;
+  --radius-sm:  8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 200px;
+
+  /* ============================================================
+     ELEVATION — Drop shadow scale
+     ============================================================ */
+  --shadow-none: none;
+  --shadow-xs:   0px 2px 4px 0px rgba(0, 0, 0, 0.10);
+  --shadow-sm:   0px 4px 8px 0px rgba(0, 0, 0, 0.10);
+  --shadow-md:   0px 8px 16px 0px rgba(0, 0, 0, 0.10);
+  --shadow-lg:   0px 12px 24px 0px rgba(0, 0, 0, 0.10);
+  --shadow-focus: 0 0 0 3px var(--focus-500);
+
+  /* ============================================================
+     LAYOUT
+     ============================================================ */
+  --container-max: 1280px;
+  --container-pad: 24px;
+  --hit-target:    48px;     /* minimum touch target */
+}
+
+/* =========================================================================
+   ELEMENT BASELINE
+   Generic, opt-in styles for raw HTML elements. Apply via .ds scope.
+   ========================================================================= */
+.ds {
+  font-family: var(--font-body);
+  font-size: var(--text-body-m);
+  line-height: var(--lh-body-m);
+  color: var(--fg-default);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.ds h1, .ds .h-display-m,
+.ds h2, .ds .h-display-s,
+.ds .h-xl, .ds .h-l,
+.ds .h-m, .ds .h-s,
+.ds .h-xs, .ds .h-xxs {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-light);
+  color: var(--fg-strong);
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.ds h1, .ds .h-display-m { font-size: var(--text-display-m); line-height: var(--lh-display-m); }
+.ds .h-display-s             { font-size: var(--text-display-s); line-height: var(--lh-display-s); }
+.ds .h-xl                    { font-size: var(--text-h-xl);      line-height: var(--lh-h-xl);  letter-spacing: var(--tracking-h-xl); }
+.ds .h-l, .ds h2         { font-size: var(--text-h-l);       line-height: var(--lh-h-l);  font-weight: var(--fw-regular); }
+.ds .h-m, .ds h3         { font-size: var(--text-h-m);       line-height: var(--lh-h-m);  font-weight: var(--fw-regular); }
+.ds .h-s, .ds h4         { font-size: var(--text-h-s);       line-height: var(--lh-h-s);  font-weight: var(--fw-medium); }
+.ds .h-xs, .ds h5        { font-size: var(--text-h-xs);      line-height: var(--lh-h-xs); font-weight: var(--fw-medium); }
+.ds .h-xxs, .ds h6       { font-size: var(--text-h-xxs);     line-height: var(--lh-h-xxs);font-weight: var(--fw-medium); }
+
+.ds p, .ds .body-m { font-size: var(--text-body-m); line-height: var(--lh-body-m); }
+.ds .body-l            { font-size: var(--text-body-l); line-height: var(--lh-body-l); }
+.ds .body-s            { font-size: var(--text-body-s); line-height: var(--lh-body-s); }
+.ds .body-xs           { font-size: var(--text-body-xs); line-height: var(--lh-body-xs); }
+
+.ds a {
+  color: var(--fg-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.ds a:hover { color: var(--fg-link-hover); text-decoration-thickness: 2px; }
+.ds a:focus-visible {
+  outline: 2px solid var(--focus-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.ds .eyebrow {
+  font-family: var(--font-ui);
+  font-size: var(--text-body-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}

@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* The canonical design system, imported verbatim (true view, zero drift). */
+@import "./core-tokens.css";
+@import "./core-components.css";
+
+/* ---------------------------------------------------------------------------
+   Showcase chrome — neutral document shell. These tokens deliberately do NOT
+   react to the brand-theme switch, so the surrounding interface stays a
+   constant frame of reference while the design system rebrands inside it.
+   --------------------------------------------------------------------------- */
+:root {
+  --showcase-bg: #fafafa;
+  --showcase-fg: #18181b;
+  --showcase-muted: #6b6b70;
+  --showcase-border: #e6e6e9;
+}
+
+/* ---------------------------------------------------------------------------
+   Example brand themes. Each overrides ONLY the --brand-* ramp; because every
+   role token (--primary, --fg-link, --bg-inverse …) derives from --brand-*,
+   the whole system rebrands from these ten values alone. This is the "fork me"
+   story, made live.
+   --------------------------------------------------------------------------- */
+html[data-theme="teal"] {
+  --brand-800: #053B40; --brand-700: #0A5C63; --brand-600: #0E7C86;
+  --brand-500: #2E97A0; --brand-400: #5FB3BA; --brand-300: #9AD2D6;
+  --brand-200: #CFEBED; --brand-100: #E6F5F6; --brand-50: #F2FAFB; --brand-25: #F8FCFD;
+}
+html[data-theme="violet"] {
+  --brand-800: #2E1065; --brand-700: #4322A0; --brand-600: #5B2FC9;
+  --brand-500: #7A52D6; --brand-400: #9B7CE2; --brand-300: #C2ADEE;
+  --brand-200: #E2D7F8; --brand-100: #EFE8FC; --brand-50: #F7F3FE; --brand-25: #FBF9FF;
+}
+html[data-theme="amber"] {
+  --brand-800: #5C3A00; --brand-700: #8A5800; --brand-600: #B97700;
+  --brand-500: #D9920F; --brand-400: #E8B24E; --brand-300: #F2CE8A;
+  --brand-200: #FAE9C6; --brand-100: #FDF3E0; --brand-50: #FFFAF0; --brand-25: #FFFCF7;
+}
+
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--showcase-bg);
+  color: var(--showcase-fg);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
