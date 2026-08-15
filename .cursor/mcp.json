@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "automatic": {
+      "args": [
+        "mcp-serve"
+      ],
+      "command": "/Applications/Automatic.app/Contents/MacOS/automatic",
+      "env": {
+        "AUTOMATIC_PROJECT": "core-design-system"
+      },
+      "type": "stdio"
+    }
+  }
+}
