@@ -50,8 +50,7 @@ CSS today and has no mechanism to stay resembling it.
 It also carries two things the charter forbids:
 
 - **An external CDN dependency** — Font Awesome from `cdnjs.cloudflare.com`, in 6 files.
-- **Domain-specific content** — "You're successfully enrolled to vote", "Enrolments close at
-  8 pm tonight". Electoral-service copy inside a brand-neutral foundation (charter §2.7).
+- **Domain-specific content** — resolved 17 September 2026. Preview sample copy is generic.
 
 `package.json` ships `preview/` to consumers.
 
@@ -65,31 +64,17 @@ README line 20:
 
 > replace the ten `--brand-*` values … **nothing else needs touching for colour**
 
-`components.css` reaches past the semantic layer into primitive palettes at **13 sites**, plus
-one hardcoded hex:
+`components.css` reached past the semantic layer into primitive palettes at **13 sites**, plus
+one hardcoded hex (4 August 2026). **Resolved 17 September 2026:** those sites now use semantic
+roles (`--bg-disabled`, `--fg-disabled`, `--fg-placeholder`, `--border-hover`, `--fg-info`,
+`--fg-success`, `--fg-warning`, and siblings). `components.css` contains no primitive-palette
+references and no hardcoded hex colours.
 
-| Line | Declaration | Problem |
-|---|---|---|
-| 55, 68, 81, 176 | `var(--nobel-100 / -200 / -400 / -50)` | disabled states pinned to a fixed grey ramp |
-| 77, 78 | `var(--nobel-50 / -100)` | tertiary button hover |
-| 164 | `var(--nobel-400)` | input placeholder |
-| 167 | `var(--nobel-700)` | input hover border |
-| 189, 190 | `var(--nobel-100 / -800)` | neutral badge |
-| 234 | `var(--nobel-400)` | breadcrumb separator |
-| 193 | `var(--smalt-700)` | **info badge text — pinned to the smalt navy primitive** |
-| 194 | `var(--cerulean-700)` | **success badge text — pinned to the cerulean teal primitive** |
-| 195 | `#6B4400` | **hardcoded hex, no token at all** |
-
-Rebrand today and the info badge stays smalt navy, the success badge stays cerulean teal, the
-warning badge stays an untokenised brown, and every grey in the system is immovable. The
-theme switcher in the showcase overrides `--brand-*` only — so it demonstrates precisely the
-one axis that works.
-
-This is the single highest-value defect in the repository. It is the difference between the
-derived-system thesis being true and being aspirational, and it is roughly 20 lines of edits.
+The theme switcher in the showcase still overrides `--brand-*` only. Hue switching works.
+Neutral, type, radius, and density remain a single Core choice until T5.
 
 ```bash
-grep -nE 'var\(--(nobel|smalt|cerulean|mauve)|#[0-9a-fA-F]{3,6}' components.css
+grep -nE '#[0-9a-fA-F]{3,6}' components.css   # → empty when T1 holds
 ```
 
 ### F3 — The showcase hand-copies the canonical CSS
@@ -118,29 +103,26 @@ Charter §2.6 commits Core to carrying accessibility downstream. The source curr
 - no dark mode, no high-contrast mode
 - no published contrast data
 
-Measured contrast on shipped defaults (sRGB, WCAG 2.2):
+Measured contrast on shipped defaults (sRGB, WCAG 2.2). Re-measured 17 September 2026 after
+the `--neutral-*` recast:
 
 | Pair | Ratio | Required | Result |
 |---|---|---|---|
-| Input border `--border-strong` (#ADADAD) on white | **2.24** | 3.0 (SC 1.4.11) | **fail** |
-| `--border-default` (#EBEBEB) on white | **1.19** | 3.0 (SC 1.4.11) | **fail** |
-| Placeholder `--nobel-400` (#868686) on white | **3.64** | 4.5 (SC 1.4.3) | **fail** |
-| `--fg-subtle` (#868686) on white | 3.64 | 4.5 | fail as body text; ok for large/UI |
-| Disabled text #868686 on #F2F2F2 | 3.25 | — | exempt (SC 1.4.3 disabled exemption) |
-| All four badge tint/text pairs | 6.70 – 12.30 | 4.5 | pass |
-| Primary button, link, focus ring | 5.15 – 9.07 | 4.5 | pass |
+| Input border `--border-strong` (`--neutral-300` #8A8C99) on white | 3.34 | 3.0 (SC 1.4.11) | **pass** (was 2.24) |
+| `--border-default` (`--neutral-200` #DDDEE3) on white | 1.34 | 3.0 if used as a control edge | decorative only; documented as such |
+| Placeholder `--fg-placeholder` (`--neutral-400` #6E7181) on white | 4.84 | 4.5 (SC 1.4.3) | **pass** (was 3.64) |
+| `--fg-default` on white | 14.68 | 4.5 | pass |
+| Badge tint/text pairs (700 on 100) | 5.06 – 8.45 | 4.5 | pass |
+| Primary button, link, focus ring (default theme) | 5.15 – 9.07 | 4.5 | pass |
+| Showcase Amber `--brand-600` #B97700 with white | 3.68 | 4.5 | **fail** (demo theme only) |
 
-The default state of every text input in the system fails non-text contrast. Placeholder text
-fails normal-text contrast and is **not** covered by the disabled exemption.
-
-Separately, `--hit-target: 48px` ([tokens.css:284](../../tokens.css)) is declared and consumed
-by nothing. Actual minimums are 40px (`.ds-btn`), 32px (`.ds-btn--sm`), 44px (inputs). The
-token is documentation, not a constraint.
+`--hit-target: 48px` is still declared and consumed by nothing. Actual minimums are 40px
+(`.ds-btn`), 32px (`.ds-btn--sm`), 44px (inputs). The token is documentation, not a constraint.
 
 ### F8 — Core is already public, with unresolved provenance `[GATE]`
 
-`github.com/aatteia/core-design-system` returns **HTTP 200 unauthenticated**. It has been public
-since at least the 2026-07-29 push, with `license: None`.
+`github.com/aatteia/core-design-system` returns **HTTP 200 unauthenticated**. `LICENSE` is MIT
+as of 17 September 2026. `package.json` still has `"private": true` (packaging remains deferred).
 
 Three categories of material are publicly visible that should not be.
 
@@ -155,20 +137,13 @@ Those named-system strings were removed on 17 September 2026. Remaining provenan
 values and sample content, not the name. Do not reintroduce a named third-party system as
 Core's source (charter §2.10).
 
-**(b) Client-derived values.** The `--mauve-*`, `--smalt-*`, `--cerulean-*`, `--nobel-*` ramps
-(F6) still use inherited colour names and hex values. Their presence contradicts the
-README's claim that organisation-specific content was removed.
+**(b) Client-derived values.** **Resolved 17 September 2026.** Former named secondary palettes
+were deleted. Core now ships `--neutral-*` (cool grey, contrast-authored) and regenerated
+status ramps. `--brand-*` indigo-slate remains the placeholder identity layer.
 
-**(c) Client-domain sample content — 5 preview files:**
-
-| File | Content |
-|---|---|
-| `components-alerts.html:11,16,21` | "Your enrolment is up to date", "You're successfully enrolled to vote", "Enrolments close at 8 pm tonight" |
-| `components-breadcrumbs-pagination.html:11,13` | "Enrolment" / "Check my enrolment" |
-| `components-cards.html:10` | "Check your enrolment" |
-| `components-selection.html:9,11` | "Postal vote", "Phone vote" |
-| `components-table.html:9` | **Division · State · Party · First-pref % · 2PP %** — an election-results schema |
-| `README.md:59` | "Restricted/parliamentary & ballot palettes" |
+**(c) Client-domain sample content.** **Resolved 17 September 2026** in `preview/` and
+`README.md`. Sample copy is generic (account, booking, project table). Do not restore
+service-specific enrolment, ballot, or election-results content.
 
 **Why this is the gate.** Per the record (D26, refined 2026-07-12), the client system Adam
 worked with was authored and maintained by two dedicated designers. Adam consumed and
@@ -202,34 +177,21 @@ curl -s https://core-design-system.vercel.app | grep -c 'ds-btn'    # → >0 whe
 ### F5 — The licence blocks the product thesis `[DECIDED: MIT]`
 
 ```json
-"license": "UNLICENSED",
+"license": "MIT",
 "private": true,
-"files": ["tokens.css", "components.css", "fonts/", "preview/", "README.md", "SKILL.md"]
+"files": ["tokens.css", "components.css", "fonts/", "preview/", "README.md", "SKILL.md", "LICENSE"]
 ```
 
-A foundation that others adopt, extend, upgrade from and contribute back to cannot be
-UNLICENSED and private. `private: true` also contradicts the `files` array, which only has
-meaning when publishing.
-
-This is not an "implication to consider." It is a gate: no packaging, versioning, compatibility
-or contribution work means anything until it is resolved.
-
-**Resolved 2026-08-04 (owner decision): MIT.** Core is published as an openly reusable
-foundation. Implementation in P2.
-
-Font licensing needs the same check — Roboto, Open Sans and Inter are all SIL OFL, which
-permits redistribution, but the repository ships no licence files for them.
+**Resolved 17 September 2026 (P2):** `LICENSE` is MIT, `package.json` declares `"license": "MIT"`,
+and `fonts/OFL.txt` covers Inter, Roboto, and Open Sans. `"private": true` is kept because
+charter §6 still defers npm packaging. GitHub repo description and homepage remain owner
+actions.
 
 ### F6 — Inherited palettes are brand residue
 
-`--mauve-*`, `--smalt-*`, `--cerulean-*` (30 tokens, [tokens.css:83–119](../../tokens.css)) are
-named for a former palette, are not wired to `--brand-*`, and are referenced by exactly two
-declarations in `components.css`. `--info-*` and `--success-*` duplicate some of their values
-under neutral names — `--info-600` and `--smalt-600` are both `#265C97`; `--success-600` and
-`--cerulean-600` are both `#006D3D`.
-
-They are either an unstated Core capability, a neutral secondary palette that needs renaming,
-or leftovers. Today they read as leftovers with brand names attached.
+**Resolved 17 September 2026 (P1 colour + T1).** Former named secondary palettes are gone.
+`--neutral-*` is the spine. Status ramps were regenerated so they no longer alias another
+palette's hex values. `-700` steps exist for badge text.
 
 ### F7 — Where the archived plan was right
 
@@ -299,17 +261,10 @@ brand-neutral foundation authored by Adam — with nothing traceable to a client
 
 Three foundations were attributed to a named third-party system and must be regenerated:
 
-1. **Colour.** Delete `--mauve-*`, `--smalt-*`, `--cerulean-*`, `--nobel-*` (40 tokens,
-   [tokens.css:83–130](../../tokens.css)). Generate replacements from scratch:
-   - one **neutral ramp** (`--neutral-25 … -800`), authored to hit the contrast targets in T3
-     by construction rather than by luck — this is the fix for F4's two border failures and the
-     placeholder failure, done once, correctly
-   - **status ramps** — `--info-*`, `--success-*`, `--warning-*`, `--error-*` already exist under
-     neutral names, but `--info-600`/`--smalt-600` and `--success-600`/`--cerulean-600` are the
-     same hex. Regenerate the status ramps too, or they carry the same provenance under a
-     different label. Add the missing `-700` steps T1 needs.
-   - keep `--brand-*` (the indigo-slate placeholder) only if it is confirmed as Adam's own choice
-     rather than inherited; regenerate if uncertain
+1. **Colour. Done 17 September 2026.** Former named secondary palettes are deleted.
+   `--neutral-25 … -800` is authored to hit the T3 contrast targets. Status ramps were
+   regenerated (no longer aliases of another palette) and gained `-700` steps for badge text.
+   `--brand-*` indigo-slate remains the placeholder identity layer.
 2. **Type scale.** Token comments previously attributed the desktop heading and body scale
    to a named third-party type spec. Re-derive the scale from a stated ratio (e.g. a 1.25
    modular scale from a 16px base) and document the derivation. A scale generated from a
@@ -326,26 +281,12 @@ should target the new ramps, not the old ones.
 
 ### P2 — Licence and package metadata
 
-- Add `LICENSE` (MIT, © Adam Atteia 2026); set `"license": "MIT"` in `package.json`.
-- Add SIL OFL licence files under `fonts/` for Roboto, Open Sans and Inter.
-- Resolve `private: true` against the `files` array (see T0 — now folded here).
-- Set the GitHub repo description and homepage (currently "Core design system repo." and null).
-- Decide the `.ds-` prefix's status: public API, or renameable? README step 6 currently offers
-  renaming, which makes it not an API.
-
-**Done when:** `test -f LICENSE` passes and a prospective consumer can determine their rights
-from the repository alone.
+**Done 17 September 2026** except GitHub description/homepage (owner). Remaining: `.ds-`
+prefix status (public API vs renameable).
 
 ### P3 — Purge client-domain sample content
 
-Replace the electoral content in the 5 preview files (F8c) and `README.md:59` with generic
-sample copy — an account, a booking, a form submission. Nothing that identifies a service.
-
-If T2 option (a) is chosen (delete `preview/`), this is largely moot for those files — but
-`README.md:59` and the `CHANGELOG.md` exclusion list still need doing, and the showcase must be
-checked with the same sweep.
-
-**Done when:** `git grep -niE 'enrol|ballot|postal vote|first-pref|2PP' -- . ':!docs/'` → empty.
+**Done 17 September 2026.** Preview and README sample copy is generic. Keep it that way.
 
 ### P4 — Rewrite README and CHANGELOG as original work
 
@@ -388,34 +329,18 @@ No new capabilities. No new architecture.
 
 ### T1 — Purge primitive references from `components.css`
 
-Fixes F2. **Do P1 first** — the semantic roles below must target the regenerated ramps, not the
-inherited primitives. Where the table says `--neutral-*`, that is P1's new ramp.
-
-Add the missing semantic roles to `tokens.css`, then rewrite the 13 sites + 1 hex against them:
-
-| New role | Value | Replaces |
-|---|---|---|
-| `--bg-disabled` | `var(--neutral-100)` | `--nobel-100` at :55, :189 |
-| `--bg-hover-subtle` | `var(--neutral-50)` | `--nobel-50` at :77 |
-| `--fg-disabled` | `var(--neutral-400)` | `--nobel-400` at :55, :68, :81, :176 |
-| `--fg-placeholder` | *(see T3 — must meet 4.5:1)* | `--nobel-400` at :164 |
-| `--border-disabled` | `var(--neutral-200)` | `--nobel-200` at :68 |
-| `--border-hover` | `var(--neutral-700)` | `--nobel-700` at :167 |
-| `--fg-info` | `var(--info-700)` *(add)* | `--smalt-700` at :193 |
-| `--fg-success` | `var(--success-700)` *(add)* | `--cerulean-700` at :194 |
-| `--fg-warning` | `var(--warning-700)` *(add)* | hardcoded hex at :195 |
-
-The old ramp deletions that used to sit here (F6: `--nobel-*` rename, `--mauve-*`/`--smalt-*`/
-`--cerulean-*` removal) are now **P1's** job, because provenance made them mandatory rather than
-optional.
+**Done 17 September 2026.** Semantic roles `--bg-disabled`, `--bg-hover-subtle`, `--fg-disabled`,
+`--fg-placeholder`, `--border-disabled`, `--border-hover`, `--fg-info`, `--fg-success`, and
+`--fg-warning` exist in `tokens.css` and are consumed by `components.css`. Placeholder contrast
+meets 4.5:1 on white.
 
 **Constraint:** `--fg-subtle` and friends already exist and are correct — extend the semantic
 layer, don't build a parallel one.
 
-**Done when:**
+**Holds when:**
 
 ```bash
-grep -cE 'var\(--(nobel|smalt|cerulean|mauve)|#[0-9a-fA-F]{3,6}' components.css   # → 0
+grep -cE '#[0-9a-fA-F]{3,6}' components.css   # → 0
 ```
 
 ### T2 — Resolve `preview/`
@@ -423,7 +348,7 @@ grep -cE 'var\(--(nobel|smalt|cerulean|mauve)|#[0-9a-fA-F]{3,6}' components.css 
 Fixes F1. Two acceptable outcomes; pick one, don't hybridise:
 
 **(a) Delete it.** The showcase already demonstrates every canonical component against the
-real API. 26 hand-maintained mockups that cannot drift *into* correctness are a liability.
+real API. 23 hand-maintained mockups that cannot drift *into* correctness are a liability.
 Remove `preview/` from `package.json:files`.
 
 **(b) Rebuild it as a real static consumer.** Each card loads `../tokens.css` and
@@ -431,8 +356,8 @@ Remove `preview/` from `package.json:files`.
 charter's "straightforward path for static HTML use" — but it is a rebuild, not an edit.
 
 Either way: remove the `cdnjs.cloudflare.com` Font Awesome dependency (Core cannot require a
-CDN), and remove the electoral-service content. If icons are needed, that is an icon-integration
-decision, not a CDN link.
+CDN). Electoral-service sample copy was already replaced with generic content. If icons are
+needed, that is an icon-integration decision, not a CDN link.
 
 **Done when:** no file in the repository specifies a colour, font or spacing value that is not
 resolved from `tokens.css` — or `preview/` no longer exists.
@@ -441,10 +366,10 @@ resolved from `tokens.css` — or `preview/` no longer exists.
 
 Fixes F4. This is the contract charter §2.6 promises; today it is unbacked.
 
-1. **Fix the three failures.** Input border `--border-strong` must reach 3:1 against
-   `--bg-base` (#767676 or darker; #ADADAD is 2.24:1). `--border-default` at 1.19:1 is
-   decorative-only — either darken it or document that it must never be the sole indicator of
-   an interactive boundary. `--fg-placeholder` must reach 4.5:1 (#767676 gives 4.54:1).
+1. **Contrast on the default theme. Partial 17 September 2026.** `--border-strong` is 3.34:1
+   and `--fg-placeholder` is 4.84:1 on white. `--border-default` remains decorative (1.34:1);
+   the token comment says it must not be the sole indicator of an interactive boundary.
+   Showcase Amber still fails 4.5:1 for white-on-brand.
 2. **Add the missing media queries** to `tokens.css`/`components.css`:
    `prefers-reduced-motion` (the input transition at [components.css:161](../../components.css)
    is currently unconditional), and `forced-colors` for focus and border treatment.
@@ -604,8 +529,8 @@ test "$(curl -s https://core-design-system.vercel.app | grep -c 'ds-btn')" -gt 0
 **Increment 1** is complete when all of these pass:
 
 ```bash
-# F2 — no primitive palette or hardcoded colour in component recipes
-test "$(grep -cE 'var\(--(nobel|smalt|cerulean|mauve)|#[0-9a-fA-F]{3,6}' components.css)" = "0"
+# F2 — no hardcoded colour in component recipes
+test "$(grep -cE '#[0-9a-fA-F]{3,6}' components.css)" = "0"
 
 # F3 — no duplicated canonical source
 test ! -f showcase/src/app/core-tokens.css

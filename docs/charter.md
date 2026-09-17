@@ -244,12 +244,12 @@ asserted. Component count is not a maturity measure.
 | Measure | Instrument | Baseline (4 Aug 2026) | Target |
 |---|---|---|---|
 | **Provenance** | Named third-party design-system references in any repository file | 12 across 4 files | 0 |
-| **Public usability** | Licence present, showcase reachable without authentication | none / gated | MIT / reachable |
+| **Public usability** | Licence present, showcase reachable without authentication | MIT file present / showcase still gated | MIT / reachable |
 | Rebrand completeness | Count of primitive-palette references in `components.css` | 13 refs + 1 hardcoded hex | 0 |
 | Theme divergence | Axes a derived theme can change without editing `components.css` (hue, neutral ramp, type, radius, density) | 1 of 5 (hue) | ≥5 |
 | Source-of-truth integrity | Files duplicated between canonical source and presentation layers | 2 | 0 |
 | Contract honesty | Documented claims contradicted by source | ≥1 (README rebrand claim) | 0 |
-| Accessibility baseline | Token pairs below their WCAG threshold in the published contrast table | 3 known | 0 |
+| Accessibility baseline | Token pairs below their WCAG threshold in the published contrast table | 3 known (4 Aug 2026); input border and placeholder fixed 17 Sep 2026 | 0 |
 | Omission cost | Lines a consumer must delete to drop an unused capability | not measured | 0 |
 | Upgrade predictability | Can a Core version bump apply to a derived system without editing component CSS? | no | yes |
 | Internal reliance | Consumer references to undocumented tokens or classes | not measured | 0 |

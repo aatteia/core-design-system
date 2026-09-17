@@ -11,6 +11,14 @@ Core is versioned independently of any fork; forks pin to the Core version they 
 - Removed named-system derivation claims from README, changelog, and token comments.
   Core describes itself as original work. Method and judgement, never derivation from
   a named third-party system.
+- Replaced inherited named palettes with an original `--neutral-*` spine and regenerated
+  info / success / warning / error ramps. Component recipes now use semantic roles
+  (`--bg-disabled`, `--fg-placeholder`, `--fg-info`, and siblings) instead of primitive
+  palette steps. Input border and placeholder contrast meet WCAG 2.2 SC 1.4.11 and 1.4.3
+  on the default theme.
+- Replaced electoral-service sample copy in `preview/` with generic account, booking, and
+  project content.
+- Licensed Core under MIT. Bundled fonts ship with SIL OFL 1.1 (`fonts/OFL.txt`).
 
 ## v1.0.0 — 2026-06-28
 

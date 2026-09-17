@@ -35,13 +35,14 @@ That's the whole job. The neutral indigo-slate placeholder you see out of the bo
 
 ```
 .
+├── LICENSE            — MIT
 ├── README.md          — this file
 ├── SKILL.md           — Claude Skill entry-point (generate on-brand artifacts)
 ├── tokens.css         — design tokens (CSS custom properties): colour, type, spacing, radii, shadows
 ├── components.css     — component recipes (.ds-btn, .ds-card, .ds-input, .ds-badge, …)
 ├── fonts/             — local variable fonts (Roboto / Open Sans / Inter — swap per fork)
 ├── assets/            — brand marks (empty by design — a fork adds its own)
-├── preview/           — 26 static review cards, one per token group / component
+├── preview/           — 23 static review cards, one per token group / component
 └── showcase/          — Next.js + Tailwind v4 + shadcn/@base-ui app (static export, run locally)
 ```
 
@@ -54,15 +55,16 @@ realisation of the same tokens — not a second source of truth.
 
 | Kept (brand-agnostic) | Dropped (was organisation-specific) |
 |---|---|
-| 4 px spacing scale, radii (4/8/12/16/pill), 5-step elevation | The original brand hue (now a neutral `--brand-*` placeholder) |
-| Full type scale (Display → Body XS), weights, tracking | Restricted/parliamentary & ballot palettes |
-| Neutral spine (warm grey + true grey), white | Accent palette reserved for an internal product suite |
+| 4 px spacing scale, radii (4/8/12/16/pill), 5-step elevation | Organisation-specific brand hues |
+| Full type scale (Display → Body XS), weights, tracking | Organisation-specific accent palettes |
+| Neutral spine (cool grey + true grey), white | Accent palette reserved for an internal product suite |
 | Semantic ramps: info / success / warning / error | Organisation logos, photography, and product copy |
 | Magenta accessibility focus ring + `--shadow-focus` | A product-specific website UI kit |
 | Every component recipe (token-driven, zero hardcoded brand) | |
 
-The neutral **Mauve / Smalt / Cerulean** palettes are retained as ready-made secondary and
-semantic sources; keep, recolour, or ignore them per fork.
+The `--neutral-*` spine and the semantic ramps (info / success / warning / error) are
+Core originals. A fork recolours `--brand-*` for identity and may recolour the semantic
+ramps if status colours need to match a brand.
 
 ## Tokens at a glance
 
@@ -103,7 +105,14 @@ npx serve out        # serve the static build
 ```
 
 The showcase is a **static export** (`output: 'export'`), so it needs no server and can be
-presented locally or dropped on any static host.
+presented locally or dropped on any static host. A hosted deployment, if used, must be
+reachable without authentication. Disabling Vercel Deployment Protection is an owner
+action in the Vercel dashboard.
+
+## Licence
+
+Core is released under the MIT License. See `LICENSE`. The bundled Inter, Roboto, and
+Open Sans variable fonts are SIL OFL 1.1. See `fonts/OFL.txt`.
 
 ## Versioning
 
