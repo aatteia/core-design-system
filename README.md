@@ -5,11 +5,10 @@ tokens, component recipes, and documentation patterns with every brand decision
 factored out into a single layer you override. Fork it to stand up a new design
 system in hours instead of weeks.
 
-Core is distilled from **Attica 2.0** (a large, production-grade system) with all
-product- and organisation-specific content removed. Everything that survived is the
-part of a design system that is *the same no matter who you are*: the 4 px spacing
-grid, the type scale, the elevation and radius ramps, the accessible focus model,
-and the component anatomy. The only things a fork supplies are a **brand hue**,
+Core holds the part of a design system that is *the same no matter who you are*:
+the 4 px spacing grid, the type scale, the elevation and radius ramps, the
+accessible focus model, and the component anatomy. Brand, organisation, and
+product decisions stay out of the kernel. A fork supplies a **brand hue**,
 **fonts**, a **logo**, and **content**.
 
 > Core is the foundation; a *brand* (e.g. Atteia) is an instance built on it.

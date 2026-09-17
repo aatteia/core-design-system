@@ -76,11 +76,11 @@ one hardcoded hex:
 | 167 | `var(--nobel-700)` | input hover border |
 | 189, 190 | `var(--nobel-100 / -800)` | neutral badge |
 | 234 | `var(--nobel-400)` | breadcrumb separator |
-| 193 | `var(--smalt-700)` | **info badge text — inherited Attica navy** |
-| 194 | `var(--cerulean-700)` | **success badge text — inherited Attica teal** |
+| 193 | `var(--smalt-700)` | **info badge text — pinned to the smalt navy primitive** |
+| 194 | `var(--cerulean-700)` | **success badge text — pinned to the cerulean teal primitive** |
 | 195 | `#6B4400` | **hardcoded hex, no token at all** |
 
-Rebrand today and the info badge stays Attica navy, the success badge stays Attica teal, the
+Rebrand today and the info badge stays smalt navy, the success badge stays cerulean teal, the
 warning badge stays an untokenised brown, and every grey in the system is immovable. The
 theme switcher in the showcase overrides `--brand-*` only — so it demonstrates precisely the
 one axis that works.
@@ -144,29 +144,20 @@ since at least the 2026-07-29 push, with `license: None`.
 
 Three categories of material are publicly visible that should not be.
 
-**(a) Derivation claims about a client system — 12 references across 4 shipped files:**
+**(a) Derivation claims about a named third-party system.**
 
-| File | Content |
-|---|---|
-| `README.md:8` | "Core is distilled from **Attica 2.0** (a large, production-grade system)" |
-| `CHANGELOG.md:11` | "Attica 2.0, with every organisation- and brand-specific decision factored out" |
-| `CHANGELOG.md:22–23` | a **"Confirmed (parity verification against Attica)"** section stating Core is "a brand-stripped **superset** of Attica's" tokens |
-| `CHANGELOG.md:27–30` | **"Deliberately excluded (AEC / Attica-brand only)"** — itemises AEC logos, Attica wordmark glyphs, electoral photography, the `aec-website` UI kit, the AEC voice/content guide |
-| `tokens.css:3` | "Brand-agnostic foundation distilled from Attica 2.0" |
-| `tokens.css:219` | "Source: Attica Typography — Headings (Desktop), Body & Paragraphs" |
-| `tokens.css:261` | "RADII — Attica leans on 8px (cards) + 200px (pill buttons)" |
-| `showcase/src/app/core-tokens.css` | duplicates the three `tokens.css` comments (F3) |
+On 4 August 2026, twelve comments and changelog lines across README, CHANGELOG, `tokens.css`,
+and the showcase copy of `tokens.css` described Core as distilled from, parity-checked against,
+or a superset of a named third-party design system. Token comments attributed the type scale
+and the radius ramp to that system, not only the colour palettes.
 
-The CHANGELOG is the most exposed document in the repository — a public derivation audit trail,
-more explicit than the README it sits beside.
-
-Note `tokens.css:219` and `:261`: **the type scale and the radius ramp are also attributed to
-Attica**, not only the colour palettes. The scope of "recast as original" is wider than the four
-colour ramps of F6.
+Those named-system strings were removed on 17 September 2026. Remaining provenance work is
+values and sample content, not the name. Do not reintroduce a named third-party system as
+Core's source (charter §2.10).
 
 **(b) Client-derived values.** The `--mauve-*`, `--smalt-*`, `--cerulean-*`, `--nobel-*` ramps
-(F6) are Attica's colour names carrying Attica's hex values. Their presence contradicts the
-README's own next line — "with all product- and organisation-specific content removed."
+(F6) still use inherited colour names and hex values. Their presence contradicts the
+README's claim that organisation-specific content was removed.
 
 **(c) Client-domain sample content — 5 preview files:**
 
@@ -179,16 +170,16 @@ README's own next line — "with all product- and organisation-specific content 
 | `components-table.html:9` | **Division · State · Party · First-pref % · 2PP %** — an election-results schema |
 | `README.md:59` | "Restricted/parliamentary & ballot palettes" |
 
-**Why this is the gate.** Per the record (D26, refined 2026-07-12), Attica was authored and
-maintained by two dedicated designers; Adam consumed and extended it, with a subset of his
-DEM-specific components adopted upstream through the design lead's governance. That is a real
-and creditable contribution — but it is not ownership, and it is not a basis for publishing a
-system described as distilled from Attica. A self-directed public artefact must never read as
-private reuse of client work (charter §2.10). The same guardrail already governs the retired
-MAMS prototype and the two outstanding Attica mentions in `poc-mhr-connect-prototype`.
+**Why this is the gate.** Per the record (D26, refined 2026-07-12), the client system Adam
+worked with was authored and maintained by two dedicated designers. Adam consumed and
+extended it. A subset of his DEM-specific components was adopted upstream through the design
+lead's governance. That is a real and creditable contribution. It is not ownership, and it is
+not a basis for publishing Core as distilled from that system. A self-directed public artefact
+must never read as private reuse of client work (charter §2.10). The same guardrail already
+governs the retired MAMS prototype and named-system mentions in `poc-mhr-connect-prototype`.
 
 ```bash
-git grep -ci attica -- . ':!docs/'        # → 0 when resolved
+# Named-system attribution strings must not reappear in this repository.
 git grep -niE 'enrol|ballot|postal vote|first-pref|2PP' -- . ':!docs/'
 ```
 
@@ -232,7 +223,7 @@ permits redistribution, but the repository ships no licence files for them.
 ### F6 — Inherited palettes are brand residue
 
 `--mauve-*`, `--smalt-*`, `--cerulean-*` (30 tokens, [tokens.css:83–119](../../tokens.css)) are
-named for an Attica palette, are not wired to `--brand-*`, and are referenced by exactly two
+named for a former palette, are not wired to `--brand-*`, and are referenced by exactly two
 declarations in `components.css`. `--info-*` and `--success-*` duplicate some of their values
 under neutral names — `--info-600` and `--smalt-600` are both `#265C97`; `--success-600` and
 `--cerulean-600` are both `#006D3D`.
@@ -277,9 +268,9 @@ Four further re-orderings follow from the findings:
 
 **A note on why F8 was missed.** The archived plan's Stage 0 asked good questions about source
 relationships and licence metadata, but it took the README's account of Core's origins as
-background rather than as a claim to verify. The README says the Attica-derived content was
-removed; the token files say otherwise in their own comments. This is the house rule in
-practice — a producer doc is raw input, never evidence. Check the source.
+background rather than as a claim to verify. The README said organisation-specific content
+was removed; the token files still carried named-system attribution in their comments. This
+is the house rule in practice. A producer doc is raw input, never evidence. Check the source.
 
 ---
 
@@ -306,7 +297,7 @@ about exposure duration, not about whether to remediate.
 The decision is **recast, not attribute**: Core becomes what it already claims to be — a
 brand-neutral foundation authored by Adam — with nothing traceable to a client system.
 
-Three foundations are currently attributed to Attica and must be regenerated:
+Three foundations were attributed to a named third-party system and must be regenerated:
 
 1. **Colour.** Delete `--mauve-*`, `--smalt-*`, `--cerulean-*`, `--nobel-*` (40 tokens,
    [tokens.css:83–130](../../tokens.css)). Generate replacements from scratch:
@@ -319,18 +310,19 @@ Three foundations are currently attributed to Attica and must be regenerated:
      different label. Add the missing `-700` steps T1 needs.
    - keep `--brand-*` (the indigo-slate placeholder) only if it is confirmed as Adam's own choice
      rather than inherited; regenerate if uncertain
-2. **Type scale.** `tokens.css:219` attributes it to "Attica Typography — Headings (Desktop),
-   Body & Paragraphs". Re-derive the scale from a stated ratio (e.g. a 1.25 modular scale from a
-   16px base) and document the derivation. A scale generated from a published rule is
-   self-evidently original *and* better documented than one lifted from a source.
-3. **Radii.** `tokens.css:261` attributes the 8px/200px choices to Attica. Choose and state
-   Core's own radius ramp.
+2. **Type scale.** Token comments previously attributed the desktop heading and body scale
+   to a named third-party type spec. Re-derive the scale from a stated ratio (e.g. a 1.25
+   modular scale from a 16px base) and document the derivation. A scale generated from a
+   published rule is self-evidently original *and* better documented than one lifted from a
+   source.
+3. **Radii.** Token comments previously attributed the 8px/200px choices to a named third-party
+   system. Choose and state Core's own radius ramp.
 
 **This subsumes F6 and the palette half of T1.** Do P1 before T1 — T1's semantic-role mapping
 should target the new ramps, not the old ones.
 
-**Done when:** `git grep -ci attica -- . ':!docs/'` → 0, and every ramp in `tokens.css` has a
-documented derivation rule rather than a source attribution.
+**Done when:** no file names a third-party system as Core's source, and every ramp in
+`tokens.css` has a documented derivation rule rather than a source attribution.
 
 ### P2 — Licence and package metadata
 
@@ -357,13 +349,13 @@ checked with the same sweep.
 
 ### P4 — Rewrite README and CHANGELOG as original work
 
-- **`README.md:8–12`** — delete the Attica derivation paragraph. Replace with what Core is and
+- **`README.md` origin paragraph** — done 17 September 2026. Keep the text as what Core is and
   the judgement behind it: which decisions are genuinely universal across design systems and
   which are always organisation-specific. That is the more interesting claim, it is Adam's own,
-  and it needs no third party to stand up.
-- **`CHANGELOG.md:11, 22–30`** — delete the "parity verification against Attica" and
-  "Deliberately excluded (AEC / Attica-brand only)" sections outright. A changelog records
-  changes to Core, not its relationship to another system.
+  and it needs no third party to stand up. Do not restore a named-system derivation sentence.
+- **`CHANGELOG.md`** — named-system parity and client-brand exclusion sections removed
+  17 September 2026. A changelog records changes to Core, not its relationship to another
+  system. Do not restore them.
 - Add a short **provenance note**: Core is original work, released under MIT, informed by the
   author's professional practice in government and enterprise design systems. Method and
   judgement, never derivation from a named system (charter §2.10).
@@ -397,7 +389,7 @@ No new capabilities. No new architecture.
 ### T1 — Purge primitive references from `components.css`
 
 Fixes F2. **Do P1 first** — the semantic roles below must target the regenerated ramps, not the
-Attica-derived ones. Where the table says `--neutral-*`, that is P1's new ramp.
+inherited primitives. Where the table says `--neutral-*`, that is P1's new ramp.
 
 Add the missing semantic roles to `tokens.css`, then rewrite the 13 sites + 1 hex against them:
 
@@ -515,7 +507,7 @@ Do this **last**, describing what is now true.
   actually be answered from a 583-line source.
 - **CHANGELOG** — record the breaking token changes from P1/T1 (regenerated ramps, removed
   palettes, new semantic roles). This is Core's first real compatibility event and sets the
-  precedent. Note that P4 has already stripped the Attica sections from this file.
+  precedent. Named-system sections were already stripped from this file (P4, 17 September 2026).
 
 **Done when:** every factual claim in README and SKILL.md can be checked by a command, and the
 commands pass.
@@ -568,16 +560,16 @@ Four changes, all in `AAA – Career Profile.json`. Record first, outputs second
    C12/C19/C26's disclosure pattern may not apply — but P3 removes the electoral sample content
    precisely so that no reader could infer one. Confirm the position rather than assuming it.
 
-**Constraint:** do not claim Attica derivation in the record either. The record's existing
-position (D26 — consumed and extended, subset adopted upstream, never operated) is accurate and
-creditable, and it belongs to `DEM-2025`, not to Core. Keeping the two separate is the whole
-point of P1.
+**Constraint:** do not claim derivation from a named third-party design system in the record
+either. The record's existing position (D26 — consumed and extended, subset adopted upstream,
+never operated) is accurate and creditable, and it belongs to `DEM-2025`, not to Core. Keeping
+the two separate is the whole point of P1.
 
 ### R3 — Close the sibling provenance items
 
 The same sweep that produced F8 has two known outstanding siblings, both already logged:
 
-- **two Attica mentions in `poc-mhr-connect-prototype`** — public, unresolved
+- **named-system mentions in `poc-mhr-connect-prototype`** — public, unresolved
 - **`aatteia/mams`** — still public and unarchived; the decision to make it private and archive
   it was taken 2026-07-25 and remains the owner's action
 
@@ -585,7 +577,7 @@ Run the F8 sweep across every public `aatteia` repo, not just this one. A proven
 enforced on one artefact is not enforced.
 
 ```bash
-git grep -ciE 'attica|aec|electoral|enrol' -- . ':!docs/'   # in each public repo
+git grep -ciE 'electoral|enrol' -- . ':!docs/'   # in each public repo; also sweep for named-system attribution
 ```
 
 ---
@@ -595,8 +587,9 @@ git grep -ciE 'attica|aec|electoral|enrol' -- . ':!docs/'   # in each public rep
 **Increment 0** is complete when all of these pass:
 
 ```bash
-# F8a — no named third-party system in shipped files
-test "$(git grep -ci attica -- . ':!docs/' | wc -l)" = "0"
+# F8a — no named third-party design system claimed as Core's source
+# Confirm with a repo-wide case-insensitive search for retired system names.
+# The tree must return no matches. Do not commit the search term back into docs.
 
 # F8c — no client-domain sample content
 test -z "$(git grep -niE 'enrol|ballot|postal vote|first-pref|2PP' -- . ':!docs/')"

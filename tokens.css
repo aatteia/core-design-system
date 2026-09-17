@@ -1,13 +1,13 @@
 /* =========================================================================
    Core Design System — Colour + Type tokens
-   Brand-agnostic foundation distilled from Attica 2.0.
-   To rebrand a fork: replace the --brand-* ramp and the --font-* families.
+   Brand-agnostic foundation. To rebrand a fork: replace the --brand-* ramp
+   and the --font-* families.
    ========================================================================= */
 
 /* ---- Font face: Inter (UI), Roboto (headings), Open Sans (body) ----------
    All three families ship locally as variable fonts in /fonts.
-   Font Awesome 7 Pro is the icon font in the source system; we substitute
-   Font Awesome 6 Free on a CDN (see ICONOGRAPHY in README.md). */
+   Font Awesome 6 Free is the default icon font on a CDN (preview cards and the
+   showcase link it). Swap it per fork. */
 
 @font-face {
   font-family: "Roboto";
@@ -216,7 +216,7 @@
 
   /* ============================================================
      TYPOGRAPHY — scale (desktop)
-     Source: Attica Typography — Headings (Desktop), Body & Paragraphs
+     Display through Body XS on a 4 px baseline.
      ============================================================ */
   --text-display-m:  52px;   --lh-display-m:  56px;
   --text-display-s:  44px;   --lh-display-s:  48px;
@@ -258,7 +258,7 @@
   --space-xxx-huge:192px;
 
   /* ============================================================
-     RADII — Attica leans on 8px (cards) + 200px (pill buttons)
+     RADII — 8px cards, 200px pill buttons
      ============================================================ */
   --radius-xs:  4px;
   --radius-sm:  8px;
