@@ -244,7 +244,7 @@ asserted. Component count is not a maturity measure.
 | Measure | Instrument | Baseline (4 Aug 2026) | Target |
 |---|---|---|---|
 | **Provenance** | Named third-party design-system references in any repository file | 12 across 4 files | 0 |
-| **Public usability** | Licence present, showcase reachable without authentication | MIT file present / showcase still gated | MIT / reachable |
+| **Public usability** | Licence present, showcase reachable without authentication | MIT / https://core-design-system.pages.dev (18 Sep 2026) | MIT / reachable |
 | Rebrand completeness | Count of primitive-palette references in `components.css` | 13 refs + 1 hardcoded hex | 0 |
 | Theme divergence | Axes a derived theme can change without editing `components.css` (hue, neutral ramp, type, radius, density) | 1 of 5 (hue) | ≥5 |
 | Source-of-truth integrity | Files duplicated between canonical source and presentation layers | 2 | 0 |

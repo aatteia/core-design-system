@@ -1,5 +1,7 @@
 # Core Design System 1.0
 
+**Live showcase:** [https://core-design-system.pages.dev](https://core-design-system.pages.dev)
+
 **Core** is a brand-agnostic design-system *foundation* — a mature set of design
 tokens, component recipes, and documentation patterns with every brand decision
 factored out into a single layer you override. Fork it to stand up a new design
@@ -43,7 +45,7 @@ That's the whole job. The neutral indigo-slate placeholder you see out of the bo
 ├── fonts/             — local variable fonts (Roboto / Open Sans / Inter — swap per fork)
 ├── assets/            — brand marks (empty by design — a fork adds its own)
 ├── preview/           — 23 static review cards, one per token group / component
-└── showcase/          — Next.js + Tailwind v4 + shadcn/@base-ui app (static export, run locally)
+└── showcase/          — Next.js static export; live at core-design-system.pages.dev
 ```
 
 `tokens.css` + `components.css` are the **canonical, framework-agnostic source**. Link them
@@ -96,6 +98,10 @@ radius, motion, and density.
 
 ## Viewing the showcase
 
+Public URL: [https://core-design-system.pages.dev](https://core-design-system.pages.dev)
+
+To run it locally:
+
 ```bash
 cd showcase
 npm install
@@ -104,10 +110,9 @@ npm run build        # static export to showcase/out/
 npx serve out        # serve the static build
 ```
 
-The showcase is a **static export** (`output: 'export'`), so it needs no server and can be
-presented locally or dropped on any static host. A hosted deployment, if used, must be
-reachable without authentication. Disabling Vercel Deployment Protection is an owner
-action in the Vercel dashboard.
+The showcase is a **static export** (`output: 'export'`). Cloudflare Pages builds `showcase/`
+from `main` and publishes `out/`. Preview deployments stay public. Do not put Access in front
+of production.
 
 ## Licence
 

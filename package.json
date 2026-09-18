@@ -1,7 +1,8 @@
 {
   "name": "core-design-system",
   "version": "1.0.0",
-  "description": "Core — a brand-agnostic design-system foundation (tokens, component recipes, fonts). Fork it and rebrand from a single colour ramp.",
+  "description": "Brand-agnostic design-system foundation. Tokens, CSS recipes, live showcase.",
+  "homepage": "https://core-design-system.pages.dev",
   "license": "MIT",
   "private": true,
   "files": [

@@ -60,4 +60,4 @@ Then act as a senior designer producing a faithful, token-driven result.
 - `fonts/` — local variable fonts (swap per fork)
 - `assets/` — brand marks (empty by design)
 - `preview/` — static review cards (one per token group / component)
-- `showcase/` — interactive token explorer + component gallery (Next.js, static export)
+- `showcase/` — interactive token explorer + component gallery (Next.js, static export). Live: https://core-design-system.pages.dev

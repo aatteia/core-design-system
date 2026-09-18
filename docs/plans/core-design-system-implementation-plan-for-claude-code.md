@@ -160,18 +160,14 @@ git grep -niE 'enrol|ballot|postal vote|first-pref|2PP' -- . ':!docs/'
 
 ### F9 — The showcase is deployed but authentication-gated
 
-`core-design-system.vercel.app` returns 200 — but serves Vercel's Deployment Protection page
-("CORE Design System – Authentifizierung erforderlich"), not the showcase.
+**Resolved 18 September 2026.** The showcase is public on Cloudflare Pages:
+`https://core-design-system.pages.dev`. Production is `main`. Preview Access is off.
 
-So the artefact that makes Core legible to a human — the themeable, interactive gallery — is the
-one part nobody can reach. A reader today gets a CSS file and a README, which is the least
-persuasive possible form of a design system.
-
-Disabling Deployment Protection is a Vercel dashboard setting. It is the single highest-value
-action for the portfolio goal and costs nothing.
+The old `core-design-system.vercel.app` host was a gated project on another Vercel account.
+This Hobby Vercel team has no Core project. Do not send readers there.
 
 ```bash
-curl -s https://core-design-system.vercel.app | grep -c 'ds-btn'    # → >0 when reachable
+curl -s https://core-design-system.pages.dev | grep -c 'ds-btn'    # → >0 when reachable
 ```
 
 ### F5 — The licence blocks the product thesis `[DECIDED: MIT]`
@@ -306,14 +302,11 @@ origins is true as written.
 
 ### P5 — Make it reachable
 
-- **Disable Vercel Deployment Protection** on the `core-design-system` project so the showcase
-  serves publicly (F9). *Owner action — Vercel dashboard.*
-- Restore GitHub visibility to public if P0 was taken.
-- Set the repo `homepage` to the showcase URL so the demo is one click from the repo.
-- Add the showcase link to the top of the README — a design system whose demo is buried is
-  read as a CSS file.
+**Done 18 September 2026.** Showcase is public at `https://core-design-system.pages.dev`
+(Cloudflare Pages, Git-connected, root `showcase`, output `out`). GitHub About homepage is
+set. README leads with the live URL. Keep Preview Access public. Do not add noindex headers.
 
-**Done when:** `curl -s https://core-design-system.vercel.app | grep -c 'ds-btn'` returns > 0.
+**Holds when:** `curl -s https://core-design-system.pages.dev | grep -c 'ds-btn'` returns > 0.
 
 ---
 
@@ -523,7 +516,7 @@ test -z "$(git grep -niE 'enrol|ballot|postal vote|first-pref|2PP' -- . ':!docs/
 test -f LICENSE && grep -q '"license": "MIT"' package.json
 
 # F9 — showcase reachable without authentication
-test "$(curl -s https://core-design-system.vercel.app | grep -c 'ds-btn')" -gt 0
+test "$(curl -s https://core-design-system.pages.dev | grep -c 'ds-btn')" -gt 0
 ```
 
 **Increment 1** is complete when all of these pass:

@@ -19,6 +19,8 @@ Core is versioned independently of any fork; forks pin to the Core version they 
 - Replaced electoral-service sample copy in `preview/` with generic account, booking, and
   project content.
 - Licensed Core under MIT. Bundled fonts ship with SIL OFL 1.1 (`fonts/OFL.txt`).
+- Hosted the showcase on Cloudflare Pages at `https://core-design-system.pages.dev`.
+  Public, unauthenticated. README and `package.json` homepage point at that URL.
 
 ## v1.0.0 — 2026-06-28
 
