@@ -7,6 +7,11 @@ Core is versioned independently of any fork; forks pin to the Core version they 
 
 ## Unreleased
 
+## v1.1.0 — 2026-09-18
+
+Public portfolio pin after Increments 0–2. Kernel recast, MIT, live showcase, Forge
+falsification theme, and a README a recruiter can read in two minutes.
+
 ### Changed
 - Removed named-system derivation claims from README, changelog, and token comments.
   Core describes itself as original work. Method and judgement, never derivation from
@@ -30,6 +35,11 @@ Core is versioned independently of any fork; forks pin to the Core version they 
 - Showcase copies `tokens.css` and `components.css` at build time. No CDN.
 - Showcase **Forge** theme changes hue, neutrals, type, radius, and density by tokens only.
   Amber `--brand-600` now meets 4.5:1 on white.
+- README fork step for colour: hue-only work is `--brand-*`. A deeper fork may also recast
+  neutrals, type, radius, and density in tokens. Do not edit `components.css` for those.
+
+### Added
+- README "What this is and why", with Indigo and Forge screenshots of the same page.
 
 ## v1.0.0 — 2026-06-28
 

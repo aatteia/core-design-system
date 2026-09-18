@@ -21,7 +21,7 @@ unless it is replacing a recipe.
 
 ## How to derive a theme
 
-1. Pin the Core version you branched from (`package.json` `version`, currently `1.0.0`).
+1. Pin the Core version you branched from (`package.json` `version`, currently `1.1.0`).
 2. Override primitives on a wrapper such as `html[data-theme="name"]`.
 3. Keep role tokens pointing at primitives unless a role must diverge.
 4. Check `docs/accessibility.md` against the new primitives. Re-run `node scripts/check-contrast.mjs`.

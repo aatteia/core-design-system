@@ -1,4 +1,4 @@
-# Core Design System 1.0
+# Core Design System 1.1
 
 **Live showcase:** [https://core-design-system.pages.dev](https://core-design-system.pages.dev)
 
@@ -40,8 +40,9 @@ Core is a self-directed foundation with a live showcase. It is not a client prod
 1. **Copy** this repository to a new folder / repo (e.g. `acme-design-system`).
 2. **Rebrand the colour** — open `tokens.css` and replace the ten `--brand-*` values
    (lines under *COLOUR — Primary "Brand"*) with your brand ramp (25 → 800). That single
-   ramp drives `--primary`, links, focus-adjacent accents and the inverse surface; nothing
-   else needs touching for colour.
+   ramp drives `--primary`, links, focus-adjacent accents and the inverse surface. A
+   hue-only fork stops there. A deeper fork can also recast `--neutral-*`, type, radius,
+   and density in tokens (Forge does this). Do not edit `components.css` for colour.
 3. **Swap the fonts** — replace the files in `fonts/` and update the three `--font-*`
    family tokens in `tokens.css` (and the `@font-face` block at the top).
 4. **Add brand assets** — drop a logo/wordmark into `assets/` (Core ships none on purpose).
@@ -144,5 +145,5 @@ Open Sans variable fonts are SIL OFL 1.1. See `fonts/OFL.txt`.
 
 ## Versioning
 
-Core is versioned independently of any fork. `1.0` is the first public release. The version
-advances as the foundation matures. Forks pin to the Core version they branched from.
+Core is versioned independently of any fork. `1.1.0` is the current public release
+(`CHANGELOG.md`). Forks pin to the Core version they branched from.

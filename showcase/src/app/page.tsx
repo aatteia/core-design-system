@@ -94,7 +94,7 @@ export default function Page(): React.JSX.Element {
           <span className="sc-brand">
             <IconMark /> Core
           </span>
-          <span className="sc-version">v1.0</span>
+          <span className="sc-version">v1.1</span>
           <div style={{ marginLeft: "auto" }}>
             <ThemeSwitcher />
           </div>
@@ -274,7 +274,7 @@ export default function Page(): React.JSX.Element {
 
           <footer style={{ paddingTop: 40, color: "var(--fg-muted)" }}>
             <p className="body-s">
-              Core Design System 1.0 — a brand-agnostic foundation. Fork it, replace the
+              Core Design System 1.1 — a brand-agnostic foundation. Fork it, replace the
               <code style={{ fontFamily: "var(--font-mono)" }}> --brand-* </code> ramp and fonts, and ship.
             </p>
           </footer>
