@@ -1,13 +1,13 @@
 /* =========================================================================
    Core Design System — Colour + Type tokens
-   Brand-agnostic foundation distilled from Attica 2.0.
-   To rebrand a fork: replace the --brand-* ramp and the --font-* families.
+   Brand-agnostic foundation. To rebrand a fork: replace the --brand-* ramp
+   and the --font-* families.
    ========================================================================= */
 
 /* ---- Font face: Inter (UI), Roboto (headings), Open Sans (body) ----------
    All three families ship locally as variable fonts in /fonts.
-   Font Awesome 7 Pro is the icon font in the source system; we substitute
-   Font Awesome 6 Free on a CDN (see ICONOGRAPHY in README.md). */
+   Font Awesome 6 Free is the default icon font on a CDN (preview cards and the
+   showcase link it). Swap it per fork. */
 
 @font-face {
   font-family: "Roboto";
@@ -79,55 +79,25 @@
   --brand-50:  #F4F5F9;
   --brand-25:  #FAFAFC;
 
-  /* Mauve — secondary purple */
-  --mauve-800: #421F51;
-  --mauve-700: #542768;
-  --mauve-600: #764F87;
-  --mauve-500: #846293;
-  --mauve-400: #997EA5;
-  --mauve-300: #BCACC3;
-  --mauve-200: #EDE6F0;
-  --mauve-100: #F4EFF6;
-  --mauve-50:  #F9F5F9;
-  --mauve-25:  #FBF9FC;
-
-  /* Smalt — primary navy */
-  --smalt-800: #002D58;
-  --smalt-700: #00386B;
-  --smalt-600: #265C97;
-  --smalt-500: #2370BE;
-  --smalt-400: #5289C6;
-  --smalt-300: #84B1E5;
-  --smalt-200: #E2ECF9;
-  --smalt-100: #EBF3FB;
-  --smalt-50:  #F4F8FC;
-  --smalt-25:  #F8FAFD;
-
-  /* Cerulean — primary teal */
-  --cerulean-800: #002310;
-  --cerulean-700: #1A412A;
-  --cerulean-600: #006D3D;
-  --cerulean-500: #278251;
-  --cerulean-400: #57966F;
-  --cerulean-300: #86BC99;
-  --cerulean-200: #E1EFE5;
-  --cerulean-100: #EBF5EE;
-  --cerulean-50:  #F3FAF7;
-  --cerulean-25:  #F8FBF9;
+  /* ============================================================
+     COLOUR — Neutral spine (cool grey, authored for Core)
+     --neutral-400 meets 4.5:1 on white (placeholder / subtle text).
+     --neutral-300 meets 3:1 on white (non-text UI / input border).
+     ============================================================ */
+  --neutral-800: #262831;
+  --neutral-700: #353741;
+  --neutral-600: #484A56;
+  --neutral-500: #595C69;
+  --neutral-400: #6E7181;
+  --neutral-300: #8A8C99;
+  --neutral-200: #DDDEE3;
+  --neutral-100: #EBECEF;
+  --neutral-50:  #F5F5F7;
+  --neutral-25:  #FAFAFB;
 
   /* ============================================================
-     COLOUR — Neutrals (Nobel, Black tints, White)
+     COLOUR — Black tints and white
      ============================================================ */
-  --nobel-800: #2D2D2D;
-  --nobel-700: #383838;
-  --nobel-600: #4B4B4B;
-  --nobel-500: #5C5C5C;
-  --nobel-400: #868686;
-  --nobel-300: #ADADAD;
-  --nobel-200: #EBEBEB;
-  --nobel-100: #F2F2F2;
-  --nobel-50:  #F8F8F8;
-  --nobel-25:  #FAFAFA;
 
   --black-900: #000000;
   --black-800: #1A1A1A;
@@ -145,25 +115,29 @@
   /* ============================================================
      COLOUR — Semantic
      ============================================================ */
-  --info-600:    #265C97;
-  --info-500:    #2370BE;
-  --info-100:    #EBF3FB;
-  --info-50:     #F4F8FC;
+  --info-700:    #14447B;
+  --info-600:    #1D589A;
+  --info-500:    #2767B0;
+  --info-100:    #E7EFF8;
+  --info-50:     #F4F7FB;
 
-  --success-600: #006D3D;
-  --success-500: #278251;
-  --success-100: #EBF5EE;
-  --success-50:  #F3FAF7;
+  --success-700: #1C5F3F;
+  --success-600: #25744F;
+  --success-500: #268257;
+  --success-100: #EAF6F0;
+  --success-50:  #F5FAF8;
 
-  --warning-600: #C95000;
-  --warning-500: #E06C34;
-  --warning-400: #F29F52;
-  --warning-100: #FBF1DB;
-  --warning-50:  #FFFBF3;
+  --warning-700: #9B5608;
+  --warning-600: #A55C09;
+  --warning-500: #D5770B;
+  --warning-400: #F3A449;
+  --warning-100: #FBF2DF;
+  --warning-50:  #FDFAF1;
 
-  --error-600:   #AC0700;
-  --error-500:   #B01F13;
-  --error-100:   #FBEFEC;
+  --error-700:   #911A12;
+  --error-600:   #AB2117;
+  --error-500:   #C12A1F;
+  --error-100:   #FBEBE9;
   --error-50:    #FCF6F5;
 
   /* Focus ring (used on every interactive surface) */
@@ -173,24 +147,33 @@
      SEMANTIC ROLES — what designs actually reach for
      ============================================================ */
   --bg-base:        var(--white);
-  --bg-subtle:      var(--nobel-25);
-  --bg-muted:       var(--nobel-50);
-  --bg-canvas:      #FAFAFA;
+  --bg-subtle:      var(--neutral-25);
+  --bg-muted:       var(--neutral-50);
+  --bg-canvas:      var(--neutral-25);
   --bg-inverse:     var(--brand-600);
+  --bg-disabled:    var(--neutral-100);
+  --bg-hover-subtle: var(--neutral-50);
 
-  --fg-default:     var(--nobel-800);     /* body text */
+  --fg-default:     var(--neutral-800);   /* body text */
   --fg-strong:      var(--black-800);     /* headings */
   --fg-muted:       var(--black-500);     /* supporting copy */
-  --fg-subtle:      var(--nobel-400);
+  --fg-subtle:      var(--neutral-400);
+  --fg-disabled:    var(--neutral-400);
+  --fg-placeholder: var(--neutral-400);   /* 4.5:1 on white */
   --fg-on-primary:  var(--white);
   --fg-on-inverse:  var(--white);
   --fg-link:        var(--brand-600);
   --fg-link-hover:  var(--brand-700);
+  --fg-info:        var(--info-700);
+  --fg-success:     var(--success-700);
+  --fg-warning:     var(--warning-700);
 
-  --border-default: var(--nobel-200);
-  --border-strong:  var(--nobel-300);
-  --border-subtle:  var(--nobel-100);
+  --border-default: var(--neutral-200);   /* decorative only; do not use as a control edge */
+  --border-strong:  var(--neutral-300);   /* 3:1 on white — input and control borders */
+  --border-subtle:  var(--neutral-100);
   --border-focus:   var(--focus-500);
+  --border-disabled: var(--neutral-200);
+  --border-hover:   var(--neutral-700);
 
   --primary:        var(--brand-600);
   --primary-hover:  var(--brand-700);
@@ -216,7 +199,7 @@
 
   /* ============================================================
      TYPOGRAPHY — scale (desktop)
-     Source: Attica Typography — Headings (Desktop), Body & Paragraphs
+     Display through Body XS on a 4 px baseline.
      ============================================================ */
   --text-display-m:  52px;   --lh-display-m:  56px;
   --text-display-s:  44px;   --lh-display-s:  48px;
@@ -258,7 +241,7 @@
   --space-xxx-huge:192px;
 
   /* ============================================================
-     RADII — Attica leans on 8px (cards) + 200px (pill buttons)
+     RADII — 8px cards, 200px pill buttons
      ============================================================ */
   --radius-xs:  4px;
   --radius-sm:  8px;

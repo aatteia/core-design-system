@@ -52,7 +52,7 @@
 .ds-btn--primary:active  { background: var(--primary-active); border-color: var(--primary-active); }
 .ds-btn--primary:disabled,
 .ds-btn--primary[aria-disabled="true"] {
-  background: var(--nobel-100); border-color: var(--nobel-100); color: var(--nobel-400); cursor: not-allowed;
+  background: var(--bg-disabled); border-color: var(--bg-disabled); color: var(--fg-disabled); cursor: not-allowed;
 }
 
 /* SECONDARY — outlined (primary) */
@@ -65,7 +65,7 @@
 .ds-btn--secondary:active { background: var(--primary-tint); }
 .ds-btn--secondary:disabled,
 .ds-btn--secondary[aria-disabled="true"] {
-  border-color: var(--nobel-200); color: var(--nobel-400); cursor: not-allowed;
+  border-color: var(--border-disabled); color: var(--fg-disabled); cursor: not-allowed;
 }
 
 /* TERTIARY — text only */
@@ -74,11 +74,11 @@
   color: var(--primary);
   border-color: transparent;
 }
-.ds-btn--tertiary:hover  { background: var(--nobel-50);  }
-.ds-btn--tertiary:active { background: var(--nobel-100); color: var(--primary-active); }
+.ds-btn--tertiary:hover  { background: var(--bg-hover-subtle);  }
+.ds-btn--tertiary:active { background: var(--bg-disabled); color: var(--primary-active); }
 .ds-btn--tertiary:disabled,
 .ds-btn--tertiary[aria-disabled="true"] {
-  color: var(--nobel-400); cursor: not-allowed;
+  color: var(--fg-disabled); cursor: not-allowed;
 }
 
 /* DESTRUCTIVE modifier (works with primary / secondary / tertiary) */
@@ -161,10 +161,11 @@
   width: 100%;
   transition: border-color 120ms linear, box-shadow 120ms linear;
 }
-.ds-input::placeholder { color: var(--nobel-400); }
+.ds-input::placeholder,
+.ds-textarea::placeholder { color: var(--fg-placeholder); }
 .ds-input:hover,
 .ds-textarea:hover,
-.ds-select:hover { border-color: var(--nobel-700); }
+.ds-select:hover { border-color: var(--border-hover); }
 .ds-input:focus,
 .ds-textarea:focus,
 .ds-select:focus {
@@ -172,8 +173,12 @@
   outline: 2px solid var(--focus-500);
   outline-offset: 1px;
 }
-.ds-input[aria-invalid="true"] { border-color: var(--error-600); }
-.ds-input:disabled { background: var(--nobel-50); color: var(--nobel-400); cursor: not-allowed; }
+.ds-input[aria-invalid="true"],
+.ds-textarea[aria-invalid="true"],
+.ds-select[aria-invalid="true"] { border-color: var(--error-600); }
+.ds-input:disabled,
+.ds-textarea:disabled,
+.ds-select:disabled { background: var(--bg-disabled); color: var(--fg-disabled); cursor: not-allowed; }
 
 /* --------------------------------------------------------------------- BADGES */
 .ds-badge {
@@ -186,13 +191,13 @@
   font-size: 12px;
   font-weight: var(--fw-medium);
   line-height: 16px;
-  background: var(--nobel-100);
-  color: var(--nobel-800);
+  background: var(--bg-disabled);
+  color: var(--fg-default);
 }
 .ds-badge--primary { background: var(--primary-tint); color: var(--primary-strong); }
-.ds-badge--info    { background: var(--info-100);     color: var(--smalt-700); }
-.ds-badge--success { background: var(--success-100);  color: var(--cerulean-700); }
-.ds-badge--warning { background: var(--warning-100);  color: #6B4400; }
+.ds-badge--info    { background: var(--info-100);     color: var(--fg-info); }
+.ds-badge--success { background: var(--success-100);  color: var(--fg-success); }
+.ds-badge--warning { background: var(--warning-100);  color: var(--fg-warning); }
 .ds-badge--error   { background: var(--error-100);    color: var(--error-600); }
 
 /* --------------------------------------------------------------------- CHIPS */
@@ -231,5 +236,5 @@
   color: var(--fg-muted);
 }
 .ds-breadcrumb a       { color: var(--fg-link); }
-.ds-breadcrumb__sep    { color: var(--nobel-400); }
+.ds-breadcrumb__sep    { color: var(--fg-subtle); }
 .ds-breadcrumb__current{ color: var(--fg-strong); font-weight: var(--fw-semibold); }

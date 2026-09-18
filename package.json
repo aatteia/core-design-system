@@ -2,7 +2,7 @@
   "name": "core-design-system",
   "version": "1.0.0",
   "description": "Core — a brand-agnostic design-system foundation (tokens, component recipes, fonts). Fork it and rebrand from a single colour ramp.",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true,
   "files": [
     "tokens.css",
@@ -10,6 +10,7 @@
     "fonts/",
     "preview/",
     "README.md",
-    "SKILL.md"
+    "SKILL.md",
+    "LICENSE"
   ]
 }

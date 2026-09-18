@@ -25,7 +25,7 @@ export const NAV_GROUPS: NavGroup[] = [
   {
     label: "Tokens",
     items: [
-      { id: "colour", label: "Colour", keywords: "color brand palette ramp neutral semantic nobel" },
+      { id: "colour", label: "Colour", keywords: "color brand palette ramp neutral semantic" },
       { id: "typography", label: "Typography", keywords: "type font heading body scale display" },
       { id: "spacing", label: "Spacing", keywords: "space grid 4px gap layout" },
       { id: "radii-elevation", label: "Radii & elevation", keywords: "radius corner shadow depth pill" },

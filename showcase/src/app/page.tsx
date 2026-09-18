@@ -49,7 +49,7 @@ function Ramp({ prefix, shades }: { prefix: string; shades: string[] }): React.J
             border: "1px solid rgba(0,0,0,0.06)",
           }}
         >
-          <span style={{ fontFamily: "var(--font-ui)", fontSize: 11, color: Number(s) <= 200 ? "#1a1a1a" : "#fff" }}>
+          <span style={{ fontFamily: "var(--font-ui)", fontSize: 11, color: Number(s) <= 300 ? "#1a1a1a" : "#fff" }}>
             {s}
           </span>
         </div>
@@ -123,8 +123,8 @@ export default function Page(): React.JSX.Element {
           <Section id="colour" eyebrow="Tokens" title="Colour" intro="One brand ramp drives every interactive surface. Neutrals and semantic ramps round out the palette.">
             <p className="body-s" style={{ fontWeight: 600, marginBottom: 8 }}>Brand (the override point)</p>
             <Ramp prefix="brand" shades={fullRamp} />
-            <p className="body-s" style={{ fontWeight: 600, margin: "24px 0 8px" }}>Neutral spine — Nobel</p>
-            <Ramp prefix="nobel" shades={fullRamp} />
+            <p className="body-s" style={{ fontWeight: 600, margin: "24px 0 8px" }}>Neutral spine</p>
+            <Ramp prefix="neutral" shades={fullRamp} />
             <p className="body-s" style={{ fontWeight: 600, margin: "24px 0 8px" }}>Semantic</p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
               <SemanticSwatch name="Info" role="info" />
