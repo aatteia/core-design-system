@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { IconBars, IconError, IconExternal, IconMark, IconPlus } from "@/components/icons";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { SidebarNav } from "@/components/sidebar-nav";
 
@@ -88,10 +89,10 @@ export default function Page(): React.JSX.Element {
             aria-expanded={navOpen}
             onClick={() => setNavOpen((v) => !v)}
           >
-            <i className="fa-solid fa-bars" />
+            <IconBars />
           </button>
           <span className="sc-brand">
-            <i className="fa-solid fa-circle-nodes" /> Core
+            <IconMark /> Core
           </span>
           <span className="sc-version">v1.0</span>
           <div style={{ marginLeft: "auto" }}>
@@ -191,7 +192,7 @@ export default function Page(): React.JSX.Element {
               <button className="ds-btn ds-btn--secondary">Secondary</button>
               <button className="ds-btn ds-btn--tertiary">Tertiary</button>
               <button className="ds-btn ds-btn--primary ds-btn--destructive">Delete</button>
-              <button className="ds-btn ds-btn--primary ds-btn--icon" aria-label="Add"><i className="fa-solid fa-plus" /></button>
+              <button className="ds-btn ds-btn--primary ds-btn--icon" aria-label="Add"><IconPlus /></button>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center", marginTop: 16 }}>
               <button className="ds-btn ds-btn--primary ds-btn--sm">Small</button>
@@ -205,7 +206,7 @@ export default function Page(): React.JSX.Element {
           <Section id="links" eyebrow="Components" title="Links" intro="Underlined links on the link colour; the underline thickens on hover.">
             <p className="body-m">
               Read the <a className="ds-link" href="#links">getting-started guide</a>, or open an{" "}
-              <a className="ds-link" href="#links">external reference <i className="fa-solid fa-arrow-up-right" /></a>.
+              <a className="ds-link" href="#links">external reference <IconExternal /></a>.
             </p>
           </Section>
 
@@ -238,7 +239,7 @@ export default function Page(): React.JSX.Element {
               <div className="ds-field">
                 <label className="ds-field__label">Email</label>
                 <input className="ds-input" aria-invalid="true" defaultValue="not-an-email" />
-                <span className="ds-field__error"><i className="fa-solid fa-circle-exclamation" /> Enter a valid email address.</span>
+                <span className="ds-field__error"><IconError /> Enter a valid email address.</span>
               </div>
             </div>
           </Section>

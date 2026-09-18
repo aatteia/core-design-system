@@ -4,8 +4,8 @@
 
 **Core** is a brand-agnostic design-system *foundation* — a mature set of design
 tokens, component recipes, and documentation patterns with every brand decision
-factored out into a single layer you override. Fork it to stand up a new design
-system in hours instead of weeks.
+factored out into a single layer you override. Fork it when you need a token
+layer and recipes rather than a blank file.
 
 Core holds the part of a design system that is *the same no matter who you are*:
 the 4 px spacing grid, the type scale, the elevation and radius ramps, the
@@ -43,15 +43,16 @@ That's the whole job. The neutral indigo-slate placeholder you see out of the bo
 ├── tokens.css         — design tokens (CSS custom properties): colour, type, spacing, radii, shadows
 ├── components.css     — component recipes (.ds-btn, .ds-card, .ds-input, .ds-badge, …)
 ├── fonts/             — local variable fonts (Roboto / Open Sans / Inter — swap per fork)
+├── docs/              — charter, plan, accessibility table, extending
 ├── assets/            — brand marks (empty by design — a fork adds its own)
-├── preview/           — 23 static review cards, one per token group / component
 └── showcase/          — Next.js static export; live at core-design-system.pages.dev
 ```
 
 `tokens.css` + `components.css` are the **canonical, framework-agnostic source**. Link them
 into any HTML page (`<link rel="stylesheet" href="tokens.css">`) and apply the `.ds` class to
-a root element for sensible element defaults. The `showcase/` is a faithful, interactive
-realisation of the same tokens — not a second source of truth.
+a root element for sensible element defaults. See `docs/extending.md`. The `showcase/`
+is a faithful, interactive realisation of the same tokens. It copies `tokens.css` and
+`components.css` at build time. It is not a second source of truth.
 
 ## Kernel and fork
 
@@ -113,7 +114,8 @@ npx serve out        # serve the static build
 
 The showcase is a **static export** (`output: 'export'`). Cloudflare Pages builds `showcase/`
 from `main` and publishes `out/`. Preview deployments stay public. Do not put Access in front
-of production.
+of production. Indigo, Teal, Violet, and Amber switch hue. **Forge** also changes neutrals,
+type, radius, and density. Contrast data: `docs/accessibility.md`.
 
 ## Licence
 

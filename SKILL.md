@@ -1,6 +1,6 @@
 ---
 name: core-design
-description: Use this skill to build interfaces and artifacts on the Core design-system foundation, or to stand up a brand-new design system by forking Core. Core is a brand-agnostic foundation (tokens, component recipes, type/spacing/elevation scales) with a single overridable brand layer. Contains the tokens, components, fonts, and preview cards needed for prototyping or production.
+description: Use this skill to build interfaces and artifacts on the Core design-system foundation, or to stand up a brand-new design system by forking Core. Core is a brand-agnostic foundation (tokens, component recipes, type/spacing/elevation scales) with a single overridable brand layer. Contains the tokens, components, and fonts needed for prototyping or production.
 user-invocable: true
 ---
 
@@ -21,17 +21,18 @@ recipes. The brand (one hue + fonts + logo) is the only thing a consumer supplie
 3. **Use components** from `components.css` (`.ds-btn`, `.ds-card`, `.ds-input`, `.ds-badge`,
    `.ds-chip`, `.ds-breadcrumb`, …) — they reference the tokens, so they re-skin for free when
    the brand changes.
-4. **Borrow patterns** from `preview/` (header, footer, cards, inputs, tables, badges) and from
-   `showcase/` (live token explorer + component gallery).
-5. **Fonts** ship locally in `fonts/` (Roboto / Open Sans / Inter as neutral defaults). For
-   iconography, link Font Awesome from a CDN as the preview cards do.
+4. **Borrow patterns** from `showcase/` (live token explorer + component gallery).
+5. **Fonts** ship locally in `fonts/` (Roboto / Open Sans / Inter as neutral defaults).
+   Core does not ship icons. Do not add a CDN for iconography.
 
-## Two modes
+## Three modes
 
 - **Build on Core (keep it neutral)** — when prototyping or building something that doesn't
   need its own identity, use the placeholder `--brand-*` ramp as-is. Honour the structural
   rules: 4 px grid, pill buttons, 8 px cards, magenta focus ring, sentence-case UI text, no
   emoji in product chrome.
+- **Derive through tokens** — override primitives and roles on a wrapper. Do not edit
+  `components.css`. See `docs/extending.md` and the showcase Forge theme.
 - **Fork Core into a new brand** — when the user wants a *named* design system, follow
   README → *How to fork*: copy the repo, replace the `--brand-*` ramp (10 values), swap the
   `--font-*` families + `fonts/`, add a logo to `assets/`, and re-point the showcase theme
@@ -48,9 +49,10 @@ recipes. The brand (one hue + fonts + logo) is the only thing a consumer supplie
 
 ## When invoked without further guidance
 
-Ask the user whether they want to (a) **build something on Core** as-is, or (b) **fork Core
-into a new branded design system** — and if (b), what the brand hue, fonts, and name are.
-Then act as a senior designer producing a faithful, token-driven result.
+Ask the user whether they want to (a) **build something on Core** as-is, (b) **derive a
+theme through tokens**, or (c) **fork Core into a new branded design system**. If (c),
+what the brand hue, fonts, and name are. Then act as a senior designer producing a
+faithful, token-driven result.
 
 ## File reference
 
@@ -59,5 +61,6 @@ Then act as a senior designer producing a faithful, token-driven result.
 - `components.css` — component recipes (`.ds-*`)
 - `fonts/` — local variable fonts (swap per fork)
 - `assets/` — brand marks (empty by design)
-- `preview/` — static review cards (one per token group / component)
+- `docs/extending.md` — public token layers and how to derive a theme
+- `docs/accessibility.md` — generated contrast table
 - `showcase/` — interactive token explorer + component gallery (Next.js, static export). Live: https://core-design-system.pages.dev

@@ -6,3 +6,6 @@ dist/
 *.tsbuildinfo
 .env*
 next-env.d.ts
+showcase/src/app/core-tokens.css
+showcase/src/app/core-components.css
+

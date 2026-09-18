@@ -5,11 +5,13 @@
   "homepage": "https://core-design-system.pages.dev",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "contrast": "node scripts/check-contrast.mjs"
+  },
   "files": [
     "tokens.css",
     "components.css",
     "fonts/",
-    "preview/",
     "README.md",
     "SKILL.md",
     "LICENSE"

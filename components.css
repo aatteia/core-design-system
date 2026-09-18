@@ -10,8 +10,8 @@
    Label is Roboto Bold 16/16 with letter-spacing 0.5px (button tracking).
 */
 .ds-btn {
-  --btn-pad-y: 12px;
-  --btn-pad-x: 20px;
+  --btn-pad-y: var(--control-pad-y);
+  --btn-pad-x: var(--control-pad-x);
   --btn-font: 16px;
   display: inline-flex;
   align-items: center;
@@ -28,8 +28,10 @@
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
-  transition: background-color 120ms linear, color 120ms linear, border-color 120ms linear;
-  min-height: 40px;
+  transition: background-color var(--motion-duration) var(--motion-easing),
+              color var(--motion-duration) var(--motion-easing),
+              border-color var(--motion-duration) var(--motion-easing);
+  min-height: var(--control-height);
 }
 .ds-btn:focus-visible {
   outline: 2px solid var(--focus-500);
@@ -39,8 +41,8 @@
 .ds-btn [class*="fa-"] { font-size: 16px; line-height: 1; }
 
 /* sizes */
-.ds-btn--sm  { --btn-pad-y: 8px;  --btn-pad-x: 16px; --btn-font: 14px; min-height: 32px; }
-.ds-btn--lg  { --btn-pad-y: 16px; --btn-pad-x: 24px; --btn-font: 18px; min-height: 48px; }
+.ds-btn--sm  { --btn-pad-y: var(--control-pad-y-sm); --btn-pad-x: var(--control-pad-x-sm); --btn-font: 14px; min-height: var(--control-height-sm); }
+.ds-btn--lg  { --btn-pad-y: var(--control-pad-y-lg); --btn-pad-x: var(--control-pad-x-lg); --btn-font: 18px; min-height: var(--control-height-lg); }
 
 /* PRIMARY — filled (primary) */
 .ds-btn--primary {
@@ -91,11 +93,11 @@
 
 /* ICON-ONLY — circular 48×48 */
 .ds-btn--icon {
-  width: 48px; height: 48px; min-height: 0;
+  width: var(--control-height-lg); height: var(--control-height-lg); min-height: 0;
   padding: 0;
   border-radius: var(--radius-pill);
 }
-.ds-btn--icon.ds-btn--sm { width: 32px; height: 32px; }
+.ds-btn--icon.ds-btn--sm { width: var(--control-height-sm); height: var(--control-height-sm); }
 .ds-btn--icon.ds-btn--lg { width: 56px; height: 56px; }
 
 /* --------------------------------------------------------------------- LINKS */
@@ -116,7 +118,8 @@
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
   padding: var(--space-x-big);
-  transition: box-shadow 120ms linear, border-color 120ms linear;
+  transition: box-shadow var(--motion-duration) var(--motion-easing),
+              border-color var(--motion-duration) var(--motion-easing);
 }
 .ds-card--hover-lift:hover {
   box-shadow: var(--shadow-md);
@@ -157,9 +160,10 @@
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-xs);
   padding: 10px 14px;
-  min-height: 44px;
+  min-height: var(--control-height);
   width: 100%;
-  transition: border-color 120ms linear, box-shadow 120ms linear;
+  transition: border-color var(--motion-duration) var(--motion-easing),
+              box-shadow var(--motion-duration) var(--motion-easing);
 }
 .ds-input::placeholder,
 .ds-textarea::placeholder { color: var(--fg-placeholder); }
@@ -214,6 +218,7 @@
   font-size: 14px;
   font-weight: var(--fw-semibold);
   cursor: pointer;
+  min-height: var(--control-height-sm);
 }
 .ds-chip:hover            { border-color: var(--primary); }
 .ds-chip[aria-pressed="true"],
@@ -238,3 +243,25 @@
 .ds-breadcrumb a       { color: var(--fg-link); }
 .ds-breadcrumb__sep    { color: var(--fg-subtle); }
 .ds-breadcrumb__current{ color: var(--fg-strong); font-weight: var(--fw-semibold); }
+
+@media (forced-colors: active) {
+  .ds-btn,
+  .ds-input,
+  .ds-textarea,
+  .ds-select,
+  .ds-chip,
+  .ds-card {
+    border: 1px solid ButtonText;
+    forced-color-adjust: none;
+  }
+  .ds-btn:focus-visible,
+  .ds-input:focus,
+  .ds-textarea:focus,
+  .ds-select:focus,
+  .ds-chip:focus-visible,
+  .ds a:focus-visible,
+  .ds-link:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+}

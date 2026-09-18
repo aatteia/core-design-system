@@ -15,6 +15,7 @@ export function ThemeSwitcher(): React.JSX.Element {
         return (
           <button
             key={t.id}
+            className="sc-theme-btn"
             role="radio"
             aria-checked={active}
             title={`${t.label} — ${t.description}`}
@@ -32,7 +33,6 @@ export function ThemeSwitcher(): React.JSX.Element {
               color: active ? "#fff" : "var(--showcase-fg)",
               background: active ? "var(--brand-600)" : "#fff",
               border: `1px solid ${active ? "var(--brand-600)" : "var(--showcase-border)"}`,
-              transition: "background 120ms linear, border-color 120ms linear",
             }}
           >
             <span

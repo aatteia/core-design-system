@@ -15,12 +15,6 @@ export default function RootLayout({
 }): React.JSX.Element {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        />
-      </head>
       <body>
         <ThemeProvider>{children}</ThemeProvider>
       </body>

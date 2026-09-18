@@ -8,7 +8,7 @@ import React, {
   useState,
 } from "react";
 
-export type ThemeId = "default" | "teal" | "violet" | "amber";
+export type ThemeId = "default" | "teal" | "violet" | "amber" | "forge";
 
 export interface ThemeMeta {
   id: ThemeId;
@@ -21,9 +21,10 @@ export interface ThemeMeta {
  *  "default" is Core's neutral indigo-slate placeholder (no data-theme). */
 export const THEMES: ThemeMeta[] = [
   { id: "default", label: "Indigo", description: "Core's neutral placeholder", swatch: "#3C4673" },
-  { id: "teal", label: "Teal", description: "Example accent", swatch: "#0E7C86" },
-  { id: "violet", label: "Violet", description: "Example accent", swatch: "#5B2FC9" },
-  { id: "amber", label: "Amber", description: "Example accent", swatch: "#B97700" },
+  { id: "teal", label: "Teal", description: "Hue only", swatch: "#0E7C86" },
+  { id: "violet", label: "Violet", description: "Hue only", swatch: "#5B2FC9" },
+  { id: "amber", label: "Amber", description: "Hue only", swatch: "#8A5800" },
+  { id: "forge", label: "Forge", description: "Warm, sharp, compact five-axis fork", swatch: "#8C3A1A" },
 ];
 
 interface ThemeContextValue {

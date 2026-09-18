@@ -6,8 +6,8 @@
 
 /* ---- Font face: Inter (UI), Roboto (headings), Open Sans (body) ----------
    All three families ship locally as variable fonts in /fonts.
-   Font Awesome 6 Free is the default icon font on a CDN (preview cards and the
-   showcase link it). Swap it per fork. */
+   Core does not ship icons and must not load a CDN. --font-icon is a slot
+   for a fork that adds its own icon font. */
 
 @font-face {
   font-family: "Roboto";
@@ -189,7 +189,7 @@
   --font-body:      "Open Sans", "Segoe UI", Arial, sans-serif;
   --font-ui:        "Inter", "Helvetica Neue", Arial, sans-serif;
   --font-mono:      ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-  --font-icon:      "Font Awesome 6 Free", "Font Awesome 7 Pro";
+  --font-icon:      inherit;
 
   --fw-light:    300;
   --fw-regular:  400;
@@ -198,8 +198,11 @@
   --fw-bold:     700;
 
   /* ============================================================
-     TYPOGRAPHY — scale (desktop)
-     Display through Body XS on a 4 px baseline.
+     TYPOGRAPHY — scale
+     Base: 16px (--text-body-m). Every font-size and line-height
+     snaps to the 4px grid. Body: 12, 14, 16, 18. Headings: 20,
+     24, 28, 32, 36. Display: 44, 52. Leading is size plus 4px or
+     8px, except display-m (52/56) and body-xs (12/20).
      ============================================================ */
   --text-display-m:  52px;   --lh-display-m:  56px;
   --text-display-s:  44px;   --lh-display-s:  48px;
@@ -241,7 +244,10 @@
   --space-xxx-huge:192px;
 
   /* ============================================================
-     RADII — 8px cards, 200px pill buttons
+     RADII
+     Steps on the 4px grid: 4, 8, 12, 16. Cards use --radius-sm
+     (8px). --radius-pill is 200px so a capsule stays fully round
+     at every control height Core ships (largest icon button 56px).
      ============================================================ */
   --radius-xs:  4px;
   --radius-sm:  8px;
@@ -264,7 +270,32 @@
      ============================================================ */
   --container-max: 1280px;
   --container-pad: 24px;
-  --hit-target:    48px;     /* minimum touch target */
+
+  /* ============================================================
+     CONTROL SIZING
+     --control-height is the default interactive minimum (44px).
+     --control-height-sm is compact (32px), not the default.
+     --hit-target aliases the default. Components consume these.
+     --motion-duration is 120ms; reduced-motion sets it to 0ms.
+     ============================================================ */
+  --control-height:    44px;
+  --control-height-sm: 32px;
+  --control-height-lg: 48px;
+  --control-pad-y:     12px;
+  --control-pad-x:     20px;
+  --control-pad-y-sm:  8px;
+  --control-pad-x-sm:  16px;
+  --control-pad-y-lg:  16px;
+  --control-pad-x-lg:  24px;
+  --hit-target:        var(--control-height);
+  --motion-duration:   120ms;
+  --motion-easing:     linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration: 0ms;
+  }
 }
 
 /* =========================================================================

@@ -34,8 +34,8 @@ Run on the working tree at 4 August 2026.
 
 ### F1 — `preview/` is a second design system, not a preview
 
-The 26 files in `preview/` contain **zero** `ds-*` classes and load neither `tokens.css` nor
-`components.css`. Every value is hardcoded.
+**Resolved 18 September 2026.** `preview/` was deleted. Showcase is the demonstration.
+Static HTML use is documented in `docs/extending.md`.
 
 ```css
 /* preview/components-alerts.html:9 */
@@ -261,13 +261,10 @@ Three foundations were attributed to a named third-party system and must be rege
    `--neutral-25 … -800` is authored to hit the T3 contrast targets. Status ramps were
    regenerated (no longer aliases of another palette) and gained `-700` steps for badge text.
    `--brand-*` indigo-slate remains the placeholder identity layer.
-2. **Type scale.** Token comments previously attributed the desktop heading and body scale
-   to a named third-party type spec. Re-derive the scale from a stated ratio (e.g. a 1.25
-   modular scale from a 16px base) and document the derivation. A scale generated from a
-   published rule is self-evidently original *and* better documented than one lifted from a
-   source.
-3. **Radii.** Token comments previously attributed the 8px/200px choices to a named third-party
-   system. Choose and state Core's own radius ramp.
+2. **Type scale. Done 18 September 2026.** 16px base. Sizes snap to the 4px grid.
+   Body 12–18. Headings 20–36. Display 44 and 52.
+3. **Radii. Done 18 September 2026.** 4, 8, 12, 16 on the 4px grid. Pill 200px so
+   capsules stay round at shipped control heights.
 
 **This subsumes F6 and the palette half of T1.** Do P1 before T1 — T1's semantic-role mapping
 should target the new ramps, not the old ones.
@@ -338,94 +335,39 @@ grep -cE '#[0-9a-fA-F]{3,6}' components.css   # → 0
 
 ### T2 — Resolve `preview/`
 
-Fixes F1. Two acceptable outcomes; pick one, don't hybridise:
-
-**(a) Delete it.** The showcase already demonstrates every canonical component against the
-real API. 23 hand-maintained mockups that cannot drift *into* correctness are a liability.
-Remove `preview/` from `package.json:files`.
-
-**(b) Rebuild it as a real static consumer.** Each card loads `../tokens.css` and
-`../components.css` and uses `ds-*` classes only. This has genuine value — it proves the
-charter's "straightforward path for static HTML use" — but it is a rebuild, not an edit.
-
-Either way: remove the `cdnjs.cloudflare.com` Font Awesome dependency (Core cannot require a
-CDN). Electoral-service sample copy was already replaced with generic content. If icons are
-needed, that is an icon-integration decision, not a CDN link.
-
-**Done when:** no file in the repository specifies a colour, font or spacing value that is not
-resolved from `tokens.css` — or `preview/` no longer exists.
+**Done 18 September 2026 (a): deleted.** Showcase is the canonical demonstration.
+`package.json` no longer ships `preview/`. No `cdnjs` dependency remains.
 
 ### T3 — Establish the accessibility baseline
 
-Fixes F4. This is the contract charter §2.6 promises; today it is unbacked.
+**Done 18 September 2026.** Default-theme pairs in `docs/accessibility.md` pass.
+`--motion-duration` is 0ms under `prefers-reduced-motion`. `forced-colors` restyles
+focus and borders. `--hit-target` aliases `--control-height` (44px). Compact is 32px.
+Amber `--brand-600` is `#8A5800` (4.5:1 on white).
 
-1. **Contrast on the default theme. Partial 17 September 2026.** `--border-strong` is 3.34:1
-   and `--fg-placeholder` is 4.84:1 on white. `--border-default` remains decorative (1.34:1);
-   the token comment says it must not be the sole indicator of an interactive boundary.
-   Showcase Amber still fails 4.5:1 for white-on-brand.
-2. **Add the missing media queries** to `tokens.css`/`components.css`:
-   `prefers-reduced-motion` (the input transition at [components.css:161](../../components.css)
-   is currently unconditional), and `forced-colors` for focus and border treatment.
-3. **Publish the contrast table** as `docs/accessibility.md`, generated from the tokens rather
-   than hand-written, so it cannot drift.
-4. **Reconcile `--hit-target`.** Either components honour 48px or the token states the real
-   minimum. A token nothing consumes is a false claim.
-
-Explicitly **out of scope**: dark mode, high-contrast themes, RTL, motion foundations. Those
-are charter §6 triggers, not baseline.
-
-**Done when:** every pair in the published table meets its threshold, and the table is produced
-by a script.
+**Holds when:** `node scripts/check-contrast.mjs` exits 0.
 
 ### T4 — Single-source the showcase CSS
 
-Fixes F3. Replace the two copied files with a build-time mechanism — a PostCSS import from the
-repository root, a `prebuild` copy script, or symlinks. The font-path difference (`fonts/` vs
-`/fonts/`) is the only real obstacle and is solvable with a `url()` rewrite or by serving fonts
-from a matching path.
+**Done 18 September 2026.** `showcase/next.config.ts` copies `tokens.css` and
+`components.css` on every Next load. `showcase/src/app/core-*.css` is gitignored.
 
-**Done when:** editing `tokens.css` changes the showcase with no second edit, and
-`showcase/src/app/core-*.css` no longer exists as checked-in duplicates.
+**Holds when:** `test ! -f showcase/src/app/core-tokens.css` in a clean checkout before build,
+and `npx next build` recreates the copies.
 
 ### T5 — The falsification theme
 
-Fixes the charter §7 "theme divergence" measure, and validates T1.
+**Done 18 September 2026.** Showcase theme `forge` overrides hue, warm neutrals, type,
+radius, and density. `components.css` is untouched by the theme.
 
-Build **one** derived theme that changes five axes, not one:
-
-- brand hue *(already works)*
-- **neutral ramp** — a warm grey against Core's cool grey
-- **typography** — a different family and scale
-- **radius** — sharp (0–2px) against Core's rounded
-- **density** — compact control heights and spacing
-
-Constraint: it may only override tokens. **If it needs one line of `components.css`, T1 is
-incomplete** — that is the test.
-
-Keep it small: a single CSS file plus a showcase theme entry. This is not the "two derived
-systems" of the archived plan; it is the cheapest thing that can falsify the token
-architecture.
-
-**Done when:** the theme is visually unrecognisable as Core, and `git diff` touches no
-component CSS.
+**Holds when:** Forge is visually distinct from Indigo, and the theme lives in
+`showcase/src/app/globals.css` plus `theme-context.tsx` only.
 
 ### T6 — Correct the documentation
 
-Do this **last**, describing what is now true.
-
-- **README** — the fork instructions are accurate only after T1. Add what Core does not own.
-  Remove or qualify "stand up a new design system in hours." Fix the `preview/` description per
-  T2.
-- **SKILL.md** — currently assumes every use is either unmodified Core or a full fork. Add the
-  middle case: a derived system that adopts Core and extends it through documented token
-  contracts.
-- **New: `docs/extending.md`** — which token layers are public and overridable
-  (primitives / semantic roles / component-level), which are internal, and how a derived system
-  declares its Core baseline version. This is the archived plan's Stage 2, reduced to what can
-  actually be answered from a 583-line source.
-- **CHANGELOG** — record the breaking token changes from P1/T1 (regenerated ramps, removed
-  palettes, new semantic roles). This is Core's first real compatibility event and sets the
-  precedent. Named-system sections were already stripped from this file (P4, 17 September 2026).
+**Done 18 September 2026.** README kernel/fork, live URL, no hours claim, no `preview/`.
+SKILL.md has a derive-through-tokens mode. `docs/extending.md` names public layers.
+CHANGELOG records the breaking token and preview changes.
 
 **Done when:** every factual claim in README and SKILL.md can be checked by a command, and the
 commands pass.
@@ -525,11 +467,11 @@ test "$(curl -s https://core-design-system.pages.dev | grep -c 'ds-btn')" -gt 0
 # F2 — no hardcoded colour in component recipes
 test "$(grep -cE '#[0-9a-fA-F]{3,6}' components.css)" = "0"
 
-# F3 — no duplicated canonical source
+# F3 — no duplicated canonical source in git
 test ! -f showcase/src/app/core-tokens.css
 
 # F1 — no CDN dependency
-! grep -rq 'cdnjs\|cdn\.' preview/ showcase/src 2>/dev/null
+! grep -rq 'cdnjs\|cdn\.' showcase/src 2>/dev/null
 
 # F4 — accessibility contract exists and is generated
 test -f docs/accessibility.md && node scripts/check-contrast.mjs
