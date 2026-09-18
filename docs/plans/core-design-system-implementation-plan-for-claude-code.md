@@ -376,6 +376,9 @@ commands pass.
 
 ## 6. Increment 2 — portfolio and record
 
+**Status:** Landed 18 September 2026 (R1 in this repo; R2 drafted in the Career Profile
+record; R3 logged as owner leftovers outside Core).
+
 **Goal:** Core is legible as evidence of design-system authorship, and the Career Profile
 record says so accurately.
 **Size:** 2–3 days. **Prerequisite:** Increment 0. (T5's falsification theme makes R1 much
@@ -439,6 +442,12 @@ enforced on one artefact is not enforced.
 ```bash
 git grep -ciE 'electoral|enrol' -- . ':!docs/'   # in each public repo; also sweep for named-system attribution
 ```
+
+**R3 result (18 September 2026):** rerun across local clones that still have an
+`aatteia` GitHub remote. Core stays clean. Sibling leftovers are owner actions in those
+repos. Do not copy them into Core. Local `poc-mhr-connect-prototype` is an empty directory,
+not a clone. `aatteia/mams` is still present locally with `origin` on GitHub and is not
+archived from this machine. Private/archive remains the owner's action.
 
 ---
 

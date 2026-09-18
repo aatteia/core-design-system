@@ -13,7 +13,27 @@ accessible focus model, and the component anatomy. Brand, organisation, and
 product decisions stay out of the kernel. A fork supplies a **brand hue**,
 **fonts**, a **logo**, and **content**.
 
-> Core is the foundation; a *brand* (e.g. Atteia) is an instance built on it.
+> Core is the foundation. A named brand is an instance built on it.
+
+## What this is and why
+
+A design system usually mixes structure and identity. Change the brand and you edit recipes.
+
+Core keeps those layers apart. The kernel holds spacing, type scale, elevation, radii, focus, and `.ds-*` recipes. A fork supplies hue, fonts, a mark, and content.
+
+The live showcase is the proof. Indigo is the placeholder ramp. Forge is a token-only fork that also changes neutrals, type, radius, and density. Same recipes. Different identity.
+
+The judgement is in [`docs/charter.md`](docs/charter.md).
+
+![Indigo placeholder theme](docs/images/showcase-indigo.png)
+
+Indigo: Core's placeholder brand ramp.
+
+![Forge token-only fork](docs/images/showcase-forge.png)
+
+Forge: the same page after a five-axis token fork.
+
+Core is a self-directed foundation with a live showcase. It is not a client product and it is not in production use.
 
 ## How to fork Core into a new design system
 
