@@ -14,7 +14,7 @@ recipes. The brand (one hue + fonts + logo) is the only thing a consumer supplie
 
 ## How to use this skill
 
-1. **Read** `README.md` for the foundation's structure, the kept/dropped provenance, and the
+1. **Read** `README.md` for the foundation's structure, the kernel versus fork split, and the
    fork workflow.
 2. **Load tokens** by linking `tokens.css` (CSS custom properties for colour, type, spacing,
    radii, shadows). Apply the `.ds` class to your root for sensible element defaults.
@@ -54,7 +54,7 @@ Then act as a senior designer producing a faithful, token-driven result.
 
 ## File reference
 
-- `README.md` — foundation overview, kept/dropped provenance, fork workflow
+- `README.md` — foundation overview, kernel versus fork, fork workflow
 - `tokens.css` — design tokens (CSS custom properties)
 - `components.css` — component recipes (`.ds-*`)
 - `fonts/` — local variable fonts (swap per fork)

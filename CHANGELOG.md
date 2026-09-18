@@ -21,6 +21,7 @@ Core is versioned independently of any fork; forks pin to the Core version they 
 - Licensed Core under MIT. Bundled fonts ship with SIL OFL 1.1 (`fonts/OFL.txt`).
 - Hosted the showcase on Cloudflare Pages at `https://core-design-system.pages.dev`.
   Public, unauthenticated. README and `package.json` homepage point at that URL.
+- README describes the kernel versus a fork. It no longer uses a kept/dropped inventory.
 
 ## v1.0.0 — 2026-06-28
 

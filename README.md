@@ -53,20 +53,21 @@ into any HTML page (`<link rel="stylesheet" href="tokens.css">`) and apply the `
 a root element for sensible element defaults. The `showcase/` is a faithful, interactive
 realisation of the same tokens — not a second source of truth.
 
-## What Core keeps (and what it dropped)
+## Kernel and fork
 
-| Kept (brand-agnostic) | Dropped (was organisation-specific) |
+Core ships the decisions that stay stable across products. A fork adds identity.
+
+| In the kernel | A fork supplies |
 |---|---|
-| 4 px spacing scale, radii (4/8/12/16/pill), 5-step elevation | Organisation-specific brand hues |
-| Full type scale (Display → Body XS), weights, tracking | Organisation-specific accent palettes |
-| Neutral spine (cool grey + true grey), white | Accent palette reserved for an internal product suite |
-| Semantic ramps: info / success / warning / error | Organisation logos, photography, and product copy |
-| Magenta accessibility focus ring + `--shadow-focus` | A product-specific website UI kit |
-| Every component recipe (token-driven, zero hardcoded brand) | |
+| 4 px spacing, radii (4/8/12/16/pill), 5-step elevation | Brand hue (`--brand-*`) |
+| Type scale Display through Body XS, weights, tracking | Fonts |
+| Neutral spine (cool grey + true grey) and white | Logo and other brand marks |
+| Semantic ramps: info, success, warning, error | Copy, photography, and product chrome |
+| Magenta focus ring and `--shadow-focus` | |
+| Token-driven component recipes (`.ds-*`) | |
 
-The `--neutral-*` spine and the semantic ramps (info / success / warning / error) are
-Core originals. A fork recolours `--brand-*` for identity and may recolour the semantic
-ramps if status colours need to match a brand.
+`--neutral-*` and the semantic ramps belong to Core. Recolour `--brand-*` for a named
+identity. Recolour the semantic ramps only if status colours must match that brand.
 
 ## Tokens at a glance
 
@@ -121,5 +122,5 @@ Open Sans variable fonts are SIL OFL 1.1. See `fonts/OFL.txt`.
 
 ## Versioning
 
-Core is versioned independently of any fork. `1.0` is the first extraction; the version
+Core is versioned independently of any fork. `1.0` is the first public release. The version
 advances as the foundation matures. Forks pin to the Core version they branched from.
