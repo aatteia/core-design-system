@@ -95,9 +95,11 @@ identity. Recolour the semantic ramps only if status colours must match that bra
 
 - **Colour roles** — `--primary` / `--primary-hover` / `--primary-active` / `--primary-bg` /
   `--primary-tint` / `--primary-strong` (all derived from `--brand-*`); surface roles
-  (`--bg-base`, `--bg-subtle`, `--bg-inverse`), text roles (`--fg-default`, `--fg-strong`,
-  `--fg-muted`, `--fg-link`), and borders (`--border-default`, `--border-strong`,
-  `--border-focus`).
+  (`--bg-base`, `--bg-subtle`, `--bg-inverse`); text roles (`--fg-default`, `--fg-strong`,
+  `--fg-muted`, `--fg-link`); status roles (`--fg-info` / `--fg-success` / `--fg-warning` /
+  `--fg-error`, `--bg-info` / `--bg-success` / `--bg-warning` / `--bg-error` and error
+  tint/strong variants); and borders (`--border-default`, `--border-strong`,
+  `--border-focus`, `--border-error`).
 - **Type** — `--font-heading` / `--font-body` / `--font-ui` / `--font-mono`; weights
   `--fw-light…bold`; a 4 px-baseline scale from `--text-display-m` (52) to `--text-body-xs` (12).
 - **Spacing** — `--space-xx-sm` (4) → `--space-xxx-huge` (192), every step on the 4 px grid.

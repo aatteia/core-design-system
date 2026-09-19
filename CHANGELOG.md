@@ -7,6 +7,17 @@ Core is versioned independently of any fork; forks pin to the Core version they 
 
 ## Unreleased
 
+### Added
+- Status surface and text roles: `--fg-error`, `--fg-on-error`, `--bg-info` /
+  `--bg-success` / `--bg-warning` / `--bg-error`, plus `--bg-error-subtle`,
+  `--bg-error-strong`, `--bg-error-strong-hover`, and `--border-error`.
+
+### Changed
+- Component recipes use those status roles only. They no longer read
+  `--info-*`, `--success-*`, `--warning-*`, or `--error-*` ramp steps.
+- Icon buttons size to `--control-height` / `--control-height-sm` /
+  `--control-height-lg`. Large icon buttons no longer hardcode 56px.
+
 ## v1.1.0 — 2026-09-18
 
 Public portfolio pin after Increments 0–2. Kernel recast, MIT, live showcase, Forge

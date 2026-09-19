@@ -84,21 +84,21 @@
 }
 
 /* DESTRUCTIVE modifier (works with primary / secondary / tertiary) */
-.ds-btn--destructive.ds-btn--primary    { background: var(--error-600); border-color: var(--error-600); }
-.ds-btn--destructive.ds-btn--primary:hover  { background: var(--error-500); border-color: var(--error-500); }
-.ds-btn--destructive.ds-btn--secondary  { color: var(--error-600); border-color: var(--error-600); }
-.ds-btn--destructive.ds-btn--secondary:hover { background: var(--error-50); }
-.ds-btn--destructive.ds-btn--tertiary   { color: var(--error-600); }
-.ds-btn--destructive.ds-btn--tertiary:hover  { background: var(--error-50); }
+.ds-btn--destructive.ds-btn--primary    { background: var(--bg-error-strong); border-color: var(--bg-error-strong); color: var(--fg-on-error); }
+.ds-btn--destructive.ds-btn--primary:hover  { background: var(--bg-error-strong-hover); border-color: var(--bg-error-strong-hover); }
+.ds-btn--destructive.ds-btn--secondary  { color: var(--fg-error); border-color: var(--border-error); }
+.ds-btn--destructive.ds-btn--secondary:hover { background: var(--bg-error-subtle); }
+.ds-btn--destructive.ds-btn--tertiary   { color: var(--fg-error); }
+.ds-btn--destructive.ds-btn--tertiary:hover  { background: var(--bg-error-subtle); }
 
-/* ICON-ONLY — circular 48×48 */
+/* ICON-ONLY — square hit target, sized to control-height */
 .ds-btn--icon {
-  width: var(--control-height-lg); height: var(--control-height-lg); min-height: 0;
+  width: var(--control-height); height: var(--control-height); min-height: 0;
   padding: 0;
   border-radius: var(--radius-pill);
 }
 .ds-btn--icon.ds-btn--sm { width: var(--control-height-sm); height: var(--control-height-sm); }
-.ds-btn--icon.ds-btn--lg { width: 56px; height: 56px; }
+.ds-btn--icon.ds-btn--lg { width: var(--control-height-lg); height: var(--control-height-lg); }
 
 /* --------------------------------------------------------------------- LINKS */
 .ds-link {
@@ -143,7 +143,7 @@
 }
 .ds-field__error {
   font-size: var(--text-body-s);
-  color: var(--error-600);
+  color: var(--fg-error);
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -179,7 +179,7 @@
 }
 .ds-input[aria-invalid="true"],
 .ds-textarea[aria-invalid="true"],
-.ds-select[aria-invalid="true"] { border-color: var(--error-600); }
+.ds-select[aria-invalid="true"] { border-color: var(--border-error); }
 .ds-input:disabled,
 .ds-textarea:disabled,
 .ds-select:disabled { background: var(--bg-disabled); color: var(--fg-disabled); cursor: not-allowed; }
@@ -199,10 +199,10 @@
   color: var(--fg-default);
 }
 .ds-badge--primary { background: var(--primary-tint); color: var(--primary-strong); }
-.ds-badge--info    { background: var(--info-100);     color: var(--fg-info); }
-.ds-badge--success { background: var(--success-100);  color: var(--fg-success); }
-.ds-badge--warning { background: var(--warning-100);  color: var(--fg-warning); }
-.ds-badge--error   { background: var(--error-100);    color: var(--error-600); }
+.ds-badge--info    { background: var(--bg-info);     color: var(--fg-info); }
+.ds-badge--success { background: var(--bg-success);  color: var(--fg-success); }
+.ds-badge--warning { background: var(--bg-warning);  color: var(--fg-warning); }
+.ds-badge--error   { background: var(--bg-error);    color: var(--fg-error); }
 
 /* --------------------------------------------------------------------- CHIPS */
 .ds-chip {
