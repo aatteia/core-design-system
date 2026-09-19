@@ -192,7 +192,9 @@ export default function Page(): React.JSX.Element {
               <button className="ds-btn ds-btn--secondary">Secondary</button>
               <button className="ds-btn ds-btn--tertiary">Tertiary</button>
               <button className="ds-btn ds-btn--primary ds-btn--destructive">Delete</button>
+              <button className="ds-btn ds-btn--primary ds-btn--icon ds-btn--sm" aria-label="Add compact"><IconPlus /></button>
               <button className="ds-btn ds-btn--primary ds-btn--icon" aria-label="Add"><IconPlus /></button>
+              <button className="ds-btn ds-btn--primary ds-btn--icon ds-btn--lg" aria-label="Add large"><IconPlus /></button>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center", marginTop: 16 }}>
               <button className="ds-btn ds-btn--primary ds-btn--sm">Small</button>

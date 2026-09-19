@@ -13,9 +13,17 @@ unless it is replacing a recipe.
 | Showcase chrome | `.sc-*` | Not part of Core. Do not ship it. |
 
 `--border-default` is decorative. Interactive edges use `--border-strong`.
+Invalid fields use `--border-error`.
+
+Status colour in recipes uses `--fg-info` / `--fg-success` / `--fg-warning` /
+`--fg-error` and matching `--bg-*` roles (`--bg-error-subtle`, `--bg-error-strong`,
+`--bg-error-strong-hover` for destructive chrome). Recipes do not reference
+`--info-*`, `--success-*`, `--warning-*`, or `--error-*` ramp steps.
 
 `--hit-target` aliases `--control-height` (44px). Compact variants use
-`--control-height-sm` (32px) and must be labelled as compact.
+`--control-height-sm` (32px) and must be labelled as compact. Large controls
+and large icon buttons use `--control-height-lg`. Icon buttons size to those
+three height tokens.
 
 `--font-icon` is an empty slot. Core does not ship an icon font and must not load a CDN.
 

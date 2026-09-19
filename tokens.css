@@ -153,6 +153,13 @@
   --bg-inverse:     var(--brand-600);
   --bg-disabled:    var(--neutral-100);
   --bg-hover-subtle: var(--neutral-50);
+  --bg-info:        var(--info-100);
+  --bg-success:     var(--success-100);
+  --bg-warning:     var(--warning-100);
+  --bg-error:       var(--error-100);
+  --bg-error-subtle: var(--error-50);
+  --bg-error-strong: var(--error-600);
+  --bg-error-strong-hover: var(--error-500);
 
   --fg-default:     var(--neutral-800);   /* body text */
   --fg-strong:      var(--black-800);     /* headings */
@@ -162,11 +169,13 @@
   --fg-placeholder: var(--neutral-400);   /* 4.5:1 on white */
   --fg-on-primary:  var(--white);
   --fg-on-inverse:  var(--white);
+  --fg-on-error:    var(--white);
   --fg-link:        var(--brand-600);
   --fg-link-hover:  var(--brand-700);
   --fg-info:        var(--info-700);
   --fg-success:     var(--success-700);
   --fg-warning:     var(--warning-700);
+  --fg-error:       var(--error-700);
 
   --border-default: var(--neutral-200);   /* decorative only; do not use as a control edge */
   --border-strong:  var(--neutral-300);   /* 3:1 on white — input and control borders */
@@ -174,6 +183,7 @@
   --border-focus:   var(--focus-500);
   --border-disabled: var(--neutral-200);
   --border-hover:   var(--neutral-700);
+  --border-error:   var(--error-600);
 
   --primary:        var(--brand-600);
   --primary-hover:  var(--brand-700);
@@ -247,7 +257,7 @@
      RADII
      Steps on the 4px grid: 4, 8, 12, 16. Cards use --radius-sm
      (8px). --radius-pill is 200px so a capsule stays fully round
-     at every control height Core ships (largest icon button 56px).
+     at every control height Core ships (largest is --control-height-lg).
      ============================================================ */
   --radius-xs:  4px;
   --radius-sm:  8px;
