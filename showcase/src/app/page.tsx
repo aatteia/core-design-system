@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { IconError, IconExternal, IconPlus } from "@/components/icons";
+import { MoodSwitcher } from "@/components/mood-switcher";
+import { Overview } from "@/components/overview";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { SidebarNav } from "@/components/sidebar-nav";
 
@@ -101,10 +103,11 @@ function ChipRow(): React.JSX.Element {
   );
 }
 
+const DOCS_HREF =
+  "https://github.com/aatteia/core-design-system/blob/main/docs/README.md";
 const COOKBOOK_HREF =
   "https://github.com/aatteia/core-design-system/blob/main/docs/fork-cookbook.md";
-const TOKEN_CONTRACT_HREF =
-  "https://github.com/aatteia/core-design-system/blob/main/docs/token-contract.md";
+const GITHUB_HREF = "https://github.com/aatteia/core-design-system";
 
 /* ── page ───────────────────────────────────────────────────────────────── */
 
@@ -116,9 +119,27 @@ export default function Page(): React.JSX.Element {
       {/* top bar — full-width chrome */}
       <header className="sc-topbar">
         <div className="sc-topbar__inner">
-          <span className="sc-brand">Core</span>
+          <span className="sc-mark" aria-hidden="true">C</span>
+          <div className="sc-brand-lockup">
+            <span className="sc-brand">Core</span>
+            <span className="sc-brand-sub">Design system · 1.2</span>
+          </div>
           <span className="sc-version">1.2.1</span>
+          <span className="sc-version-note">v1.2 · foundation</span>
+          <span className="sc-tagline">design system</span>
+          <nav className="sc-masthead" aria-label="Project links">
+            <a href={DOCS_HREF} target="_blank" rel="noopener noreferrer">
+              Docs<span className="sr-only"> (opens in a new tab)</span>
+            </a>
+            <a href={COOKBOOK_HREF} target="_blank" rel="noopener noreferrer">
+              Cookbook<span className="sr-only"> (opens in a new tab)</span>
+            </a>
+            <a href={GITHUB_HREF} target="_blank" rel="noopener noreferrer">
+              GitHub<span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </nav>
           <div className="sc-topbar__tools">
+            <MoodSwitcher />
             <ThemeSwitcher />
             <button
               type="button"
@@ -139,50 +160,7 @@ export default function Page(): React.JSX.Element {
         {navOpen && <div className="sc-backdrop" onClick={() => setNavOpen(false)} />}
 
         <main className="sc-content">
-          {/* hero / overview */}
-          <section id="overview" className="sc-hero">
-            <div className="sc-hero__row">
-              <div>
-                <h1 className="sc-hero__title">Rebrand from one ramp. Ship from two CSS files.</h1>
-                <p className="sc-hero__lede">
-                  Core is a brand-agnostic kernel: tokens + recipes. Use the showcase to verify
-                  forks. Not a client product.
-                </p>
-              </div>
-              <div className="sc-hero__actions">
-                <a
-                  className="sc-cta sc-cta--primary"
-                  href={COOKBOOK_HREF}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Open cookbook<span className="sr-only"> (opens in a new tab)</span>
-                </a>
-                <a
-                  className="sc-cta sc-cta--secondary"
-                  href={TOKEN_CONTRACT_HREF}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Token contract<span className="sr-only"> (opens in a new tab)</span>
-                </a>
-              </div>
-            </div>
-            <div className="sc-stats">
-              <div className="sc-stat">
-                <p className="sc-stat__label">Kernel</p>
-                <p className="sc-stat__value">tokens.css · components.css</p>
-              </div>
-              <div className="sc-stat">
-                <p className="sc-stat__label">Fork</p>
-                <p className="sc-stat__value">data-theme overrides</p>
-              </div>
-              <div className="sc-stat">
-                <p className="sc-stat__label">Proof</p>
-                <p className="sc-stat__value">Forge five-axis theme</p>
-              </div>
-            </div>
-          </section>
+          <Overview />
 
           <div className="ds">
 

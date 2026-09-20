@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MoodProvider } from "@/lib/mood-context";
 import { ThemeProvider } from "@/lib/theme-context";
 import "./globals.css";
 
@@ -22,16 +23,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Showcase-only. Forge --font-* points here; other themes keep Core faces. */}
+        {/* Showcase-only. Forge and chrome moods point here; kernel faces stay in tokens.css. */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <MoodProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </MoodProvider>
       </body>
     </html>
   );

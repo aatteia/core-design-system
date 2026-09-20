@@ -172,7 +172,9 @@ npx serve out        # serve the static build
 The showcase is a **static export** (`output: 'export'`). Cloudflare Pages builds `showcase/`
 from `main` and publishes `out/`. Preview deployments stay public. Do not put Access in front
 of production. Indigo, Teal, Violet, and Amber switch hue. **Forge** also changes neutrals,
-type, radius, and density. Contrast data: `docs/accessibility.md`.
+type, radius, and density. Chrome moods (Product, Editorial, Portfolio, Glass) restyle the
+showcase frame only (`html[data-mood]`). They are not a kernel fork. Contrast data:
+`docs/accessibility.md`.
 
 ## Licence
 
