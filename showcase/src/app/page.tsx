@@ -117,7 +117,7 @@ export default function Page(): React.JSX.Element {
       <header className="sc-topbar">
         <div className="sc-topbar__inner">
           <span className="sc-brand">Core</span>
-          <span className="sc-version">1.2.0</span>
+          <span className="sc-version">1.2.1</span>
           <div className="sc-topbar__tools">
             <ThemeSwitcher />
             <button

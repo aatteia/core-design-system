@@ -11,6 +11,11 @@ See `docs/token-contract.md`.
 
 ## Unreleased
 
+## v1.2.1 — 2026-09-20
+
+Showcase a11y, contrast CI, consume path, honesty tone, and product-dense chrome.
+Patch. No public token renamed or removed.
+
 ### Fixed
 - Showcase focus-ring demo input has an accessible name (`aria-label`).
 - Showcase ships a favicon (`/favicon.svg`, `/favicon.ico`) so the browser no
