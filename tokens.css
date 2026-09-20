@@ -180,7 +180,8 @@
   --border-default: var(--neutral-200);   /* decorative only; do not use as a control edge */
   --border-strong:  var(--neutral-300);   /* 3:1 on white — input and control borders */
   --border-subtle:  var(--neutral-100);
-  --border-focus:   var(--focus-500);
+  --border-focus:   var(--focus-500);     /* public focus colour */
+  --focus-ring:     2px solid var(--border-focus); /* public keyboard-focus outline */
   --border-disabled: var(--neutral-200);
   --border-hover:   var(--neutral-700);
   --border-error:   var(--error-600);
@@ -273,7 +274,6 @@
   --shadow-sm:   0px 4px 8px 0px rgba(0, 0, 0, 0.10);
   --shadow-md:   0px 8px 16px 0px rgba(0, 0, 0, 0.10);
   --shadow-lg:   0px 12px 24px 0px rgba(0, 0, 0, 0.10);
-  --shadow-focus: 0 0 0 3px var(--focus-500);
 
   /* ============================================================
      LAYOUT
@@ -357,7 +357,7 @@
 }
 .ds a:hover { color: var(--fg-link-hover); text-decoration-thickness: 2px; }
 .ds a:focus-visible {
-  outline: 2px solid var(--focus-500);
+  outline: var(--focus-ring);
   outline-offset: 2px;
   border-radius: 2px;
 }

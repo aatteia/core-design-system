@@ -7,6 +7,9 @@ Pairs use WCAG 2.2 contrast: **4.5:1** for text (SC 1.4.3), **3:1** for UI (SC 1
 `--border-default` (`--neutral-200`) is decorative. It must not be the only cue on a control edge.
 `--hit-target` aliases `--control-height` (44px). Compact controls use `--control-height-sm` (32px). Large controls use `--control-height-lg`.
 `prefers-reduced-motion` sets `--motion-duration` to `0ms`. `forced-colors` restyles focus and borders in `components.css`.
+Focus is a 2px `outline` in `--focus-ring`, coloured by `--border-focus` (from `--focus-500`). Strong fills pair with `--fg-on-primary`, `--fg-on-error`, and `--fg-on-inverse`.
+
+## Default theme
 
 | Pair | Foreground | Background | Ratio | Required | Result |
 |---|---|---|---:|---:|---|
@@ -21,9 +24,38 @@ Pairs use WCAG 2.2 contrast: **4.5:1** for text (SC 1.4.3), **3:1** for UI (SC 1
 | Error badge (1.4.3) | `--fg-error` #911A12 | `--bg-error` #FBEBE9 | 7.69:1 | 4.5 | pass |
 | Field error (1.4.3) | `--fg-error` #911A12 | `--bg-base` #FFFFFF | 8.90:1 | 4.5 | pass |
 | Error border (1.4.11) | `--border-error` #AB2117 | `--bg-base` #FFFFFF | 7.09:1 | 3.0 | pass |
-| White on primary (1.4.3) | `--fg-on-primary` #FFFFFF | `--primary` #3C4673 | 9.07:1 | 4.5 | pass |
-| White on error (1.4.3) | `--fg-on-error` #FFFFFF | `--bg-error-strong` #AB2117 | 7.09:1 | 4.5 | pass |
+| On primary (1.4.3) | `--fg-on-primary` #FFFFFF | `--primary` #3C4673 | 9.07:1 | 4.5 | pass |
+| On primary hover (1.4.3) | `--fg-on-primary` #FFFFFF | `--primary-hover` #2B3350 | 12.41:1 | 4.5 | pass |
+| On primary active (1.4.3) | `--fg-on-primary` #FFFFFF | `--primary-active` #1E2333 | 15.63:1 | 4.5 | pass |
+| On error (1.4.3) | `--fg-on-error` #FFFFFF | `--bg-error-strong` #AB2117 | 7.09:1 | 4.5 | pass |
+| On error hover (1.4.3) | `--fg-on-error` #FFFFFF | `--bg-error-strong-hover` #C12A1F | 5.80:1 | 4.5 | pass |
+| On inverse (1.4.3) | `--fg-on-inverse` #FFFFFF | `--bg-inverse` #3C4673 | 9.07:1 | 4.5 | pass |
 | Decorative border | `--border-default` #DDDEE3 | `--bg-base` #FFFFFF | 1.34:1 | n/a (decorative) | documented |
+
+## Forge theme
+
+Showcase `html[data-theme="forge"]` overlays on the default tokens. Forge remaps `--border-strong`, `--fg-placeholder`, `--fg-subtle`, `--fg-disabled`, and `--focus-500`.
+
+| Pair | Foreground | Background | Ratio | Required | Result |
+|---|---|---|---:|---:|---|
+| Body text (1.4.3) | `--fg-default` #332E28 | `--bg-base` #FFFFFF | 13.44:1 | 4.5 | pass |
+| Placeholder (1.4.3) | `--fg-placeholder` #61594D | `--bg-base` #FFFFFF | 6.90:1 | 4.5 | pass |
+| Control border (1.4.11) | `--border-strong` #817668 | `--bg-base` #FFFFFF | 4.44:1 | 3.0 | pass |
+| Primary fill / link (1.4.3) | `--primary` #94401C | `--bg-base` #FFFFFF | 6.98:1 | 4.5 | pass |
+| Focus ring (1.4.11) | `--border-focus` #CE764C | `--bg-base` #FFFFFF | 3.32:1 | 3.0 | pass |
+| Info badge (1.4.3) | `--fg-info` #14447B | `--bg-info` #E7EFF8 | 8.45:1 | 4.5 | pass |
+| Success badge (1.4.3) | `--fg-success` #1C5F3F | `--bg-success` #EAF6F0 | 6.87:1 | 4.5 | pass |
+| Warning badge (1.4.3) | `--fg-warning` #9B5608 | `--bg-warning` #FBF2DF | 5.06:1 | 4.5 | pass |
+| Error badge (1.4.3) | `--fg-error` #911A12 | `--bg-error` #FBEBE9 | 7.69:1 | 4.5 | pass |
+| Field error (1.4.3) | `--fg-error` #911A12 | `--bg-base` #FFFFFF | 8.90:1 | 4.5 | pass |
+| Error border (1.4.11) | `--border-error` #AB2117 | `--bg-base` #FFFFFF | 7.09:1 | 3.0 | pass |
+| On primary (1.4.3) | `--fg-on-primary` #FFFFFF | `--primary` #94401C | 6.98:1 | 4.5 | pass |
+| On primary hover (1.4.3) | `--fg-on-primary` #FFFFFF | `--primary-hover` #783316 | 9.20:1 | 4.5 | pass |
+| On primary active (1.4.3) | `--fg-on-primary` #FFFFFF | `--primary-active` #5C2712 | 11.97:1 | 4.5 | pass |
+| On error (1.4.3) | `--fg-on-error` #FFFFFF | `--bg-error-strong` #AB2117 | 7.09:1 | 4.5 | pass |
+| On error hover (1.4.3) | `--fg-on-error` #FFFFFF | `--bg-error-strong-hover` #C12A1F | 5.80:1 | 4.5 | pass |
+| On inverse (1.4.3) | `--fg-on-inverse` #FFFFFF | `--bg-inverse` #94401C | 6.98:1 | 4.5 | pass |
+| Decorative border | `--border-default` #E4DDD3 | `--bg-base` #FFFFFF | 1.35:1 | n/a (decorative) | documented |
 
 Run:
 

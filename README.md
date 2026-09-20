@@ -85,7 +85,7 @@ Core ships the decisions that stay stable across products. A fork adds identity.
 | Type scale Display through Body XS, weights, tracking | Fonts |
 | Neutral spine (cool grey + true grey) and white | Logo and other brand marks |
 | Semantic ramps: info, success, warning, error | Copy, photography, and product chrome |
-| Magenta focus ring and `--shadow-focus` | |
+| Magenta 2px `--focus-ring` outline | |
 | Token-driven component recipes (`.ds-*`) | |
 
 `--neutral-*` and the semantic ramps belong to Core. Recolour `--brand-*` for a named
@@ -96,15 +96,16 @@ identity. Recolour the semantic ramps only if status colours must match that bra
 - **Colour roles** — `--primary` / `--primary-hover` / `--primary-active` / `--primary-bg` /
   `--primary-tint` / `--primary-strong` (all derived from `--brand-*`); surface roles
   (`--bg-base`, `--bg-subtle`, `--bg-inverse`); text roles (`--fg-default`, `--fg-strong`,
-  `--fg-muted`, `--fg-link`); status roles (`--fg-info` / `--fg-success` / `--fg-warning` /
+  `--fg-muted`, `--fg-link`, `--fg-on-primary`, `--fg-on-error`, `--fg-on-inverse`); status roles (`--fg-info` / `--fg-success` / `--fg-warning` /
   `--fg-error`, `--bg-info` / `--bg-success` / `--bg-warning` / `--bg-error` and error
   tint/strong variants); and borders (`--border-default`, `--border-strong`,
-  `--border-focus`, `--border-error`).
+  `--border-focus`, `--border-error`). `--focus-ring` is the public 2px outline
+  (`2px solid var(--border-focus)`). Recolour focus via `--focus-500`.
 - **Type** — `--font-heading` / `--font-body` / `--font-ui` / `--font-mono`; weights
   `--fw-light…bold`; a 4 px-baseline scale from `--text-display-m` (52) to `--text-body-xs` (12).
 - **Spacing** — `--space-xx-sm` (4) → `--space-xxx-huge` (192), every step on the 4 px grid.
 - **Radii** — `--radius-xs/sm/md/lg` (4/8/12/16) + `--radius-pill` (200) for fully-rounded buttons.
-- **Elevation** — `--shadow-xs…lg` plus `--shadow-focus`.
+- **Elevation** — `--shadow-xs…lg`. Keyboard focus is `--focus-ring`, not a shadow.
 
 ## Components
 
@@ -116,8 +117,8 @@ all driven entirely by `tokens.css`, so a brand swap re-skins everything for fre
 ## Visual character (override freely)
 
 Core inherits a *calm, institutional, grid-disciplined* baseline: airy layouts on a 4 px
-grid, 8 px card radius with a 1 px border + soft shadow, fully-rounded pill buttons, a 3 px
-magenta keyboard-focus ring, and minimal motion (instant or 120 ms linear; no spring or
+grid, 8 px card radius with a 1 px border + soft shadow, fully-rounded pill buttons, a 2 px
+magenta keyboard-focus outline (`--focus-ring`), and minimal motion (instant or 120 ms linear; no spring or
 scroll animation). These are sensible defaults, not commitments — a fork is free to change
 radius, motion, and density.
 

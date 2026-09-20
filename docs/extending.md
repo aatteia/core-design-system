@@ -7,17 +7,21 @@ unless it is replacing a recipe.
 
 | Layer | Where | Override? |
 |---|---|---|
-| Primitives | `--brand-*`, `--neutral-*`, `--font-*`, `--text-*`, `--space-*`, `--radius-*`, `--control-*` | Yes. This is the public contract. |
-| Semantic roles | `--primary`, `--fg-*`, `--bg-*`, `--border-*` | Yes, if a primitive remap is not enough. |
+| Primitives (ramps) | `--brand-*`, `--neutral-*`, `--info-*`, `--success-*`, `--warning-*`, `--error-*`, `--focus-500`, `--font-*`, `--text-*`, `--space-*`, `--radius-*`, `--control-*` | Yes, on a theme wrapper. Recipes must not read these. |
+| Semantic roles | `--primary`, `--fg-*`, `--bg-*`, `--border-*`, `--focus-ring` | Yes, if a primitive remap is not enough. This is what recipes consume. |
 | Recipes | `.ds-*` in `components.css` | No, unless you are replacing that component. |
 | Showcase chrome | `.sc-*` | Not part of Core. Do not ship it. |
 
+Public roles vs private ramps: a fork recolours `--brand-*` or `--focus-500`. Recipes stay on roles (`--primary`, `--border-focus`, `--fg-on-primary`). Do not point a recipe at a ramp step.
+
 `--border-default` is decorative. Interactive edges use `--border-strong`.
 Invalid fields use `--border-error`.
+Keyboard focus is `outline: var(--focus-ring)`. `--focus-ring` is `2px solid var(--border-focus)`. Recolour via `--focus-500`.
 
 Status colour in recipes uses `--fg-info` / `--fg-success` / `--fg-warning` /
 `--fg-error` and matching `--bg-*` roles (`--bg-error-subtle`, `--bg-error-strong`,
-`--bg-error-strong-hover` for destructive chrome). Recipes do not reference
+`--bg-error-strong-hover` for destructive chrome). Strong fills pair with
+`--fg-on-primary`, `--fg-on-error`, and `--fg-on-inverse`. Recipes do not reference
 `--info-*`, `--success-*`, `--warning-*`, or `--error-*` ramp steps.
 
 `--hit-target` aliases `--control-height` (44px). Compact variants use

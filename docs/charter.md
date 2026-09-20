@@ -1,7 +1,7 @@
 # Core — product charter
 
 **Status:** Standing document. Changes here are product decisions, not implementation detail.
-**Last reviewed:** 4 August 2026
+**Last reviewed:** 20 September 2026
 
 This charter states what Core is, what it deliberately is not, and the criteria by which
 capabilities enter it. It does not describe work to be done — see `docs/plans/` for that.
@@ -241,15 +241,15 @@ Until triggered, these are not gaps. They are decisions.
 Each measure names its instrument and current baseline, so progress is observable rather than
 asserted. Component count is not a maturity measure.
 
-| Measure | Instrument | Baseline (4 Aug 2026) | Target |
+| Measure | Instrument | Baseline (20 Sep 2026) | Target |
 |---|---|---|---|
-| **Provenance** | Named third-party design-system references in any repository file | 12 across 4 files | 0 |
-| **Public usability** | Licence present, showcase reachable without authentication | MIT / https://core-design-system.pages.dev (18 Sep 2026) | MIT / reachable |
-| Rebrand completeness | Count of primitive-palette references in `components.css` | 0 (18 Sep 2026) | 0 |
-| Theme divergence | Axes a derived theme can change without editing `components.css` (hue, neutral ramp, type, radius, density) | 5 (Forge theme, 18 Sep 2026) | ≥5 |
-| Source-of-truth integrity | Files duplicated between canonical source and presentation layers | 0 (generated at showcase build, 18 Sep 2026) | 0 |
-| Contract honesty | Documented claims contradicted by source | README hours claim qualified 18 Sep 2026 | 0 |
-| Accessibility baseline | Token pairs below their WCAG threshold in the published contrast table | 0 on default theme (18 Sep 2026); table generated | 0 |
+| **Provenance** | Named-system derivation claims (Attica or otherwise) in README, changelog, token comments, or showcase copy | 0 | 0 |
+| **Public usability** | Licence present, showcase reachable without authentication | MIT / https://core-design-system.pages.dev | MIT / reachable |
+| Rebrand completeness | Count of primitive-palette references in `components.css` | 0 | 0 |
+| Theme divergence | Axes a derived theme can change without editing `components.css` (hue, neutral ramp, type, radius, density) | 5 (Forge theme) | ≥5 |
+| Source-of-truth integrity | Files duplicated between canonical source and presentation layers | 0 (generated at showcase build) | 0 |
+| Contract honesty | Documented claims contradicted by source | 0 | 0 |
+| Accessibility baseline | Token pairs below their WCAG threshold in the published contrast table | 0 on default and Forge (table generated) | 0 |
 | Omission cost | Lines a consumer must delete to drop an unused capability | not measured | 0 |
 | Upgrade predictability | Can a Core version bump apply to a derived system without editing component CSS? | no | yes |
 | Internal reliance | Consumer references to undocumented tokens or classes | not measured | 0 |
