@@ -109,7 +109,8 @@ body {
    Showcase navigation chrome (.sc-*). Deliberately NOT a design-system
    artefact: monospace labels, neutral --showcase-* surfaces, and a separate
    class namespace keep the app frame clearly distinct from the .ds-* components
-   it presents. None of this reacts to the brand-theme switch.
+   it presents. Surfaces stay on --showcase-*. Search keyboard focus uses
+   --focus-ring so it matches the catalogue.
    --------------------------------------------------------------------------- */
 .sc-topbar {
   position: sticky;
@@ -181,10 +182,18 @@ body {
   color: var(--showcase-fg);
   font: inherit;
   font-size: 13px;
+  appearance: none;
+}
+.sc-nav__search::-webkit-search-decoration {
+  -webkit-appearance: none;
 }
 .sc-nav__search:focus {
-  outline: 2px solid var(--showcase-fg);
-  outline-offset: 1px;
+  outline: none;
+}
+.sc-nav__search:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+  border-color: var(--border-focus);
 }
 .sc-nav__group { margin-bottom: 20px; }
 .sc-nav__group-label {
