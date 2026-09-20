@@ -9,6 +9,7 @@ Pairs use WCAG 2.2 contrast: **4.5:1** for text (SC 1.4.3), **3:1** for UI (SC 1
 `--hit-target` aliases `--control-height` (44px). Compact controls use `--control-height-sm` (32px). Large controls use `--control-height-lg`.
 `prefers-reduced-motion` sets `--motion-duration` to `0ms`. `forced-colors` restyles focus and borders in `components.css`.
 Focus is a 2px `outline` in `--focus-ring`, coloured by `--border-focus` (from `--focus-500`). Strong fills pair with `--fg-on-primary`, `--fg-on-error`, and `--fg-on-inverse`.
+Non-`--bg-base` pairs are recipe surfaces: tertiary hover (`--bg-hover-subtle`), default badge (`--bg-disabled`), primary badge (`--primary-tint`). Recipes do not paint text on `--bg-subtle` or `--bg-muted`.
 
 ## Default theme
 
@@ -31,6 +32,93 @@ Focus is a 2px `outline` in `--focus-ring`, coloured by `--border-focus` (from `
 | On error (1.4.3) | `--fg-on-error` #FFFFFF | `--bg-error-strong` #AB2117 | 7.09:1 | 4.5 | pass |
 | On error hover (1.4.3) | `--fg-on-error` #FFFFFF | `--bg-error-strong-hover` #C12A1F | 5.80:1 | 4.5 | pass |
 | On inverse (1.4.3) | `--fg-on-inverse` #FFFFFF | `--bg-inverse` #3C4673 | 9.07:1 | 4.5 | pass |
+| Tertiary hover (1.4.3) | `--primary` #3C4673 | `--bg-hover-subtle` #F5F5F7 | 8.33:1 | 4.5 | pass |
+| Default badge (1.4.3) | `--fg-default` #262831 | `--bg-disabled` #EBECEF | 12.43:1 | 4.5 | pass |
+| Primary badge (1.4.3) | `--primary-strong` #2B3350 | `--primary-tint` #E9EBF3 | 10.43:1 | 4.5 | pass |
+| Decorative border | `--border-default` #DDDEE3 | `--bg-base` #FFFFFF | 1.34:1 | n/a (decorative) | documented |
+
+## Teal theme
+
+Hue-only. Showcase `html[data-theme="teal"]` overlays `--brand-*` on the default tokens.
+
+| Pair | Foreground | Background | Ratio | Required | Result |
+|---|---|---|---:|---:|---|
+| Body text (1.4.3) | `--fg-default` #262831 | `--bg-base` #FFFFFF | 14.68:1 | 4.5 | pass |
+| Placeholder (1.4.3) | `--fg-placeholder` #6E7181 | `--bg-base` #FFFFFF | 4.84:1 | 4.5 | pass |
+| Control border (1.4.11) | `--border-strong` #8A8C99 | `--bg-base` #FFFFFF | 3.34:1 | 3.0 | pass |
+| Primary fill / link (1.4.3) | `--primary` #0E7C86 | `--bg-base` #FFFFFF | 4.95:1 | 4.5 | pass |
+| Focus ring (1.4.11) | `--border-focus` #B900DA | `--bg-base` #FFFFFF | 5.15:1 | 3.0 | pass |
+| Info badge (1.4.3) | `--fg-info` #14447B | `--bg-info` #E7EFF8 | 8.45:1 | 4.5 | pass |
+| Success badge (1.4.3) | `--fg-success` #1C5F3F | `--bg-success` #EAF6F0 | 6.87:1 | 4.5 | pass |
+| Warning badge (1.4.3) | `--fg-warning` #9B5608 | `--bg-warning` #FBF2DF | 5.06:1 | 4.5 | pass |
+| Error badge (1.4.3) | `--fg-error` #911A12 | `--bg-error` #FBEBE9 | 7.69:1 | 4.5 | pass |
+| Field error (1.4.3) | `--fg-error` #911A12 | `--bg-base` #FFFFFF | 8.90:1 | 4.5 | pass |
+| Error border (1.4.11) | `--border-error` #AB2117 | `--bg-base` #FFFFFF | 7.09:1 | 3.0 | pass |
+| On primary (1.4.3) | `--fg-on-primary` #FFFFFF | `--primary` #0E7C86 | 4.95:1 | 4.5 | pass |
+| On primary hover (1.4.3) | `--fg-on-primary` #FFFFFF | `--primary-hover` #0A5C63 | 7.71:1 | 4.5 | pass |
+| On primary active (1.4.3) | `--fg-on-primary` #FFFFFF | `--primary-active` #053B40 | 12.31:1 | 4.5 | pass |
+| On error (1.4.3) | `--fg-on-error` #FFFFFF | `--bg-error-strong` #AB2117 | 7.09:1 | 4.5 | pass |
+| On error hover (1.4.3) | `--fg-on-error` #FFFFFF | `--bg-error-strong-hover` #C12A1F | 5.80:1 | 4.5 | pass |
+| On inverse (1.4.3) | `--fg-on-inverse` #FFFFFF | `--bg-inverse` #0E7C86 | 4.95:1 | 4.5 | pass |
+| Tertiary hover (1.4.3) | `--primary` #0E7C86 | `--bg-hover-subtle` #F5F5F7 | 4.54:1 | 4.5 | pass |
+| Default badge (1.4.3) | `--fg-default` #262831 | `--bg-disabled` #EBECEF | 12.43:1 | 4.5 | pass |
+| Primary badge (1.4.3) | `--primary-strong` #0A5C63 | `--primary-tint` #E6F5F6 | 6.89:1 | 4.5 | pass |
+| Decorative border | `--border-default` #DDDEE3 | `--bg-base` #FFFFFF | 1.34:1 | n/a (decorative) | documented |
+
+## Violet theme
+
+Hue-only. Showcase `html[data-theme="violet"]` overlays `--brand-*` on the default tokens.
+
+| Pair | Foreground | Background | Ratio | Required | Result |
+|---|---|---|---:|---:|---|
+| Body text (1.4.3) | `--fg-default` #262831 | `--bg-base` #FFFFFF | 14.68:1 | 4.5 | pass |
+| Placeholder (1.4.3) | `--fg-placeholder` #6E7181 | `--bg-base` #FFFFFF | 4.84:1 | 4.5 | pass |
+| Control border (1.4.11) | `--border-strong` #8A8C99 | `--bg-base` #FFFFFF | 3.34:1 | 3.0 | pass |
+| Primary fill / link (1.4.3) | `--primary` #5B2FC9 | `--bg-base` #FFFFFF | 7.79:1 | 4.5 | pass |
+| Focus ring (1.4.11) | `--border-focus` #B900DA | `--bg-base` #FFFFFF | 5.15:1 | 3.0 | pass |
+| Info badge (1.4.3) | `--fg-info` #14447B | `--bg-info` #E7EFF8 | 8.45:1 | 4.5 | pass |
+| Success badge (1.4.3) | `--fg-success` #1C5F3F | `--bg-success` #EAF6F0 | 6.87:1 | 4.5 | pass |
+| Warning badge (1.4.3) | `--fg-warning` #9B5608 | `--bg-warning` #FBF2DF | 5.06:1 | 4.5 | pass |
+| Error badge (1.4.3) | `--fg-error` #911A12 | `--bg-error` #FBEBE9 | 7.69:1 | 4.5 | pass |
+| Field error (1.4.3) | `--fg-error` #911A12 | `--bg-base` #FFFFFF | 8.90:1 | 4.5 | pass |
+| Error border (1.4.11) | `--border-error` #AB2117 | `--bg-base` #FFFFFF | 7.09:1 | 3.0 | pass |
+| On primary (1.4.3) | `--fg-on-primary` #FFFFFF | `--primary` #5B2FC9 | 7.79:1 | 4.5 | pass |
+| On primary hover (1.4.3) | `--fg-on-primary` #FFFFFF | `--primary-hover` #4322A0 | 10.63:1 | 4.5 | pass |
+| On primary active (1.4.3) | `--fg-on-primary` #FFFFFF | `--primary-active` #2E1065 | 15.24:1 | 4.5 | pass |
+| On error (1.4.3) | `--fg-on-error` #FFFFFF | `--bg-error-strong` #AB2117 | 7.09:1 | 4.5 | pass |
+| On error hover (1.4.3) | `--fg-on-error` #FFFFFF | `--bg-error-strong-hover` #C12A1F | 5.80:1 | 4.5 | pass |
+| On inverse (1.4.3) | `--fg-on-inverse` #FFFFFF | `--bg-inverse` #5B2FC9 | 7.79:1 | 4.5 | pass |
+| Tertiary hover (1.4.3) | `--primary` #5B2FC9 | `--bg-hover-subtle` #F5F5F7 | 7.16:1 | 4.5 | pass |
+| Default badge (1.4.3) | `--fg-default` #262831 | `--bg-disabled` #EBECEF | 12.43:1 | 4.5 | pass |
+| Primary badge (1.4.3) | `--primary-strong` #4322A0 | `--primary-tint` #EFE8FC | 8.92:1 | 4.5 | pass |
+| Decorative border | `--border-default` #DDDEE3 | `--bg-base` #FFFFFF | 1.34:1 | n/a (decorative) | documented |
+
+## Amber theme
+
+Hue-only. Showcase `html[data-theme="amber"]` overlays `--brand-*` on the default tokens.
+
+| Pair | Foreground | Background | Ratio | Required | Result |
+|---|---|---|---:|---:|---|
+| Body text (1.4.3) | `--fg-default` #262831 | `--bg-base` #FFFFFF | 14.68:1 | 4.5 | pass |
+| Placeholder (1.4.3) | `--fg-placeholder` #6E7181 | `--bg-base` #FFFFFF | 4.84:1 | 4.5 | pass |
+| Control border (1.4.11) | `--border-strong` #8A8C99 | `--bg-base` #FFFFFF | 3.34:1 | 3.0 | pass |
+| Primary fill / link (1.4.3) | `--primary` #8A5800 | `--bg-base` #FFFFFF | 6.04:1 | 4.5 | pass |
+| Focus ring (1.4.11) | `--border-focus` #B900DA | `--bg-base` #FFFFFF | 5.15:1 | 3.0 | pass |
+| Info badge (1.4.3) | `--fg-info` #14447B | `--bg-info` #E7EFF8 | 8.45:1 | 4.5 | pass |
+| Success badge (1.4.3) | `--fg-success` #1C5F3F | `--bg-success` #EAF6F0 | 6.87:1 | 4.5 | pass |
+| Warning badge (1.4.3) | `--fg-warning` #9B5608 | `--bg-warning` #FBF2DF | 5.06:1 | 4.5 | pass |
+| Error badge (1.4.3) | `--fg-error` #911A12 | `--bg-error` #FBEBE9 | 7.69:1 | 4.5 | pass |
+| Field error (1.4.3) | `--fg-error` #911A12 | `--bg-base` #FFFFFF | 8.90:1 | 4.5 | pass |
+| Error border (1.4.11) | `--border-error` #AB2117 | `--bg-base` #FFFFFF | 7.09:1 | 3.0 | pass |
+| On primary (1.4.3) | `--fg-on-primary` #FFFFFF | `--primary` #8A5800 | 6.04:1 | 4.5 | pass |
+| On primary hover (1.4.3) | `--fg-on-primary` #FFFFFF | `--primary-hover` #5C3A00 | 10.19:1 | 4.5 | pass |
+| On primary active (1.4.3) | `--fg-on-primary` #FFFFFF | `--primary-active` #3D2600 | 14.23:1 | 4.5 | pass |
+| On error (1.4.3) | `--fg-on-error` #FFFFFF | `--bg-error-strong` #AB2117 | 7.09:1 | 4.5 | pass |
+| On error hover (1.4.3) | `--fg-on-error` #FFFFFF | `--bg-error-strong-hover` #C12A1F | 5.80:1 | 4.5 | pass |
+| On inverse (1.4.3) | `--fg-on-inverse` #FFFFFF | `--bg-inverse` #8A5800 | 6.04:1 | 4.5 | pass |
+| Tertiary hover (1.4.3) | `--primary` #8A5800 | `--bg-hover-subtle` #F5F5F7 | 5.55:1 | 4.5 | pass |
+| Default badge (1.4.3) | `--fg-default` #262831 | `--bg-disabled` #EBECEF | 12.43:1 | 4.5 | pass |
+| Primary badge (1.4.3) | `--primary-strong` #5C3A00 | `--primary-tint` #FDF3E0 | 9.26:1 | 4.5 | pass |
 | Decorative border | `--border-default` #DDDEE3 | `--bg-base` #FFFFFF | 1.34:1 | n/a (decorative) | documented |
 
 ## Forge theme
@@ -56,6 +144,9 @@ Showcase `html[data-theme="forge"]` overlays on the default tokens. Forge remaps
 | On error (1.4.3) | `--fg-on-error` #FFFFFF | `--bg-error-strong` #AB2117 | 7.09:1 | 4.5 | pass |
 | On error hover (1.4.3) | `--fg-on-error` #FFFFFF | `--bg-error-strong-hover` #C12A1F | 5.80:1 | 4.5 | pass |
 | On inverse (1.4.3) | `--fg-on-inverse` #FFFFFF | `--bg-inverse` #94401C | 6.98:1 | 4.5 | pass |
+| Tertiary hover (1.4.3) | `--primary` #94401C | `--bg-hover-subtle` #F8F5F1 | 6.42:1 | 4.5 | pass |
+| Default badge (1.4.3) | `--fg-default` #332E28 | `--bg-disabled` #F1ECE5 | 11.44:1 | 4.5 | pass |
+| Primary badge (1.4.3) | `--primary-strong` #783316 | `--primary-tint` #F9E4D8 | 7.50:1 | 4.5 | pass |
 | Decorative border | `--border-default` #E4DDD3 | `--bg-base` #FFFFFF | 1.35:1 | n/a (decorative) | documented |
 
 Run:

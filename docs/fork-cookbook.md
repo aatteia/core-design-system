@@ -4,12 +4,12 @@ Short path from Core to a named system. Detail lives in [extending.md](extending
 
 ## Checklist
 
-1. **Pin the Core version.** Read `package.json` `version` (currently `1.2.0`). Record it in the fork README.
+1. **Pin the Core version.** Core is not on npm. `package.json` sets `"private": true`. Read `package.json` `version` (currently `1.2.0`). Record it in the fork README. Pin a git commit or vendor `tokens.css` and `components.css`. Example in the [root README](../README.md#consume).
 2. **Copy or fork** this repository into a new folder or repo.
 3. **Hue-only.** Replace the ten `--brand-*` values (`25` → `800`). Stop here if identity is one hue. Do not edit `components.css` for colour.
-4. **Optional five-axis.** Recast neutrals, type, radius, and density in tokens. Showcase **Forge** is the proof: same recipes, different identity. Record which public roles changed and why.
+4. **Optional five-axis.** Recast neutrals, type, radius, and density in tokens. Showcase **Forge** is the proof: same recipes, different identity. Record which public roles changed and why. Forge sets `--control-height` to 40px. That meets WCAG 2.2 SC 2.5.8 (24px AA). It sits below Core's 44px `--hit-target` and SC 2.5.5 (44px AAA). Copy that density only if the smaller target is intended.
 5. **Fonts and assets.** Swap files in `fonts/`. Update `--font-*` and the `@font-face` block. Drop a logo into `assets/` (Core ships none).
-6. **Re-run contrast.** `node scripts/check-contrast.mjs`. The script checks the default theme and Forge. A fork that remaps roles must still pass those pairs, or extend the script for the new theme.
+6. **Re-run contrast.** `node scripts/check-contrast.mjs`. The script checks default, Teal, Violet, Amber, and Forge. A fork that remaps roles must still pass those pairs, or extend the script for the new theme.
 7. **Showcase (optional).** Point `showcase/src/app/globals.css` Layer 2 at the new ramp. Run `npm run dev` in `showcase/`.
 
 ## Done when

@@ -72,6 +72,35 @@ function SemanticSwatch({ name, role }: { name: string; role: string }): React.J
 
 const fullRamp = ["25", "50", "100", "200", "300", "400", "500", "600", "700", "800"];
 
+const CHIP_LABELS = ["All", "Selected", "Filterable"] as const;
+
+function ChipRow(): React.JSX.Element {
+  const [pressed, setPressed] = useState<Record<(typeof CHIP_LABELS)[number], boolean>>({
+    All: false,
+    Selected: true,
+    Filterable: false,
+  });
+
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center", marginTop: 16 }}>
+      {CHIP_LABELS.map((label) => {
+        const isPressed = pressed[label];
+        return (
+          <button
+            key={label}
+            type="button"
+            className={isPressed ? "ds-chip ds-chip--selected" : "ds-chip"}
+            aria-pressed={isPressed}
+            onClick={() => setPressed((current) => ({ ...current, [label]: !current[label] }))}
+          >
+            {label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 const COOKBOOK_HREF =
   "https://github.com/aatteia/core-design-system/blob/main/docs/fork-cookbook.md";
 const TOKEN_CONTRACT_HREF =
@@ -271,14 +300,31 @@ export default function Page(): React.JSX.Element {
           <Section id="inputs" eyebrow="Components" title="Inputs" intro="Labelled fields with hint, focus, and error states. The focus ring lands on every interactive surface.">
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 20, maxWidth: 760 }}>
               <div className="ds-field">
-                <label className="ds-field__label">Full name</label>
-                <input className="ds-input" placeholder="Ada Lovelace" />
-                <span className="ds-field__hint">As it appears on your ID.</span>
+                <label className="ds-field__label" htmlFor="demo-full-name">Full name</label>
+                <input
+                  className="ds-input"
+                  id="demo-full-name"
+                  name="full-name"
+                  type="text"
+                  autoComplete="name"
+                  placeholder="Ada Lovelace"
+                  aria-describedby="demo-full-name-hint"
+                />
+                <span className="ds-field__hint" id="demo-full-name-hint">As it appears on your ID.</span>
               </div>
               <div className="ds-field">
-                <label className="ds-field__label">Email</label>
-                <input className="ds-input" aria-invalid="true" defaultValue="not-an-email" />
-                <span className="ds-field__error"><IconError /> Enter a valid email address.</span>
+                <label className="ds-field__label" htmlFor="demo-email">Email</label>
+                <input
+                  className="ds-input"
+                  id="demo-email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  aria-invalid="true"
+                  aria-describedby="demo-email-error"
+                  defaultValue="not-an-email"
+                />
+                <span className="ds-field__error" id="demo-email-error"><IconError /> Enter a valid email address.</span>
               </div>
             </div>
           </Section>
@@ -293,20 +339,16 @@ export default function Page(): React.JSX.Element {
               <span className="ds-badge ds-badge--warning">Warning</span>
               <span className="ds-badge ds-badge--error">Error</span>
             </div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center", marginTop: 16 }}>
-              <button className="ds-chip">All</button>
-              <button className="ds-chip ds-chip--selected">Selected</button>
-              <button className="ds-chip">Filterable</button>
-            </div>
+            <ChipRow />
           </Section>
 
           {/* breadcrumbs */}
           <Section id="breadcrumbs" eyebrow="Components" title="Breadcrumbs" intro="A compact path with separators and a current-page marker.">
-            <nav className="ds-breadcrumb">
+            <nav className="ds-breadcrumb" aria-label="Breadcrumb">
               <a href="#overview">Home</a>
-              <span className="ds-breadcrumb__sep">/</span>
+              <span className="ds-breadcrumb__sep" aria-hidden="true">/</span>
               <a href="#buttons">Components</a>
-              <span className="ds-breadcrumb__sep">/</span>
+              <span className="ds-breadcrumb__sep" aria-hidden="true">/</span>
               <span className="ds-breadcrumb__current">Breadcrumbs</span>
             </nav>
           </Section>

@@ -3,8 +3,8 @@
  * Resolve colour roles from tokens.css, check WCAG 2.2 pairs, write
  * docs/accessibility.md. Exit 1 if a required pair fails.
  *
- * Also overlays the showcase Forge theme and checks the same pairs.
- * Forge remaps --border-strong, --fg-placeholder, and --focus-500.
+ * Overlays showcase themes from globals.css: Teal, Violet, Amber (hue-only)
+ * and Forge (five-axis). Fail the run if any required pair is below threshold.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -12,7 +12,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const tokensPath = path.join(root, "tokens.css");
-const forgePath = path.join(root, "showcase", "src", "app", "globals.css");
+const showcaseCssPath = path.join(root, "showcase", "src", "app", "globals.css");
 const outPath = path.join(root, "docs", "accessibility.md");
 
 function parseDecls(css) {
@@ -28,7 +28,7 @@ function parseDecls(css) {
 function extractThemeBlock(css, theme) {
   const re = new RegExp(`html\\[data-theme="${theme}"\\]\\s*\\{([\\s\\S]*?)\\n\\}`);
   const match = css.match(re);
-  if (!match) throw new Error(`Missing html[data-theme="${theme}"] block in ${path.relative(root, forgePath)}`);
+  if (!match) throw new Error(`Missing html[data-theme="${theme}"] block in ${path.relative(root, showcaseCssPath)}`);
   return match[1];
 }
 
@@ -83,6 +83,33 @@ const pairs = [
   { name: "On error", fg: "--fg-on-error", bg: "--bg-error-strong", min: 4.5, sc: "1.4.3" },
   { name: "On error hover", fg: "--fg-on-error", bg: "--bg-error-strong-hover", min: 4.5, sc: "1.4.3" },
   { name: "On inverse", fg: "--fg-on-inverse", bg: "--bg-inverse", min: 4.5, sc: "1.4.3" },
+  // Non-base surfaces used by recipes. Do not add pairs the CSS does not paint.
+  { name: "Tertiary hover", fg: "--primary", bg: "--bg-hover-subtle", min: 4.5, sc: "1.4.3" },
+  { name: "Default badge", fg: "--fg-default", bg: "--bg-disabled", min: 4.5, sc: "1.4.3" },
+  { name: "Primary badge", fg: "--primary-strong", bg: "--primary-tint", min: 4.5, sc: "1.4.3" },
+];
+
+const overlayThemes = [
+  {
+    id: "teal",
+    heading: "Teal theme",
+    blurb: "Hue-only. Showcase `html[data-theme=\"teal\"]` overlays `--brand-*` on the default tokens.",
+  },
+  {
+    id: "violet",
+    heading: "Violet theme",
+    blurb: "Hue-only. Showcase `html[data-theme=\"violet\"]` overlays `--brand-*` on the default tokens.",
+  },
+  {
+    id: "amber",
+    heading: "Amber theme",
+    blurb: "Hue-only. Showcase `html[data-theme=\"amber\"]` overlays `--brand-*` on the default tokens.",
+  },
+  {
+    id: "forge",
+    heading: "Forge theme",
+    blurb: "Showcase `html[data-theme=\"forge\"]` overlays on the default tokens. Forge remaps `--border-strong`, `--fg-placeholder`, `--fg-subtle`, `--fg-disabled`, and `--focus-500`.",
+  },
 ];
 
 function checkTheme(decls) {
@@ -131,12 +158,14 @@ function tableLines(result) {
 }
 
 const tokensCss = fs.readFileSync(tokensPath, "utf8");
-const showcaseCss = fs.readFileSync(forgePath, "utf8");
-const forgeBlock = extractThemeBlock(showcaseCss, "forge");
+const showcaseCss = fs.readFileSync(showcaseCssPath, "utf8");
 
 const defaultResult = checkTheme(parseDecls(tokensCss));
-const forgeResult = checkTheme(parseDecls(`${tokensCss}\n${forgeBlock}`));
-const failed = defaultResult.failed + forgeResult.failed;
+const overlayResults = overlayThemes.map((theme) => {
+  const block = extractThemeBlock(showcaseCss, theme.id);
+  return { ...theme, result: checkTheme(parseDecls(`${tokensCss}\n${block}`)) };
+});
+const failed = defaultResult.failed + overlayResults.reduce((sum, theme) => sum + theme.result.failed, 0);
 
 const lines = [];
 lines.push("# Accessibility baseline");
@@ -150,17 +179,20 @@ lines.push("`--border-control` aliases `--border-strong`. Interactive edges must
 lines.push("`--hit-target` aliases `--control-height` (44px). Compact controls use `--control-height-sm` (32px). Large controls use `--control-height-lg`.");
 lines.push("`prefers-reduced-motion` sets `--motion-duration` to `0ms`. `forced-colors` restyles focus and borders in `components.css`.");
 lines.push("Focus is a 2px `outline` in `--focus-ring`, coloured by `--border-focus` (from `--focus-500`). Strong fills pair with `--fg-on-primary`, `--fg-on-error`, and `--fg-on-inverse`.");
+lines.push("Non-`--bg-base` pairs are recipe surfaces: tertiary hover (`--bg-hover-subtle`), default badge (`--bg-disabled`), primary badge (`--primary-tint`). Recipes do not paint text on `--bg-subtle` or `--bg-muted`.");
 lines.push("");
 lines.push("## Default theme");
 lines.push("");
 lines.push(...tableLines(defaultResult));
 lines.push("");
-lines.push("## Forge theme");
-lines.push("");
-lines.push("Showcase `html[data-theme=\"forge\"]` overlays on the default tokens. Forge remaps `--border-strong`, `--fg-placeholder`, `--fg-subtle`, `--fg-disabled`, and `--focus-500`.");
-lines.push("");
-lines.push(...tableLines(forgeResult));
-lines.push("");
+for (const theme of overlayResults) {
+  lines.push(`## ${theme.heading}`);
+  lines.push("");
+  lines.push(theme.blurb);
+  lines.push("");
+  lines.push(...tableLines(theme.result));
+  lines.push("");
+}
 lines.push("Run:");
 lines.push("");
 lines.push("```bash");

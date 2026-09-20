@@ -18,7 +18,8 @@ Use these if you are adopting or forking Core.
 | [Extending](extending.md) | Kernel / fork / product layers. How to derive a theme |
 | [Component recipes](components/README.md) | Shipped `.ds-*` surfaces |
 | [Showcase](https://core-design-system.pages.dev) | Live token explorer and gallery |
-| [Accessibility](accessibility.md) | Generated contrast table (default + Forge) |
+| [Accessibility](accessibility.md) | Generated contrast table (default, hue themes, Forge) |
+| [Consume](../README.md#consume) | Not on npm. `private: true`. Pin a git commit or vendor a copy |
 
 ## Internal / steward
 

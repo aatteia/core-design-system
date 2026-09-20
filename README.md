@@ -77,6 +77,34 @@ Token layers: [`docs/extending.md`](docs/extending.md) and
 is a faithful, interactive realisation of the same tokens. It copies `tokens.css` and
 `components.css` at build time. It is not a second source of truth.
 
+## Consume
+
+Core is not on npm. `package.json` sets `"private": true`. There is no registry package.
+
+Pin a git commit, or vendor a copy of `tokens.css` and `components.css`. Record the Core
+version from `package.json` (currently `1.2.0`) in the consumer README.
+
+Git pin with npm:
+
+```json
+{
+  "dependencies": {
+    "core-design-system": "github:aatteia/core-design-system#059c364"
+  }
+}
+```
+
+`059c364` is the `1.2.0` release. Replace the SHA when you move pin.
+
+Vendor copy:
+
+```bash
+# From a clone at the pinned commit:
+cp tokens.css components.css path/to/your-app/vendor/core/
+```
+
+Then link those two files. Fork steps: [`docs/fork-cookbook.md`](docs/fork-cookbook.md).
+
 ## Kernel and fork
 
 Core ships the decisions that stay stable across products. A fork adds identity.
