@@ -57,7 +57,7 @@ three height tokens.
 
 ## How to derive a theme
 
-1. Pin the Core version you branched from (`package.json` `version`, currently `1.2.0`).
+1. Pin the Core version you branched from (`package.json` `version`, currently `1.2.1`).
 2. Override primitives on a wrapper such as `html[data-theme="name"]`.
 3. Keep role tokens pointing at primitives unless a role must diverge.
 4. Keep overrides type-compatible. For a deep fork, record which public tokens changed

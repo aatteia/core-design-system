@@ -82,19 +82,21 @@ is a faithful, interactive realisation of the same tokens. It copies `tokens.css
 Core is not on npm. `package.json` sets `"private": true`. There is no registry package.
 
 Pin a git commit, or vendor a copy of `tokens.css` and `components.css`. Record the Core
-version from `package.json` (currently `1.2.0`) in the consumer README.
+version from `package.json` (currently `1.2.1`) in the consumer README.
 
 Git pin with npm:
 
 ```json
 {
   "dependencies": {
-    "core-design-system": "github:aatteia/core-design-system#059c364"
+    "core-design-system": "github:aatteia/core-design-system#v1.2.1"
   }
 }
 ```
 
-`059c364` is the `1.2.0` release. Replace the SHA when you move pin.
+`v1.2.1` is the tag to create on the 1.2.1 merge commit. This repo has no tags yet.
+After merge: `git tag v1.2.1 <merge-sha> && git push origin v1.2.1`.
+Until that tag exists, pin the merge SHA. `059c364` remains the `1.2.0` pin.
 
 Vendor copy:
 
@@ -179,6 +181,6 @@ Open Sans variable fonts are SIL OFL 1.1. See `fonts/OFL.txt`.
 
 ## Versioning
 
-Core is versioned independently of any fork. `1.2.0` is the current public release
+Core is versioned independently of any fork. `1.2.1` is the current public release
 (`CHANGELOG.md`). Forks pin to the Core version they branched from. Renaming or
 removing a public token is a breaking change. See [`docs/token-contract.md`](docs/token-contract.md).
