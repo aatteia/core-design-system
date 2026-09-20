@@ -35,3 +35,7 @@ Use these if you maintain Core.
 | [Plans](plans/README.md) | Historical Increment work. Not the current roadmap |
 
 Current judgement is the [charter](charter.md) and the [token contract](token-contract.md).
+
+## Showcase chrome
+
+The live showcase frame is **Product dense** by default. Editorial steward, Portfolio hero, and Soft glass are selectable chrome moods (`html[data-mood]`). They restyle `.sc-*` only. They do not change the kernel. Brand themes stay on `data-theme` (Indigo, Teal, Violet, Amber, Forge).

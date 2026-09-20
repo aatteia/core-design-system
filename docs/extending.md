@@ -32,7 +32,7 @@ what contrast was re-checked.
 | Private ramps | `--brand-*`, `--neutral-*`, `--info-*`, `--success-*`, `--warning-*`, `--error-*`, `--black-*`, `--focus-500` | Yes, on the fork wrapper. Recipes must not read these. |
 | Public roles | `--primary*`, `--fg-*`, `--bg-*`, `--border-*`, `--focus-ring` | Yes, if a ramp remap is not enough. This is what recipes consume. |
 | Recipes | `.ds-*` in `components.css` | No, unless you are replacing that component. |
-| Showcase chrome | `.sc-*` | Not part of Core. Do not ship it. |
+| Showcase chrome | `.sc-*` | Not part of Core. Do not ship it. Showcase moods use `html[data-mood]` (Product, Editorial, Portfolio, Glass). |
 
 A fork recolours `--brand-*` or `--focus-500`. Recipes stay on roles (`--primary`,
 `--border-focus`, `--fg-on-primary`). Do not point a recipe at a ramp step.

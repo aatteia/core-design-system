@@ -11,6 +11,11 @@ See `docs/token-contract.md`.
 
 ## Unreleased
 
+### Added
+- Showcase chrome moods: Editorial steward, Portfolio hero, and Soft glass.
+  Switch them with `html[data-mood]`. Product dense stays the default chrome.
+  Brand themes stay on `data-theme`. No new `.ds-*` recipes.
+
 ## v1.2.1 — 2026-09-20
 
 Showcase a11y, contrast CI, consume path, honesty tone, and product-dense chrome.
