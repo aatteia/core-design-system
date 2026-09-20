@@ -19,6 +19,8 @@ See `docs/token-contract.md`.
 ### Fixed
 - Showcase sidebar search uses one `--focus-ring` on `:focus-visible`.
   The old `:focus` outline stacked with Chrome's UA ring.
+- Showcase sidebar search focus ring is no longer clipped on the left.
+  `.sc-nav` keeps left padding so `overflow-y: auto` cannot crop the outline.
 
 ## v1.2.0 — 2026-09-20
 
