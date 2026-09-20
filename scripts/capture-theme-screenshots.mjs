@@ -2,6 +2,8 @@
  * Recapture README theme screenshots from the live showcase.
  *
  *   npx --yes puppeteer-core@24 node scripts/capture-theme-screenshots.mjs
+ *
+ * Optional: SHOWCASE_URL (default Pages URL), CHROME_PATH (default macOS Chrome).
  */
 import puppeteer from "puppeteer-core";
 import { mkdir } from "node:fs/promises";
@@ -10,15 +12,17 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = path.join(root, "docs/images");
-const url = "https://core-design-system.pages.dev/";
+const url = process.env.SHOWCASE_URL ?? "https://core-design-system.pages.dev/";
+const executablePath =
+  process.env.CHROME_PATH ??
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 await mkdir(outDir, { recursive: true });
 
 const browser = await puppeteer.launch({
-  executablePath:
-    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  executablePath,
   headless: true,
-  args: ["--hide-scrollbars"],
+  args: ["--hide-scrollbars", "--no-sandbox", "--disable-setuid-sandbox"],
   defaultViewport: { width: 1440, height: 900, deviceScaleFactor: 2 },
 });
 
