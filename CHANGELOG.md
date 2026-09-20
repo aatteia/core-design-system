@@ -16,6 +16,11 @@ See `docs/token-contract.md`.
   component recipe pages, decision log, steward runbook, and agent pack.
   Increment plans labelled historical under `docs/plans/`.
 
+### Changed
+- Showcase chrome is product-dense: 48px top bar, segmented theme control,
+  compact sidebar, and a tighter overview with cookbook and token-contract
+  links plus Kernel / Fork / Proof cards.
+
 ### Fixed
 - Showcase sidebar search uses one `--focus-ring` on `:focus-visible`.
   The old `:focus` outline stacked with Chrome's UA ring.

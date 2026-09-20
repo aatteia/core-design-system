@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { IconBars, IconError, IconExternal, IconMark, IconPlus } from "@/components/icons";
+import { IconError, IconExternal, IconPlus } from "@/components/icons";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { SidebarNav } from "@/components/sidebar-nav";
 
@@ -72,6 +72,11 @@ function SemanticSwatch({ name, role }: { name: string; role: string }): React.J
 
 const fullRamp = ["25", "50", "100", "200", "300", "400", "500", "600", "700", "800"];
 
+const COOKBOOK_HREF =
+  "https://github.com/aatteia/core-design-system/blob/main/docs/fork-cookbook.md";
+const TOKEN_CONTRACT_HREF =
+  "https://github.com/aatteia/core-design-system/blob/main/docs/token-contract.md";
+
 /* ── page ───────────────────────────────────────────────────────────────── */
 
 export default function Page(): React.JSX.Element {
@@ -82,21 +87,19 @@ export default function Page(): React.JSX.Element {
       {/* top bar — full-width chrome */}
       <header className="sc-topbar">
         <div className="sc-topbar__inner">
-          <button
-            type="button"
-            className="sc-nav-toggle"
-            aria-label="Toggle navigation"
-            aria-expanded={navOpen}
-            onClick={() => setNavOpen((v) => !v)}
-          >
-            <IconBars />
-          </button>
-          <span className="sc-brand">
-            <IconMark /> Core
-          </span>
-          <span className="sc-version">v1.1</span>
-          <div style={{ marginLeft: "auto" }}>
+          <span className="sc-brand">Core</span>
+          <span className="sc-version">1.2.0</span>
+          <div className="sc-topbar__tools">
             <ThemeSwitcher />
+            <button
+              type="button"
+              className="sc-nav-toggle"
+              aria-label={navOpen ? "Close navigation" : "Open navigation"}
+              aria-expanded={navOpen}
+              onClick={() => setNavOpen((v) => !v)}
+            >
+              Menu
+            </button>
           </div>
         </div>
       </header>
@@ -108,16 +111,48 @@ export default function Page(): React.JSX.Element {
 
         <main className="sc-content">
           {/* hero / overview */}
-          <section id="overview" style={{ padding: "48px 0 8px" }}>
-            <div className="eyebrow" style={{ marginBottom: 12 }}>Brand-agnostic foundation</div>
-            <h1 className="h-display-s" style={{ maxWidth: 760, marginBottom: 16 }}>
-              A mature design-system foundation you rebrand from a single colour ramp.
-            </h1>
-            <p className="body-l" style={{ maxWidth: 620, color: "var(--fg-muted)" }}>
-              Core is the part of a design system that&rsquo;s the same no matter who you are — the
-              grid, type scale, elevation, focus model, and component anatomy. Switch the theme above:
-              every surface re-skins from ten <code style={{ fontFamily: "var(--font-mono)" }}>--brand-*</code> values.
-            </p>
+          <section id="overview" className="sc-hero">
+            <div className="sc-hero__row">
+              <div>
+                <h1 className="sc-hero__title">Rebrand from one ramp. Ship from two CSS files.</h1>
+                <p className="sc-hero__lede">
+                  Core is a brand-agnostic kernel: tokens + recipes. Use the showcase to verify
+                  forks. Not a client product.
+                </p>
+              </div>
+              <div className="sc-hero__actions">
+                <a
+                  className="sc-cta sc-cta--primary"
+                  href={COOKBOOK_HREF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open cookbook<span className="sr-only"> (opens in a new tab)</span>
+                </a>
+                <a
+                  className="sc-cta sc-cta--secondary"
+                  href={TOKEN_CONTRACT_HREF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Token contract<span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              </div>
+            </div>
+            <div className="sc-stats">
+              <div className="sc-stat">
+                <p className="sc-stat__label">Kernel</p>
+                <p className="sc-stat__value">tokens.css · components.css</p>
+              </div>
+              <div className="sc-stat">
+                <p className="sc-stat__label">Fork</p>
+                <p className="sc-stat__value">data-theme overrides</p>
+              </div>
+              <div className="sc-stat">
+                <p className="sc-stat__label">Proof</p>
+                <p className="sc-stat__value">Forge five-axis theme</p>
+              </div>
+            </div>
           </section>
 
           {/* colour */}
@@ -276,7 +311,7 @@ export default function Page(): React.JSX.Element {
 
           <footer style={{ paddingTop: 40, color: "var(--fg-muted)" }}>
             <p className="body-s">
-              Core Design System 1.1 — a brand-agnostic foundation. Fork it, replace the
+              Core Design System 1.2. A brand-agnostic foundation. Fork it, replace the
               <code style={{ fontFamily: "var(--font-mono)" }}> --brand-* </code> ramp and fonts, and ship.
             </p>
           </footer>
