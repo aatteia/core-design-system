@@ -11,7 +11,9 @@ See `docs/token-contract.md`.
 
 ## Unreleased
 
-Nothing yet.
+### Fixed
+- Showcase sidebar search uses one `--focus-ring` on `:focus-visible`.
+  The old `:focus` outline stacked with Chrome's UA ring.
 
 ## v1.2.0 — 2026-09-20
 
