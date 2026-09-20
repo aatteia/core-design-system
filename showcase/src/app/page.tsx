@@ -83,7 +83,7 @@ export default function Page(): React.JSX.Element {
   const [navOpen, setNavOpen] = useState(false);
 
   return (
-    <div className="ds" style={{ minHeight: "100vh" }}>
+    <div style={{ minHeight: "100vh" }}>
       {/* top bar — full-width chrome */}
       <header className="sc-topbar">
         <div className="sc-topbar__inner">
@@ -154,6 +154,8 @@ export default function Page(): React.JSX.Element {
               </div>
             </div>
           </section>
+
+          <div className="ds">
 
           {/* colour */}
           <Section id="colour" eyebrow="Tokens" title="Colour" intro="One brand ramp drives every interactive surface. Neutrals and semantic ramps round out the palette.">
@@ -315,6 +317,7 @@ export default function Page(): React.JSX.Element {
               <code style={{ fontFamily: "var(--font-mono)" }}> --brand-* </code> ramp and fonts, and ship.
             </p>
           </footer>
+          </div>
         </main>
       </div>
     </div>
