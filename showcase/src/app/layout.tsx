@@ -6,6 +6,12 @@ export const metadata: Metadata = {
   title: "Core Design System 1.2 — Showcase",
   description:
     "Live token explorer and component gallery for Core, a brand-agnostic design-system foundation. Switch the brand theme to see the system rebrand from a single colour ramp.",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico" },
+    ],
+  },
 };
 
 export default function RootLayout({

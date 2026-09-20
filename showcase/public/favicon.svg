@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Core placeholder brand-600 on brand-50. Geometric C, no type. -->
+  <rect width="32" height="32" rx="8" fill="#3C4673"/>
+  <path fill="none" stroke="#F4F5F9" stroke-width="3.2" stroke-linecap="round" d="M21.2 9.6a8.4 8.4 0 1 0 0 12.8"/>
+</svg>
