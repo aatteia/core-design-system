@@ -6,7 +6,7 @@ Release checklist for people who maintain Core. Judgement sits in the [charter](
 
 ## Before you tag
 
-1. **Contrast.** `node scripts/check-contrast.mjs` must exit 0. The script writes `docs/accessibility.md` for the default theme and Forge. Do not edit that file by hand.
+1. **Contrast.** `node scripts/check-contrast.mjs` must exit 0. The script writes `docs/accessibility.md` for default, Teal, Violet, Amber, and Forge. Do not edit that file by hand.
 2. **Showcase build.** From `showcase/`: `npm run build`. Confirm the copy of `tokens.css` / `components.css` is generated at build, not hand-edited in `out/`.
 3. **Changelog.** Add the release notes. If a **public** token was renamed or removed, include an old→new map. That is a **major** bump. Aliases are a minor. See the SemVer section in the token contract.
 4. **Version.** Bump `package.json` `version`. Forks pin this number. Docs-only work may sit under Unreleased until the next kernel patch.

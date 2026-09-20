@@ -15,6 +15,6 @@ Hue-only themes (Teal, Violet, Amber) remain. They are not the proof.
 
 ## Consequences
 
-- Contrast script overlays Forge and checks the same pairs as default.
+- Contrast script overlays Teal, Violet, Amber, and Forge and checks the same pairs as default.
 - A deep fork should record which public roles it remapped and re-run contrast.
 - Do not edit recipes to “make Forge look right.”

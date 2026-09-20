@@ -32,6 +32,7 @@ Focus offset is 1px.
 ## Do
 
 - Associate the label with the control (`for` / `id`).
+- Point hint and error text at the control with `aria-describedby`.
 - Set `aria-invalid="true"` when showing `.ds-field__error`.
 - Keep `--border-error` as a second cue alongside the error text.
 
@@ -43,7 +44,7 @@ Focus offset is 1px.
 ```html
 <div class="ds-field">
   <label class="ds-field__label" for="email">Email</label>
-  <input class="ds-input" id="email" type="email" autocomplete="email">
-  <p class="ds-field__hint">We’ll only use this to send the receipt.</p>
+  <input class="ds-input" id="email" type="email" autocomplete="email" aria-describedby="email-hint">
+  <p class="ds-field__hint" id="email-hint">We’ll only use this to send the receipt.</p>
 </div>
 ```

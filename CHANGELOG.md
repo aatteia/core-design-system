@@ -11,19 +11,32 @@ See `docs/token-contract.md`.
 
 ## Unreleased
 
+### Fixed
+- Showcase field demos associate each label with its control (`htmlFor` / `id`)
+  and wire hint and error text with `aria-describedby`. The error example keeps
+  `aria-invalid="true"`.
+- Showcase chips set `aria-pressed` to match selected state.
+- Showcase breadcrumbs use `aria-label="Breadcrumb"`. Separators are
+  `aria-hidden="true"`.
+- Showcase sidebar search uses one `--focus-ring` on `:focus-visible`.
+  The old `:focus` outline stacked with Chrome's UA ring.
+
 ### Added
+- Contrast script checks Teal, Violet, and Amber hue themes as well as default
+  and Forge. It also checks tertiary hover and badge fills on non-`--bg-base`
+  surfaces the recipes actually paint.
+- README consume path: not on npm, `"private": true`, git pin or vendor copy.
 - Documentation hub at `docs/README.md`: fork path, steward path, fork cookbook,
   component recipe pages, decision log, steward runbook, and agent pack.
   Increment plans labelled historical under `docs/plans/`.
 
 ### Changed
+- `SKILL.md` no longer says Core is for production or that it is mature.
+- Forge notes in `globals.css` and the fork cookbook call out the 40px default
+  control height against WCAG 2.2 target size (SC 2.5.8 / 2.5.5).
 - Showcase chrome is product-dense: 48px top bar, segmented theme control,
   compact sidebar, and a tighter overview with cookbook and token-contract
   links plus Kernel / Fork / Proof cards.
-
-### Fixed
-- Showcase sidebar search uses one `--focus-ring` on `:focus-visible`.
-  The old `:focus` outline stacked with Chrome's UA ring.
 
 ## v1.2.0 — 2026-09-20
 

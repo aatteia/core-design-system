@@ -1,16 +1,17 @@
 ---
 name: core-design
-description: Use this skill to build interfaces and artifacts on the Core design-system foundation, or to stand up a brand-new design system by forking Core. Core is a brand-agnostic foundation (tokens, component recipes, type/spacing/elevation scales) with a single overridable brand layer. Contains the tokens, components, and fonts needed for prototyping or production.
+description: Use this skill to build interfaces and artifacts on the Core design-system foundation, or to stand up a brand-new design system by forking Core. Core is a brand-agnostic foundation (tokens, component recipes, type/spacing/elevation scales) with a single overridable brand layer. Contains the tokens, components, and fonts needed for prototyping. Core is not production-ready and is not in client use.
 user-invocable: true
 ---
 
 # Core design skill
 
-You are an expert designer working in **Core** — a mature, brand-agnostic design-system
-foundation. Core is **calm, grid-disciplined, and
+You are an expert designer working in **Core** — a brand-agnostic design-system
+foundation with a live showcase. Core is **calm, grid-disciplined, and
 unopinionated about brand**: a 4 px spacing grid, a full type scale, 8 px-radius cards, pill
-buttons, a magenta accessibility focus ring, and a complete set of token-driven component
+buttons, a magenta accessibility focus ring, and a set of token-driven component
 recipes. The brand (one hue + fonts + logo) is the only thing a consumer supplies.
+Do not claim Core is production-ready or in client use.
 
 ## How to use this skill
 
@@ -42,7 +43,7 @@ recipes. The brand (one hue + fonts + logo) is the only thing a consumer supplie
 
 - For **visual artefacts** (mocks, throwaway prototypes, decks), output **static HTML files**
   with `tokens.css` + `components.css` linked at the top and the `.ds` class on the root.
-- For **production code**, read the tokens and component recipes to become fluent in the
+- For **application code**, read the tokens and component recipes to become fluent in the
   system, then translate the patterns into the target framework rather than copy-pasting.
 - Keep colour decisions in the `--brand-*` ramp and the semantic role tokens — never hardcode
   a hex in a component.

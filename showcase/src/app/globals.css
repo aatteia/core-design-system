@@ -85,6 +85,8 @@ html[data-theme="forge"] {
   --radius-lg: 12px;
   --radius-pill: 200px;
 
+  /* 40px default. Meets WCAG 2.2 SC 2.5.8 (24px AA). Below Core's 44px --hit-target
+     and SC 2.5.5 (44px AAA). Copy this density only if that tradeoff is intended. */
   --control-height: 40px;
   --control-height-sm: 32px;
   --control-height-lg: 48px;
