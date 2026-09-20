@@ -4,7 +4,8 @@
 **Last reviewed:** 20 September 2026
 
 This charter states what Core is, what it deliberately is not, and the criteria by which
-capabilities enter it. It does not describe work to be done — see `docs/plans/` for that.
+capabilities enter it. Current judgement also lives in `docs/token-contract.md`.
+Increment plans under `docs/plans/` are historical. See `docs/plans/README.md`.
 
 ---
 
