@@ -3,9 +3,21 @@
 All notable changes to the Core design system are recorded here.
 Core is versioned independently of any fork; forks pin to the Core version they branched from.
 
+**SemVer.** Renaming or removing a public token is a breaking change. Bump the major version.
+When a public token is renamed, this changelog includes an old→new map.
+See `docs/token-contract.md`.
+
 ---
 
 ## Unreleased
+
+Nothing yet.
+
+## v1.2.0 — 2026-09-20
+
+Research leftovers: token contract, override layers, SemVer policy, `--border-control`
+alias. Also ships the unreleased kernel work from after 1.1.0 (status roles, focus ring,
+Forge modern, on-fill contrast, Font Awesome hooks removed).
 
 ### Added
 - Status surface and text roles: `--fg-error`, `--fg-on-error`, `--bg-info` /
@@ -13,6 +25,14 @@ Core is versioned independently of any fork; forks pin to the Core version they 
   `--bg-error-strong`, `--bg-error-strong-hover`, and `--border-error`.
 - Public `--focus-ring` (`2px solid var(--border-focus)`). All keyboard-focus
   outlines use it.
+- `--border-control`, an alias of `--border-strong` (control edges, 3:1 on the
+  adjacent background). `--border-strong` remains.
+- `docs/token-contract.md`: public API, private ramps, brand/neutral step tables,
+  SemVer rules.
+- `docs/research/comparable-foundations.md`: condensed steward notes from the
+  comparable-systems pass.
+- Override layers in `docs/extending.md`: kernel, fork, product. Overrides stay
+  type-compatible. Deep forks record why they changed roles.
 
 ### Changed
 - Component recipes use those status roles only. They no longer read
