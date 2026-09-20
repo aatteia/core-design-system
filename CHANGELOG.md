@@ -12,6 +12,9 @@ See `docs/token-contract.md`.
 ## Unreleased
 
 ### Fixed
+- Showcase focus-ring demo input has an accessible name (`aria-label`).
+- Showcase ships a favicon (`/favicon.svg`, `/favicon.ico`) so the browser no
+  longer 404s the default icon request.
 - Showcase field demos associate each label with its control (`htmlFor` / `id`)
   and wire hint and error text with `aria-describedby`. The error example keeps
   `aria-invalid="true"`.

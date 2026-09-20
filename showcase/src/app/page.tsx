@@ -244,7 +244,15 @@ export default function Page(): React.JSX.Element {
           <Section id="focus" eyebrow="Tokens" title="Focus ring" intro="A single high-contrast focus ring applies to every interactive surface. Tab through the controls to see it.">
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
               <button className="ds-btn ds-btn--secondary">Tab to me</button>
-              <input className="ds-input" style={{ maxWidth: 220 }} placeholder="…then to me" />
+              <input
+                className="ds-input"
+                id="demo-focus-ring"
+                name="focus-ring-demo"
+                type="text"
+                style={{ maxWidth: 220 }}
+                placeholder="…then to me"
+                aria-label="Focus ring demo"
+              />
             </div>
             <p className="body-s" style={{ color: "var(--fg-muted)", marginTop: 12 }}>
               Driven by <code style={{ fontFamily: "var(--font-mono)" }}>--focus-ring</code> and <code style={{ fontFamily: "var(--font-mono)" }}>--border-focus</code> (from <code style={{ fontFamily: "var(--font-mono)" }}>--focus-500</code>).
