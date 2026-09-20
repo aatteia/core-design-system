@@ -35,7 +35,7 @@ three height tokens.
 4. Check `docs/accessibility.md` against the new primitives. Re-run `node scripts/check-contrast.mjs`.
 
 The showcase **Forge** theme is the falsification case: hue, warm neutrals, type, radius,
-and density, tokens only.
+and density, tokens only. The live Forge mood is copper, Fraunces, and pill primaries.
 
 ## Static HTML
 

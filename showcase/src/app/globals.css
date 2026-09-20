@@ -37,41 +37,64 @@ html[data-theme="amber"] {
   --brand-200: #FAE9C6; --brand-100: #FDF3E0; --brand-50: #FFFAF0; --brand-25: #FFFCF7;
 }
 
-/* Five-axis fork: hue, warm neutrals, type, radius, density. Tokens only. */
+/* Five-axis fork: hue, warm neutrals, type, radius, and density. Tokens only.
+   Must not edit components.css. */
 html[data-theme="forge"] {
-  --brand-800: #3A160A; --brand-700: #5C2410; --brand-600: #8C3A1A;
-  --brand-500: #A84B24; --brand-400: #C46E48; --brand-300: #DCA48C;
-  --brand-200: #F0D4C8; --brand-100: #F7E8E2; --brand-50: #FBF4F1; --brand-25: #FDF9F7;
+  /* Brand copper. Core's 25→800 scale; a prototype 900 maps into 800. */
+  --brand-800: #5C2712;
+  --brand-700: #783316;
+  --brand-600: #94401C;
+  --brand-500: #B2552B;
+  --brand-400: #CE764C;
+  --brand-300: #E29F79;
+  --brand-200: #F0C6AC;
+  --brand-100: #F9E4D8;
+  --brand-50:  #FDF5F0;
+  --brand-25:  #FDF9F7;
 
-  --neutral-800: #2B2622; --neutral-700: #3D3732; --neutral-600: #524B44;
-  --neutral-500: #6A6158; --neutral-400: #7A7066; --neutral-300: #9A9188;
-  --neutral-200: #E4DFD8; --neutral-100: #F0EBE4; --neutral-50: #F7F3EE; --neutral-25: #FBF8F4;
+  /* Warm stone. Prototype 0/900 stay --white / --black-*. */
+  --neutral-800: #332E28;
+  --neutral-700: #49423A;
+  --neutral-600: #61594D;
+  --neutral-500: #817668;
+  --neutral-400: #A69B8D;
+  --neutral-300: #CEC5B8;
+  --neutral-200: #E4DDD3;
+  --neutral-100: #F1ECE5;
+  --neutral-50:  #F8F5F1;
+  --neutral-25:  #FDFBF8;
 
-  --font-heading: Georgia, "Times New Roman", serif;
-  --font-body: system-ui, "Segoe UI", sans-serif;
-  --font-ui: system-ui, "Segoe UI", sans-serif;
-  --text-display-m: 40px; --lh-display-m: 44px;
-  --text-display-s: 32px; --lh-display-s: 36px;
+  --font-heading: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-ui: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --text-display-m: 48px; --lh-display-m: 52px;
+  --text-display-s: 40px; --lh-display-s: 44px;
   --text-h-xl: 36px; --lh-h-xl: 44px;
   --text-h-l: 28px; --lh-h-l: 36px;
   --text-h-m: 24px; --lh-h-m: 32px;
-  --text-body-l: 16px; --lh-body-l: 24px;
-  --text-body-m: 15px; --lh-body-m: 22px;
 
-  --radius-xs: 0;
-  --radius-sm: 2px;
-  --radius-md: 2px;
-  --radius-lg: 4px;
-  --radius-pill: 2px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 200px;
 
-  --control-height: 36px;
-  --control-height-sm: 28px;
-  --control-height-lg: 40px;
+  --control-height: 40px;
+  --control-height-sm: 32px;
+  --control-height-lg: 48px;
   --control-pad-y: 8px;
-  --control-pad-x: 14px;
-  --space-sm: 8px;
-  --space-md: 12px;
-  --space-x-big: 16px;
+  --control-pad-x: 16px;
+
+  /* Copper focus. Recipes still use outline / --shadow-focus. */
+  --focus-500: #CE764C;
+
+  /* Warm-stone 300/400 miss WCAG on white. Recipes read these roles. */
+  --border-strong: var(--neutral-500);
+  --fg-placeholder: var(--neutral-600);
+  --fg-subtle: var(--neutral-600);
+  --fg-disabled: var(--neutral-600);
 }
 
 html, body { margin: 0; padding: 0; }

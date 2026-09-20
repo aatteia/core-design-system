@@ -24,7 +24,7 @@ export const THEMES: ThemeMeta[] = [
   { id: "teal", label: "Teal", description: "Hue only", swatch: "#0E7C86" },
   { id: "violet", label: "Violet", description: "Hue only", swatch: "#5B2FC9" },
   { id: "amber", label: "Amber", description: "Hue only", swatch: "#8A5800" },
-  { id: "forge", label: "Forge", description: "Warm, sharp, compact five-axis fork", swatch: "#8C3A1A" },
+  { id: "forge", label: "Forge", description: "Warm copper five-axis fork", swatch: "#94401C" },
 ];
 
 interface ThemeContextValue {

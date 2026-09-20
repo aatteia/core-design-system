@@ -17,6 +17,11 @@ Core is versioned independently of any fork; forks pin to the Core version they 
   `--info-*`, `--success-*`, `--warning-*`, or `--error-*` ramp steps.
 - Icon buttons size to `--control-height` / `--control-height-sm` /
   `--control-height-lg`. Large icon buttons no longer hardcode 56px.
+- Showcase **Forge** theme: token-only modern copper mood. Refined brand and
+  warm-stone ramps, Fraunces + Plus Jakarta Sans + JetBrains Mono, softer
+  radii with pill primaries, 40/32/48 controls, and a copper `--focus-500`.
+  Placeholder and strong-border roles remap onto darker stone steps so those
+  pairs still meet WCAG on white. Recipes in `components.css` are unchanged.
 
 ## v1.1.0 — 2026-09-18
 
