@@ -20,6 +20,10 @@ Hue-only rebrand: override `--brand-*`.
 A deeper fork can also recast neutrals, type, radius, and density in tokens.
 Do not edit `components.css` for those. Forge is the five-axis proof.
 
+## Docs
+
+Hub: `docs/README.md`. Agents: `docs/agents.md`.
+
 ## Version
 
 See root `package.json` and `CHANGELOG.md`. Forks pin to the Core version they branched from.

@@ -11,7 +11,10 @@ See `docs/token-contract.md`.
 
 ## Unreleased
 
-Nothing yet.
+### Added
+- Documentation hub at `docs/README.md`: fork path, steward path, fork cookbook,
+  component recipe pages, decision log, steward runbook, and agent pack.
+  Increment plans labelled historical under `docs/plans/`.
 
 ## v1.2.0 — 2026-09-20
 

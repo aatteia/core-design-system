@@ -51,8 +51,8 @@ Core is a self-directed foundation with a live showcase. It is not a client prod
 6. **Optional** — rename the `.ds-*` component prefix if you want an ownable class API,
    though keeping `.ds-*` means future Core updates merge cleanly.
 
-That's the whole job. The neutral indigo-slate placeholder you see out of the box is
-*deliberately* unopinionated — it should look like a starting point, not a brand.
+That's the whole job. Scannable checklist: [`docs/fork-cookbook.md`](docs/fork-cookbook.md).
+The indigo-slate placeholder is a starting point, not a brand.
 
 ## What's in the box
 
@@ -64,14 +64,15 @@ That's the whole job. The neutral indigo-slate placeholder you see out of the bo
 ├── tokens.css         — design tokens (CSS custom properties): colour, type, spacing, radii, shadows
 ├── components.css     — component recipes (.ds-btn, .ds-card, .ds-input, .ds-badge, …)
 ├── fonts/             — local variable fonts (Roboto / Open Sans / Inter — swap per fork)
-├── docs/              — charter, token contract, extending, accessibility table, research
+├── docs/              — start at docs/README.md (fork path and steward path)
 ├── assets/            — brand marks (empty by design — a fork adds its own)
 └── showcase/          — Next.js static export; live at core-design-system.pages.dev
 ```
 
 `tokens.css` + `components.css` are the **canonical, framework-agnostic source**. Link them
 into any HTML page (`<link rel="stylesheet" href="tokens.css">`) and apply the `.ds` class to
-a root element for sensible element defaults. See [`docs/extending.md`](docs/extending.md) and
+a root element for sensible element defaults. Documentation hub: [`docs/README.md`](docs/README.md).
+Token layers: [`docs/extending.md`](docs/extending.md) and
 [`docs/token-contract.md`](docs/token-contract.md). The `showcase/`
 is a faithful, interactive realisation of the same tokens. It copies `tokens.css` and
 `components.css` at build time. It is not a second source of truth.
@@ -113,8 +114,8 @@ identity. Recolour the semantic ramps only if status colours must match that bra
 
 `components.css` ships pill **buttons** (primary / secondary / tertiary / destructive / icon ×
 3 sizes), **links**, **cards** (hover-lift, highlight-top/left, flat), **inputs / textareas /
-selects** with error + focus states, **badges**, **chips**, **dividers**, and **breadcrumbs** —
-all driven entirely by `tokens.css`, so a brand swap re-skins everything for free.
+selects** with error + focus states, **badges**, **chips**, **dividers**, and **breadcrumbs**.
+All driven by `tokens.css`. Recipe pages: [`docs/components/README.md`](docs/components/README.md).
 
 ## Visual character (override freely)
 

@@ -14,8 +14,8 @@ recipes. The brand (one hue + fonts + logo) is the only thing a consumer supplie
 
 ## How to use this skill
 
-1. **Read** `README.md` for the foundation's structure, the kernel versus fork split, and the
-   fork workflow.
+1. **Read** `README.md` and `docs/README.md` for the foundation, the fork path, and
+   the steward path. Honesty and token rules: `docs/agents.md`.
 2. **Load tokens** by linking `tokens.css` (CSS custom properties for colour, type, spacing,
    radii, shadows). Apply the `.ds` class to your root for sensible element defaults.
 3. **Use components** from `components.css` (`.ds-btn`, `.ds-card`, `.ds-input`, `.ds-badge`,
@@ -57,6 +57,8 @@ faithful, token-driven result.
 ## File reference
 
 - `README.md` — foundation overview, kernel versus fork, fork workflow
+- `docs/README.md` — documentation hub (fork path and steward path)
+- `docs/agents.md` — honesty, public tokens, catalogue rule
 - `tokens.css` — design tokens (CSS custom properties)
 - `components.css` — component recipes (`.ds-*`)
 - `fonts/` — local variable fonts (swap per fork)
