@@ -46,7 +46,8 @@ for (const theme of ["Indigo", "Forge"]) {
   await clickNamed("radio", theme);
   await clickNamed("link", "Introduction");
   await page.evaluate(() => window.scrollTo(0, 0));
-  await new Promise((r) => setTimeout(r, 200));
+  await page.evaluate(() => document.fonts.ready);
+  await new Promise((r) => setTimeout(r, 400));
   const file =
     theme === "Indigo" ? "showcase-indigo.png" : "showcase-forge.png";
   await page.screenshot({ path: path.join(outDir, file), type: "png" });
