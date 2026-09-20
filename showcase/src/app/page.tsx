@@ -181,7 +181,7 @@ export default function Page(): React.JSX.Element {
               <input className="ds-input" style={{ maxWidth: 220 }} placeholder="…then to me" />
             </div>
             <p className="body-s" style={{ color: "var(--fg-muted)", marginTop: 12 }}>
-              Driven by <code style={{ fontFamily: "var(--font-mono)" }}>--focus-500</code> and <code style={{ fontFamily: "var(--font-mono)" }}>--shadow-focus</code>.
+              Driven by <code style={{ fontFamily: "var(--font-mono)" }}>--focus-ring</code> and <code style={{ fontFamily: "var(--font-mono)" }}>--border-focus</code> (from <code style={{ fontFamily: "var(--font-mono)" }}>--focus-500</code>).
             </p>
           </Section>
 

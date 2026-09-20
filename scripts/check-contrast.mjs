@@ -2,6 +2,9 @@
 /**
  * Resolve colour roles from tokens.css, check WCAG 2.2 pairs, write
  * docs/accessibility.md. Exit 1 if a required pair fails.
+ *
+ * Also overlays the showcase Forge theme and checks the same pairs.
+ * Forge remaps --border-strong, --fg-placeholder, and --focus-500.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -9,6 +12,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const tokensPath = path.join(root, "tokens.css");
+const forgePath = path.join(root, "showcase", "src", "app", "globals.css");
 const outPath = path.join(root, "docs", "accessibility.md");
 
 function parseDecls(css) {
@@ -19,6 +23,13 @@ function parseDecls(css) {
     decls.set(`--${match[1]}`, match[2].trim());
   }
   return decls;
+}
+
+function extractThemeBlock(css, theme) {
+  const re = new RegExp(`html\\[data-theme="${theme}"\\]\\s*\\{([\\s\\S]*?)\\n\\}`);
+  const match = css.match(re);
+  if (!match) throw new Error(`Missing html[data-theme="${theme}"] block in ${path.relative(root, forgePath)}`);
+  return match[1];
 }
 
 function resolveHex(name, decls, seen = new Set()) {
@@ -54,11 +65,6 @@ function contrast(a, b) {
   return (hi + 0.05) / (lo + 0.05);
 }
 
-const css = fs.readFileSync(tokensPath, "utf8");
-const decls = parseDecls(css);
-const white = resolveHex("--white", decls);
-if (!white) throw new Error("Missing --white in tokens.css");
-
 const pairs = [
   { name: "Body text", fg: "--fg-default", bg: "--bg-base", min: 4.5, sc: "1.4.3" },
   { name: "Placeholder", fg: "--fg-placeholder", bg: "--bg-base", min: 4.5, sc: "1.4.3" },
@@ -71,34 +77,66 @@ const pairs = [
   { name: "Error badge", fg: "--fg-error", bg: "--bg-error", min: 4.5, sc: "1.4.3" },
   { name: "Field error", fg: "--fg-error", bg: "--bg-base", min: 4.5, sc: "1.4.3" },
   { name: "Error border", fg: "--border-error", bg: "--bg-base", min: 3.0, sc: "1.4.11" },
-  { name: "White on primary", fg: "--fg-on-primary", bg: "--primary", min: 4.5, sc: "1.4.3" },
-  { name: "White on error", fg: "--fg-on-error", bg: "--bg-error-strong", min: 4.5, sc: "1.4.3" },
+  { name: "On primary", fg: "--fg-on-primary", bg: "--primary", min: 4.5, sc: "1.4.3" },
+  { name: "On primary hover", fg: "--fg-on-primary", bg: "--primary-hover", min: 4.5, sc: "1.4.3" },
+  { name: "On primary active", fg: "--fg-on-primary", bg: "--primary-active", min: 4.5, sc: "1.4.3" },
+  { name: "On error", fg: "--fg-on-error", bg: "--bg-error-strong", min: 4.5, sc: "1.4.3" },
+  { name: "On error hover", fg: "--fg-on-error", bg: "--bg-error-strong-hover", min: 4.5, sc: "1.4.3" },
+  { name: "On inverse", fg: "--fg-on-inverse", bg: "--bg-inverse", min: 4.5, sc: "1.4.3" },
 ];
 
-const rows = [];
-let failed = 0;
-for (const pair of pairs) {
-  const fg = resolveHex(pair.fg, decls);
-  const bg = resolveHex(pair.bg, decls);
-  if (!fg || !bg) {
-    rows.push({ ...pair, fgHex: fg || "missing", bgHex: bg || "missing", ratio: 0, pass: false });
-    failed += 1;
-    continue;
+function checkTheme(decls) {
+  const white = resolveHex("--white", decls);
+  if (!white) throw new Error("Missing --white");
+  const rows = [];
+  let failed = 0;
+  for (const pair of pairs) {
+    const fg = resolveHex(pair.fg, decls);
+    const bg = resolveHex(pair.bg, decls);
+    if (!fg || !bg) {
+      rows.push({ ...pair, fgHex: fg || "missing", bgHex: bg || "missing", ratio: 0, pass: false });
+      failed += 1;
+      continue;
+    }
+    const ratio = contrast(fg, bg);
+    const pass = ratio + 1e-9 >= pair.min;
+    if (!pass) failed += 1;
+    rows.push({ ...pair, fgHex: fg, bgHex: bg, ratio, pass });
   }
-  const ratio = contrast(fg, bg);
-  const pass = ratio + 1e-9 >= pair.min;
-  if (!pass) failed += 1;
-  rows.push({ ...pair, fgHex: fg, bgHex: bg, ratio, pass });
+  const decorativeToken = "--border-default";
+  const decorativeHex = resolveHex(decorativeToken, decls);
+  const decorative = {
+    name: "Decorative border",
+    token: decorativeToken,
+    hex: decorativeHex || "missing",
+    ratio: decorativeHex ? contrast(decorativeHex, white) : 0,
+    white,
+  };
+  return { rows, failed, decorative, white };
 }
 
-const decorativeToken = "--border-default";
-const decorativeHex = resolveHex(decorativeToken, decls);
-const decorative = {
-  name: "Decorative border",
-  token: decorativeToken,
-  hex: decorativeHex || "missing",
-  ratio: decorativeHex ? contrast(decorativeHex, white) : 0,
-};
+function tableLines(result) {
+  const lines = [];
+  lines.push("| Pair | Foreground | Background | Ratio | Required | Result |");
+  lines.push("|---|---|---|---:|---:|---|");
+  for (const row of result.rows) {
+    lines.push(
+      `| ${row.name} (${row.sc}) | \`${row.fg}\` ${row.fgHex} | \`${row.bg}\` ${row.bgHex} | ${row.ratio.toFixed(2)}:1 | ${row.min.toFixed(1)} | ${row.pass ? "pass" : "**fail**"} |`,
+    );
+  }
+  lines.push(
+    `| ${result.decorative.name} | \`${result.decorative.token}\` ${result.decorative.hex} | \`--bg-base\` ${result.white} | ${result.decorative.ratio.toFixed(2)}:1 | n/a (decorative) | documented |`,
+  );
+  return lines;
+}
+
+const tokensCss = fs.readFileSync(tokensPath, "utf8");
+const showcaseCss = fs.readFileSync(forgePath, "utf8");
+const forgeBlock = extractThemeBlock(showcaseCss, "forge");
+
+const defaultResult = checkTheme(parseDecls(tokensCss));
+const forgeResult = checkTheme(parseDecls(`${tokensCss}\n${forgeBlock}`));
+const failed = defaultResult.failed + forgeResult.failed;
 
 const lines = [];
 lines.push("# Accessibility baseline");
@@ -110,17 +148,17 @@ lines.push("Pairs use WCAG 2.2 contrast: **4.5:1** for text (SC 1.4.3), **3:1** 
 lines.push("`--border-default` (`--neutral-200`) is decorative. It must not be the only cue on a control edge.");
 lines.push("`--hit-target` aliases `--control-height` (44px). Compact controls use `--control-height-sm` (32px). Large controls use `--control-height-lg`.");
 lines.push("`prefers-reduced-motion` sets `--motion-duration` to `0ms`. `forced-colors` restyles focus and borders in `components.css`.");
+lines.push("Focus is a 2px `outline` in `--focus-ring`, coloured by `--border-focus` (from `--focus-500`). Strong fills pair with `--fg-on-primary`, `--fg-on-error`, and `--fg-on-inverse`.");
 lines.push("");
-lines.push("| Pair | Foreground | Background | Ratio | Required | Result |");
-lines.push("|---|---|---|---:|---:|---|");
-for (const row of rows) {
-  lines.push(
-    `| ${row.name} (${row.sc}) | \`${row.fg}\` ${row.fgHex} | \`${row.bg}\` ${row.bgHex} | ${row.ratio.toFixed(2)}:1 | ${row.min.toFixed(1)} | ${row.pass ? "pass" : "**fail**"} |`,
-  );
-}
-lines.push(
-  `| ${decorative.name} | \`${decorative.token}\` ${decorative.hex} | \`--bg-base\` ${white} | ${decorative.ratio.toFixed(2)}:1 | n/a (decorative) | documented |`,
-);
+lines.push("## Default theme");
+lines.push("");
+lines.push(...tableLines(defaultResult));
+lines.push("");
+lines.push("## Forge theme");
+lines.push("");
+lines.push("Showcase `html[data-theme=\"forge\"]` overlays on the default tokens. Forge remaps `--border-strong`, `--fg-placeholder`, `--fg-subtle`, `--fg-disabled`, and `--focus-500`.");
+lines.push("");
+lines.push(...tableLines(forgeResult));
 lines.push("");
 lines.push("Run:");
 lines.push("");

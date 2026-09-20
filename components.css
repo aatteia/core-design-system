@@ -34,11 +34,9 @@
   min-height: var(--control-height);
 }
 .ds-btn:focus-visible {
-  outline: 2px solid var(--focus-500);
+  outline: var(--focus-ring);
   outline-offset: 2px;
 }
-.ds-btn .fa, .ds-btn .fas, .ds-btn .far, .ds-btn .fab,
-.ds-btn [class*="fa-"] { font-size: 16px; line-height: 1; }
 
 /* sizes */
 .ds-btn--sm  { --btn-pad-y: var(--control-pad-y-sm); --btn-pad-x: var(--control-pad-x-sm); --btn-font: 14px; min-height: var(--control-height-sm); }
@@ -109,7 +107,11 @@
   font-weight: var(--fw-semibold);
 }
 .ds-link:hover { color: var(--fg-link-hover); text-decoration-thickness: 2px; }
-.ds-link .fa-arrow-up-right { margin-left: 4px; font-size: 0.85em; }
+.ds-link:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 
 /* --------------------------------------------------------------------- CARDS */
 .ds-card {
@@ -174,7 +176,7 @@
 .ds-textarea:focus,
 .ds-select:focus {
   border-color: var(--primary);
-  outline: 2px solid var(--focus-500);
+  outline: var(--focus-ring);
   outline-offset: 1px;
 }
 .ds-input[aria-invalid="true"],
@@ -221,8 +223,12 @@
   min-height: var(--control-height-sm);
 }
 .ds-chip:hover            { border-color: var(--primary); }
+.ds-chip:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
 .ds-chip[aria-pressed="true"],
-.ds-chip--selected        { background: var(--primary); color: var(--white); border-color: var(--primary); }
+.ds-chip--selected        { background: var(--primary); color: var(--fg-on-primary); border-color: var(--primary); }
 
 /* --------------------------------------------------------------------- DIVIDERS */
 .ds-divider {

@@ -87,7 +87,7 @@ html[data-theme="forge"] {
   --control-pad-y: 8px;
   --control-pad-x: 16px;
 
-  /* Copper focus. Recipes still use outline / --shadow-focus. */
+  /* Copper focus. Recipes use outline: var(--focus-ring) via --border-focus. */
   --focus-500: #CE764C;
 
   /* Warm-stone 300/400 miss WCAG on white. Recipes read these roles. */

@@ -11,6 +11,8 @@ Core is versioned independently of any fork; forks pin to the Core version they 
 - Status surface and text roles: `--fg-error`, `--fg-on-error`, `--bg-info` /
   `--bg-success` / `--bg-warning` / `--bg-error`, plus `--bg-error-subtle`,
   `--bg-error-strong`, `--bg-error-strong-hover`, and `--border-error`.
+- Public `--focus-ring` (`2px solid var(--border-focus)`). All keyboard-focus
+  outlines use it.
 
 ### Changed
 - Component recipes use those status roles only. They no longer read
@@ -22,6 +24,16 @@ Core is versioned independently of any fork; forks pin to the Core version they 
   radii with pill primaries, 40/32/48 controls, and a copper `--focus-500`.
   Placeholder and strong-border roles remap onto darker stone steps so those
   pairs still meet WCAG on white. Recipes in `components.css` are unchanged.
+- Keyboard focus is a 2px outline. Recipes use `--focus-ring`, not
+  `--focus-500`. Strong fills use `--fg-on-primary` / `--fg-on-error`.
+  Selected chips no longer hardcode `--white`.
+- Contrast script checks default and Forge themes, including `on-*` fill
+  pairs. Charter last reviewed 20 September 2026.
+
+### Removed
+- Unused `--shadow-focus`. Focus is not a drop shadow.
+- Unused Font Awesome class hooks in `components.css`. The showcase uses
+  inline SVGs.
 
 ## v1.1.0 — 2026-09-18
 
