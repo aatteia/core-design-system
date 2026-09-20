@@ -61,6 +61,7 @@ faithful, token-driven result.
 - `components.css` — component recipes (`.ds-*`)
 - `fonts/` — local variable fonts (swap per fork)
 - `assets/` — brand marks (empty by design)
-- `docs/extending.md` — public token layers and how to derive a theme
+- `docs/extending.md` — kernel / fork / product layers and how to derive a theme
+- `docs/token-contract.md` — public tokens, private ramps, SemVer
 - `docs/accessibility.md` — generated contrast table
 - `showcase/` — interactive token explorer + component gallery (Next.js, static export). Live: https://core-design-system.pages.dev

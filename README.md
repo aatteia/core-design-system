@@ -1,4 +1,4 @@
-# Core Design System 1.1
+# Core Design System 1.2
 
 **Live showcase:** [https://core-design-system.pages.dev](https://core-design-system.pages.dev)
 
@@ -64,14 +64,15 @@ That's the whole job. The neutral indigo-slate placeholder you see out of the bo
 ├── tokens.css         — design tokens (CSS custom properties): colour, type, spacing, radii, shadows
 ├── components.css     — component recipes (.ds-btn, .ds-card, .ds-input, .ds-badge, …)
 ├── fonts/             — local variable fonts (Roboto / Open Sans / Inter — swap per fork)
-├── docs/              — charter, plan, accessibility table, extending
+├── docs/              — charter, token contract, extending, accessibility table, research
 ├── assets/            — brand marks (empty by design — a fork adds its own)
 └── showcase/          — Next.js static export; live at core-design-system.pages.dev
 ```
 
 `tokens.css` + `components.css` are the **canonical, framework-agnostic source**. Link them
 into any HTML page (`<link rel="stylesheet" href="tokens.css">`) and apply the `.ds` class to
-a root element for sensible element defaults. See `docs/extending.md`. The `showcase/`
+a root element for sensible element defaults. See [`docs/extending.md`](docs/extending.md) and
+[`docs/token-contract.md`](docs/token-contract.md). The `showcase/`
 is a faithful, interactive realisation of the same tokens. It copies `tokens.css` and
 `components.css` at build time. It is not a second source of truth.
 
@@ -99,8 +100,9 @@ identity. Recolour the semantic ramps only if status colours must match that bra
   `--fg-muted`, `--fg-link`, `--fg-on-primary`, `--fg-on-error`, `--fg-on-inverse`); status roles (`--fg-info` / `--fg-success` / `--fg-warning` /
   `--fg-error`, `--bg-info` / `--bg-success` / `--bg-warning` / `--bg-error` and error
   tint/strong variants); and borders (`--border-default`, `--border-strong`,
-  `--border-focus`, `--border-error`). `--focus-ring` is the public 2px outline
-  (`2px solid var(--border-focus)`). Recolour focus via `--focus-500`.
+  `--border-focus`, `--border-error`). `--border-control` aliases `--border-strong`.
+  `--focus-ring` is the public 2px outline (`2px solid var(--border-focus)`). Recolour
+  focus via `--focus-500`. Public vs private names: [`docs/token-contract.md`](docs/token-contract.md).
 - **Type** — `--font-heading` / `--font-body` / `--font-ui` / `--font-mono`; weights
   `--fw-light…bold`; a 4 px-baseline scale from `--text-display-m` (52) to `--text-body-xs` (12).
 - **Spacing** — `--space-xx-sm` (4) → `--space-xxx-huge` (192), every step on the 4 px grid.
@@ -148,5 +150,6 @@ Open Sans variable fonts are SIL OFL 1.1. See `fonts/OFL.txt`.
 
 ## Versioning
 
-Core is versioned independently of any fork. `1.1.0` is the current public release
-(`CHANGELOG.md`). Forks pin to the Core version they branched from.
+Core is versioned independently of any fork. `1.2.0` is the current public release
+(`CHANGELOG.md`). Forks pin to the Core version they branched from. Renaming or
+removing a public token is a breaking change. See [`docs/token-contract.md`](docs/token-contract.md).

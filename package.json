@@ -1,6 +1,6 @@
 {
   "name": "core-design-system",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Brand-agnostic design-system foundation. Tokens, CSS recipes, live showcase.",
   "homepage": "https://core-design-system.pages.dev",
   "license": "MIT",

@@ -179,6 +179,7 @@
 
   --border-default: var(--neutral-200);   /* decorative only; do not use as a control edge */
   --border-strong:  var(--neutral-300);   /* 3:1 on white — input and control borders */
+  --border-control: var(--border-strong); /* public alias of --border-strong */
   --border-subtle:  var(--neutral-100);
   --border-focus:   var(--focus-500);     /* public focus colour */
   --focus-ring:     2px solid var(--border-focus); /* public keyboard-focus outline */
