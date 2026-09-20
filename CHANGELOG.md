@@ -11,6 +11,11 @@ See `docs/token-contract.md`.
 
 ## Unreleased
 
+### Added
+- Documentation hub at `docs/README.md`: fork path, steward path, fork cookbook,
+  component recipe pages, decision log, steward runbook, and agent pack.
+  Increment plans labelled historical under `docs/plans/`.
+
 ### Fixed
 - Showcase sidebar search uses one `--focus-ring` on `:focus-visible`.
   The old `:focus` outline stacked with Chrome's UA ring.

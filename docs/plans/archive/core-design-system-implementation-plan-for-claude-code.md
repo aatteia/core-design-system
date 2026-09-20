@@ -2,8 +2,8 @@
 
 **Repository:** `https://github.com/aatteia/core-design-system`
 **Baseline audited:** 4 August 2026 (against working tree, not documentation)
-**Supersedes:** `archive/2026-08-04-original-strategic-plan.md`
-**Companion:** `../charter.md` — product definition, principles, admission criteria, non-goals
+**Supersedes:** `2026-08-04-original-strategic-plan.md`
+**Companion:** `../../charter.md` — product definition, principles, admission criteria, non-goals
 
 ---
 

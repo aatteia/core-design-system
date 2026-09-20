@@ -1,10 +1,15 @@
 # Comparable foundations
 
+**Last reviewed:** 2026-09-20
+
 Steward notes from the September 2026 comparable-systems pass. Core is original work.
 These systems were read as public practice, not as parents. Do not describe Core as
 derived from any of them.
 
 Full research lives outside this repo. Keep this page short.
+
+Reopen deferred items when a derived consumer needs them and they pass charter §4.
+Until then they stay deferred.
 
 ## Peers
 

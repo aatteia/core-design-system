@@ -4,6 +4,7 @@ Core is a kernel. A derived system overrides tokens. It does not fork `component
 unless it is replacing a recipe.
 
 Public vs private names: [token-contract.md](token-contract.md).
+Fork checklist: [fork-cookbook.md](fork-cookbook.md).
 Comparable practice: [research/comparable-foundations.md](research/comparable-foundations.md).
 
 ## Override layers
