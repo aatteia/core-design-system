@@ -38,7 +38,7 @@ function Section({
 
 function Ramp({ prefix, shades }: { prefix: string; shades: string[] }): React.JSX.Element {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: `repeat(${shades.length}, 1fr)`, gap: 6 }}>
+    <div style={{ display: "grid", gridTemplateColumns: `repeat(${shades.length}, minmax(0, 1fr))`, gap: 6 }}>
       {shades.map((s) => (
         <div
           key={s}
