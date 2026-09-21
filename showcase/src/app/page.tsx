@@ -23,7 +23,7 @@ function Section({
   children: React.ReactNode;
 }): React.JSX.Element {
   return (
-    <section id={id} style={{ padding: "48px 0", borderTop: "1px solid var(--showcase-border)" }}>
+    <section id={id} className="sc-section">
       <div className="eyebrow" style={{ marginBottom: 8 }}>{eyebrow}</div>
       <h2 className="h-l" style={{ marginBottom: intro ? 8 : 24 }}>{title}</h2>
       {intro && (

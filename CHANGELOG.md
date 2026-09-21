@@ -12,6 +12,10 @@ See `docs/token-contract.md`.
 ## Unreleased
 
 ### Changed
+- Showcase catalogue sections (`.sc-section`) inset titles, intros, ramps, and
+  demos from the section edges. Desktop uses `--space-xxx-big`. Viewports
+  ≤880px use `--space-big`. Soft glass inset matches the frosted overview card.
+  Drawer Vault mobile chrome is unchanged.
 - Showcase mobile chrome (≤880px): the sticky top bar is wordmark and Menu
   only. Mood (`Product|Editorial|Portfolio|Glass`) and brand theme
   (`Indigo|Teal|Violet|Amber|Forge`) chip groups move into the off-canvas nav

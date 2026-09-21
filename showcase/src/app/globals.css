@@ -549,6 +549,11 @@ body {
   padding: 0;
 }
 
+.sc-section {
+  padding: var(--space-x-lg) var(--space-xxx-big);
+  border-top: 1px solid var(--showcase-border);
+}
+
 .sc-content section { scroll-margin-top: calc(var(--showcase-bar-height) + 16px); }
 
 .sc-nav-toggle {
@@ -589,6 +594,7 @@ body {
   .sc-nav-toggle { display: inline-flex; }
   .sc-shell { display: block; }
   .sc-content { padding: 24px 16px 64px; }
+  .sc-section { padding-inline: var(--space-big); }
   .sc-hero__title { max-width: none; font-size: 28px; }
   .sc-hero__actions { width: 100%; min-width: 0; }
   .sc-topbar__inner {
