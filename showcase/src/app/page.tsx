@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IconError, IconExternal, IconPlus } from "@/components/icons";
 import { MoodSwitcher } from "@/components/mood-switcher";
 import { Overview } from "@/components/overview";
@@ -113,6 +113,15 @@ const GITHUB_HREF = "https://github.com/aatteia/core-design-system";
 
 export default function Page(): React.JSX.Element {
   const [navOpen, setNavOpen] = useState(false);
+  const menuBtnRef = useRef<HTMLButtonElement>(null);
+  const wasNavOpen = useRef(false);
+
+  useEffect(() => {
+    if (wasNavOpen.current && !navOpen) {
+      menuBtnRef.current?.focus();
+    }
+    wasNavOpen.current = navOpen;
+  }, [navOpen]);
 
   return (
     <div style={{ minHeight: "100vh" }}>
@@ -139,13 +148,17 @@ export default function Page(): React.JSX.Element {
             </a>
           </nav>
           <div className="sc-topbar__tools">
-            <MoodSwitcher />
-            <ThemeSwitcher />
+            <div className="sc-topbar__switchers">
+              <MoodSwitcher />
+              <ThemeSwitcher />
+            </div>
             <button
+              ref={menuBtnRef}
               type="button"
               className="sc-nav-toggle"
               aria-label={navOpen ? "Close navigation" : "Open navigation"}
               aria-expanded={navOpen}
+              aria-controls="sc-nav"
               onClick={() => setNavOpen((v) => !v)}
             >
               Menu
@@ -157,7 +170,13 @@ export default function Page(): React.JSX.Element {
       {/* shell — sidebar + content */}
       <div className="sc-shell">
         <SidebarNav open={navOpen} onNavigate={() => setNavOpen(false)} />
-        {navOpen && <div className="sc-backdrop" onClick={() => setNavOpen(false)} />}
+        {navOpen && (
+          <div
+            className="sc-backdrop"
+            aria-hidden="true"
+            onClick={() => setNavOpen(false)}
+          />
+        )}
 
         <main className="sc-content">
           <Overview />

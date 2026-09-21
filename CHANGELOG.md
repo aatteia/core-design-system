@@ -11,6 +11,12 @@ See `docs/token-contract.md`.
 
 ## Unreleased
 
+### Changed
+- Showcase mobile chrome (≤880px): the sticky top bar is wordmark and Menu
+  only. Mood (`Product|Editorial|Portfolio|Glass`) and brand theme
+  (`Indigo|Teal|Violet|Amber|Forge`) chip groups move into the off-canvas nav
+  drawer as labelled sections. Wide viewports keep the chips in the top bar.
+
 ### Added
 - Showcase chrome moods: Editorial steward, Portfolio hero, and Soft glass.
   Switch them with `html[data-mood]`. Product dense stays the default chrome.
