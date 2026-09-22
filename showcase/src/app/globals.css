@@ -117,8 +117,8 @@ body {
    Showcase navigation chrome (.sc-*). Not a design-system artefact.
    Compact product-app frame: Inter UI, --showcase-* surfaces, .sc-* namespace.
    Surfaces stay on --showcase-* so the catalogue can rebrand inside it.
-   The selected theme chip and overview primary CTA use --brand-600 so the
-   active hue is visible. Search keyboard focus uses --focus-ring.
+   The Appearance swatch and overview primary CTA use the active brand hue
+   so the rebrand stays visible. Search keyboard focus uses --focus-ring.
    --------------------------------------------------------------------------- */
 .sc-topbar {
   position: sticky;
@@ -177,11 +177,50 @@ body {
   gap: 8px;
   min-width: 0;
 }
-.sc-topbar__switchers {
-  display: flex;
+.sc-appearance {
+  position: relative;
+  flex-shrink: 0;
+}
+.sc-appearance__trigger {
+  appearance: none;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  min-width: 0;
+  min-height: 28px;
+  padding: 4px 10px 4px 8px;
+  border: 1px solid var(--showcase-border);
+  border-radius: 6px;
+  background: var(--showcase-bg);
+  color: var(--showcase-fg);
+  font-family: var(--showcase-font);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+}
+.sc-appearance__trigger:hover,
+.sc-appearance__trigger[aria-expanded="true"] {
+  background: var(--showcase-fill);
+}
+.sc-appearance__trigger:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+.sc-appearance__swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+}
+.sc-appearance__name { white-space: nowrap; }
+.sc-appearance__caret {
+  color: var(--showcase-muted);
+  flex-shrink: 0;
+  transition: transform var(--motion-duration) var(--motion-easing);
+}
+.sc-appearance__trigger[aria-expanded="true"] .sc-appearance__caret {
+  transform: rotate(180deg);
 }
 .sc-nav__head,
 .sc-nav__vault {
@@ -578,18 +617,6 @@ body {
 }
 .sc-backdrop { display: none; }
 
-@media (max-width: 1100px) {
-  .sc-topbar__inner {
-    height: auto;
-    min-height: var(--showcase-bar-height);
-    flex-wrap: wrap;
-    row-gap: 8px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
-  .sc-topbar__tools { width: 100%; }
-}
-
 @media (max-width: 880px) {
   .sc-nav-toggle { display: inline-flex; }
   .sc-shell { display: block; }
@@ -601,7 +628,7 @@ body {
     flex-wrap: nowrap;
   }
   .sc-topbar__tools { width: auto; }
-  .sc-topbar__switchers { display: none; }
+  .sc-appearance { display: none; }
   .sc-nav__head {
     display: flex;
     align-items: center;
@@ -970,4 +997,134 @@ html[data-mood="glass"] .sc-stat__label { color: var(--brand-800); }
     max-height: none;
   }
   html[data-mood="glass"] .sc-panel { padding: 20px; }
+}
+
+/* Appearance popover. Desktop only. Vault segments keep the rules above. */
+.sc-appearance__panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 5;
+  width: min(320px, calc(100vw - 24px));
+  padding: 14px;
+  border: 1px solid var(--showcase-border);
+  border-radius: 12px;
+  background: var(--showcase-bg);
+  box-shadow: var(--shadow-lg);
+}
+.sc-appearance__panel[hidden] { display: none; }
+.sc-appearance__section + .sc-appearance__section { margin-top: 16px; }
+.sc-appearance__heading {
+  margin: 0 0 8px;
+  font-family: var(--showcase-font);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--showcase-subtle);
+}
+.sc-appearance__panel .sc-mood {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  width: auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+.sc-appearance__panel .sc-mood-btn {
+  border: 1px solid var(--showcase-border);
+  border-radius: 6px;
+}
+.sc-appearance__panel .sc-mood-btn:first-child,
+.sc-appearance__panel .sc-mood-btn:last-child { border-radius: 6px; }
+.sc-appearance__panel .sc-mood-btn.sc-mood-btn--active {
+  border-color: var(--showcase-fg);
+}
+
+.sc-theme--dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+.sc-theme--dots .sc-theme-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+}
+.sc-theme--dots .sc-theme-btn:first-child,
+.sc-theme--dots .sc-theme-btn:last-child { border-radius: 999px; }
+.sc-theme--dots .sc-theme-btn:hover,
+.sc-theme--dots .sc-theme-btn.sc-theme-btn--active,
+.sc-theme--dots .sc-theme-btn.sc-theme-btn--active:hover {
+  background: transparent;
+  color: inherit;
+}
+.sc-theme-btn__dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+  transition: transform var(--motion-duration) var(--motion-easing),
+              box-shadow var(--motion-duration) var(--motion-easing);
+}
+.sc-theme--dots .sc-theme-btn--active .sc-theme-btn__dot {
+  box-shadow: 0 0 0 2px var(--showcase-bg), 0 0 0 4px var(--showcase-fg);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sc-appearance__panel:not([hidden]) {
+    animation: sc-appearance-in var(--motion-duration) var(--motion-easing);
+  }
+  .sc-theme--dots .sc-theme-btn:hover .sc-theme-btn__dot {
+    transform: scale(1.08);
+  }
+}
+@keyframes sc-appearance-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+html[data-mood="glass"] .sc-appearance__panel {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+}
+html[data-mood="editorial"] .sc-theme--dots .sc-theme-btn.sc-theme-btn--active,
+html[data-mood="editorial"] .sc-theme--dots .sc-theme-btn.sc-theme-btn--active:hover,
+html[data-mood="portfolio"] .sc-appearance__panel .sc-mood,
+html[data-mood="portfolio"] .sc-appearance__panel .sc-theme--dots,
+html[data-mood="glass"] .sc-appearance__panel .sc-mood,
+html[data-mood="glass"] .sc-appearance__panel .sc-theme--dots {
+  background: transparent;
+  box-shadow: none;
+}
+html[data-mood="portfolio"] .sc-appearance__panel .sc-mood-btn,
+html[data-mood="portfolio"] .sc-appearance__panel .sc-mood-btn:first-child,
+html[data-mood="portfolio"] .sc-appearance__panel .sc-mood-btn:last-child,
+html[data-mood="glass"] .sc-appearance__panel .sc-mood-btn,
+html[data-mood="glass"] .sc-appearance__panel .sc-mood-btn:first-child,
+html[data-mood="glass"] .sc-appearance__panel .sc-mood-btn:last-child {
+  border-radius: 6px;
+}
+html[data-mood="portfolio"] .sc-theme--dots .sc-theme-btn,
+html[data-mood="portfolio"] .sc-theme--dots .sc-theme-btn:first-child,
+html[data-mood="portfolio"] .sc-theme--dots .sc-theme-btn:last-child,
+html[data-mood="glass"] .sc-theme--dots .sc-theme-btn,
+html[data-mood="glass"] .sc-theme--dots .sc-theme-btn:first-child,
+html[data-mood="glass"] .sc-theme--dots .sc-theme-btn:last-child {
+  border-radius: 999px;
 }

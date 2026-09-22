@@ -12,6 +12,12 @@ See `docs/token-contract.md`.
 ## Unreleased
 
 ### Changed
+- Desktop showcase chrome (≥881px) replaces the two top-bar segment rows
+  with one Appearance control. It opens a labelled popover. Showcase chrome
+  stays a text radiogroup and still sets `data-mood`. Brand theme is colour
+  dots and still sets `data-theme`. Escape and an outside click close the
+  panel and return focus to the trigger. The panel is hidden and inert
+  while closed.
 - Showcase catalogue sections (`.sc-section`) inset titles, intros, ramps, and
   demos from the section edges. Desktop uses `--space-xxx-big`. Viewports
   ≤880px use `--space-big`. Soft glass inset matches the frosted overview card.
@@ -20,7 +26,7 @@ See `docs/token-contract.md`.
 - Showcase mobile chrome (≤880px): the sticky top bar is wordmark and Menu
   only. Mood (`Product|Editorial|Portfolio|Glass`) and brand theme
   (`Indigo|Teal|Violet|Amber|Forge`) chip groups move into the off-canvas nav
-  drawer as labelled sections. Wide viewports keep the chips in the top bar.
+  drawer as labelled sections. The Appearance popover is desktop only.
 
 ### Added
 - Showcase chrome moods: Editorial steward, Portfolio hero, and Soft glass.
