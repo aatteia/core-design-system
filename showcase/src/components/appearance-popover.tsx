@@ -83,9 +83,13 @@ export function AppearancePopover(): React.JSX.Element {
 
     function onPointerDown(e: PointerEvent): void {
       if (popover.contains(e.target as Node)) return;
-      setOpen(false);
       const target = e.target instanceof Element ? e.target : null;
-      if (!target?.closest(FOCUSABLE)) triggerRef.current?.focus();
+      const interactive = Boolean(target?.closest(FOCUSABLE));
+      setOpen(false);
+      if (interactive) return;
+      // A non-focusable target would otherwise blur the trigger on mousedown.
+      e.preventDefault();
+      triggerRef.current?.focus();
     }
 
     document.addEventListener("keydown", onKeyDown);
