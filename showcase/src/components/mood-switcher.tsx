@@ -2,13 +2,18 @@
 
 import { MOODS, useMood } from "@/lib/mood-context";
 
-export function MoodSwitcher(): React.JSX.Element {
+export function MoodSwitcher({
+  labelledBy,
+}: {
+  labelledBy?: string;
+} = {}): React.JSX.Element {
   const { mood, setMood } = useMood();
   return (
     <div
       className="sc-mood"
       role="radiogroup"
-      aria-label="Showcase chrome"
+      aria-label={labelledBy ? undefined : "Showcase chrome"}
+      aria-labelledby={labelledBy}
     >
       {MOODS.map((m) => {
         const active = m.id === mood;
