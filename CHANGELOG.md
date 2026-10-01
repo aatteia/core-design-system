@@ -11,6 +11,12 @@ See `docs/token-contract.md`.
 
 ## Unreleased
 
+### Fixed
+- Soft glass mobile Menu drawer no longer lets the page title show
+  through the vault controls. The drawer uses solid `--showcase-bg`.
+  Glass `--showcase-fill` stays translucent for the frosted desktop
+  sidebar.
+
 ### Changed
 - Desktop showcase chrome (≥881px) replaces the two top-bar segment rows
   with one Appearance control. It opens a labelled popover. Showcase chrome

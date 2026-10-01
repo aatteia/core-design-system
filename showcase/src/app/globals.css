@@ -996,6 +996,11 @@ html[data-mood="glass"] .sc-stat__label { color: var(--brand-800); }
     backdrop-filter: none;
     max-height: none;
   }
+  /* Glass --showcase-fill is 80% white. Blur is off here, so the page
+     title was reading through the vault. Use the solid sheet instead. */
+  html[data-mood="glass"] .sc-nav {
+    background: var(--showcase-bg);
+  }
   html[data-mood="glass"] .sc-panel { padding: 20px; }
 }
 
