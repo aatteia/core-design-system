@@ -2,9 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { IconError, IconExternal, IconPlus } from "@/components/icons";
-import { MoodSwitcher } from "@/components/mood-switcher";
+import { AppearancePopover } from "@/components/appearance-popover";
 import { Overview } from "@/components/overview";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 import { SidebarNav } from "@/components/sidebar-nav";
 
 /* ── small helpers ──────────────────────────────────────────────────────── */
@@ -148,10 +147,7 @@ export default function Page(): React.JSX.Element {
             </a>
           </nav>
           <div className="sc-topbar__tools">
-            <div className="sc-topbar__switchers">
-              <MoodSwitcher />
-              <ThemeSwitcher />
-            </div>
+            <AppearancePopover />
             <button
               ref={menuBtnRef}
               type="button"
